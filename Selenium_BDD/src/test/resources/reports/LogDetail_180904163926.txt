@@ -1,0 +1,180 @@
+2018/09/04 16:39:33.880 [TESTCASE] *** Execute TestCase: FE002-Tours - Verify Tours Filter ***
+2018/09/04 16:39:34.017 [STEP] User navigates to Tours page
+2018/09/04 16:39:34.028 [INFO] navigateURL :: [https://www.phptravels.net/tours]
+2018/09/04 16:39:39.258 [STEP] User set Price Range (0 , 60) to filter
+2018/09/04 16:39:39.270 [INFO] getWidth :: [//div[@class='slider-track']]
+2018/09/04 16:39:39.447 [INFO] drag :: [(//div[@class='slider-handle round'])[1]]
+2018/09/04 16:39:39.534 [INFO] drop :: [//div[@class='slider-track']]
+2018/09/04 16:39:40.351 [INFO] drag :: [(//div[@class='slider-handle round'])[2]]
+2018/09/04 16:39:40.458 [INFO] drop :: [//div[@class='slider-track']]
+2018/09/04 16:39:40.685 [STEP] User filter search Tours
+2018/09/04 16:39:40.694 [INFO] click :: [(//*[./input[@name='stars']])[3]]
+2018/09/04 16:39:40.804 [INFO] click :: [//*[./input[@type='radio'][@*='Holidays']]/ins]
+2018/09/04 16:39:40.955 [INFO] click :: [//button[text()='Search']]
+2018/09/04 16:39:42.203 [STEP] Tour Type each Tours displayed correctly
+2018/09/04 16:39:42.390 [PASSED] verifyAttributeOnList :: [textContent]:[//*[./strong[text()='Tour Type']]/a[1]] :: [Holidays] = [Holidays]
+2018/09/04 16:39:42.503 [TESTCASE] *** End TestCase: FE002-Tours - Verify Tours Filter ***
+2018/09/04 16:39:42.514 [TESTCASE] *** Execute TestCase: FE003-Cars - Verify Cars Filter ***
+2018/09/04 16:39:42.532 [STEP] User navigates to Cars page
+2018/09/04 16:39:42.541 [INFO] navigateURL :: [https://www.phptravels.net/cars]
+2018/09/04 16:39:44.037 [STEP] User set Price Range (null , null) to filter
+2018/09/04 16:39:44.049 [INFO] getWidth :: [//div[@class='slider-track']]
+2018/09/04 16:39:44.167 [STEP] User filter search Cars
+2018/09/04 16:39:44.178 [INFO] click :: [(//*[./input[@name='stars']])[4]]
+2018/09/04 16:39:44.506 [INFO] click :: [//*[./input[@type='radio'][@*='Standard']]/ins]
+2018/09/04 16:39:44.773 [INFO] selectOptionByText :: [Yes] :: [//select[@*='pickup']]
+2018/09/04 16:39:45.053 [INFO] click :: [//button[text()='Search']]
+2018/09/04 16:39:46.992 [STEP] Verify green Airport Pickup button for each Cars
+2018/09/04 16:39:47.188 [PASSED] verifyColorElement :: [background-color]:[//table[@*='bgwhite table table-striped']/*/tr[1]//button[.=' Airport Pickup']] :: [#5cb85c] = [#5cb85c]
+2018/09/04 16:39:47.348 [TESTCASE] *** End TestCase: FE003-Cars - Verify Cars Filter ***
+2018/09/04 16:39:47.356 [TESTCASE] *** Execute TestCase: FE005-Hotels - Verify Hotels Filter ***
+2018/09/04 16:39:47.372 [STEP] User navigates to Hotels page
+2018/09/04 16:39:47.382 [INFO] navigateURL :: [https://www.phptravels.net/hotels]
+2018/09/04 16:39:50.085 [STEP] User set Price Range (0 , 40) to filter
+2018/09/04 16:39:50.096 [INFO] getWidth :: [//div[@class='slider-track']]
+2018/09/04 16:39:50.168 [INFO] drag :: [(//div[@class='slider-handle round'])[1]]
+2018/09/04 16:39:50.260 [INFO] drop :: [//div[@class='slider-track']]
+2018/09/04 16:39:50.950 [INFO] drag :: [(//div[@class='slider-handle round'])[2]]
+2018/09/04 16:39:51.030 [INFO] drop :: [//div[@class='slider-track']]
+2018/09/04 16:39:51.271 [STEP] User filter search Hotels
+2018/09/04 16:39:51.281 [INFO] click :: [(//*[./input[@name='stars']])[4]]
+2018/09/04 16:39:51.376 [INFO] selectCheckbox :: [true] :: [//*[./input[@type='checkbox'][@*='Hotel']]/ins]
+2018/09/04 16:39:51.489 [INFO] selectCheckbox :: [true] :: [//*[./input[@type='checkbox'][@*='Villa']]/ins]
+2018/09/04 16:39:51.606 [INFO] selectCheckbox :: [true] :: [//*[./input[@type='checkbox'][@*='Night Club']]/ins]
+2018/09/04 16:39:51.781 [INFO] selectCheckbox :: [true] :: [//*[./input[@type='checkbox'][@*='Restaurant']]/ins]
+2018/09/04 16:39:51.922 [INFO] click :: [//button[text()='Search']]
+2018/09/04 16:39:53.907 [STEP] Verify Number Star of each Hotels displayed correctly
+2018/09/04 16:39:54.067 [PASSED] verifyStartOnTable :: at row [1] :: [4] >= [4]
+2018/09/04 16:39:54.131 [PASSED] verifyStartOnTable :: at row [2] :: [5] >= [4]
+2018/09/04 16:39:54.232 [PASSED] verifyStartOnTable :: at row [3] :: [4] >= [4]
+2018/09/04 16:39:54.451 [TESTCASE] *** End TestCase: FE005-Hotels - Verify Hotels Filter ***
+2018/09/04 16:39:54.463 [TESTCASE] *** Execute TestCase: BE006-Hotels-Upload gallery ***
+2018/09/04 16:39:54.484 [STEP] User login BE page with valid email and password
+2018/09/04 16:39:54.494 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:39:57.395 [INFO] setText :: [admin@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:39:57.662 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 16:39:57.856 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:39:58.068 [STEP] User select main-menu Hotels -> sub-menu Hotels
+2018/09/04 16:39:58.086 [INFO] click :: [(//ul[contains(@*,'sidebar')])[last()]/li[.//*[contains(text(),'Hotels')]]/a]
+2018/09/04 16:40:03.182 [INFO] click :: [//*[./*[@aria-expanded='true']]//li/a[text()='Hotels']]
+2018/09/04 16:40:09.871 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[3]/td[count(//tr/th[text()='Gallery']/preceding-sibling::th)+1]]
+2018/09/04 16:40:09.882 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[3]/td[count(//tr/th[text()='Gallery']/preceding-sibling::th)+1]]
+2018/09/04 16:40:09.928 [INFO] clickCellOnTable :: [//table[//@*]//tr[3]/td[count(//tr/th[text()='Gallery']/preceding-sibling::th)+1]//a]
+2018/09/04 16:40:13.707 [INFO] click :: [//a[@aria-controls='UploadPhotos']]
+2018/09/04 16:40:13.833 [INFO] upLoadFile :: [//span[@class='drop']]
+2018/09/04 16:40:14.112 [INFO] typeKeysByRobot :: [D:\Training\test\Java-BDD-Automation\Selenium_BDD\src\test\resources\data files\be\Image.PNG]
+2018/09/04 16:40:21.352 [STEP] User select main-menu Hotels -> sub-menu Hotels
+2018/09/04 16:40:21.363 [INFO] click :: [(//ul[contains(@*,'sidebar')])[last()]/li[.//*[contains(text(),'Hotels')]]/a]
+2018/09/04 16:40:21.488 [INFO] click :: [//*[./*[@aria-expanded='true']]//li/a[text()='Hotels']]
+2018/09/04 16:40:27.092 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[3]/td[count(//tr/th[text()='Gallery']/preceding-sibling::th)+1]]
+2018/09/04 16:40:27.104 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[3]/td[count(//tr/th[text()='Gallery']/preceding-sibling::th)+1]]
+2018/09/04 16:40:27.151 [FAILED] verifyImageNumberUploaded :: [15] = [16]
+2018/09/04 16:40:28.042 [TESTCASE] *** End TestCase: BE006-Hotels-Upload gallery ***
+2018/09/04 16:40:28.052 [TESTCASE] *** Execute TestCase: BE007-Hotels-Delete Hotels by icon ***
+2018/09/04 16:40:28.071 [STEP] User login BE page with valid email and password
+2018/09/04 16:40:28.080 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:40:29.206 [INFO] setText :: [admin@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:40:29.589 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 16:40:29.804 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:40:30.027 [STEP] User select main-menu Hotels -> sub-menu Hotels
+2018/09/04 16:40:30.049 [INFO] click :: [(//ul[contains(@*,'sidebar')])[last()]/li[.//*[contains(text(),'Hotels')]]/a]
+2018/09/04 16:40:33.591 [INFO] click :: [//*[./*[@aria-expanded='true']]//li/a[text()='Hotels']]
+2018/09/04 16:40:38.307 [STEP] User deletes Hotel by Icon at row 4
+2018/09/04 16:40:38.318 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[4]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:38.328 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[4]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:38.376 [INFO] clickIconOnTable :: [//table[//@*]//tr[4]/td//a[@title='DELETE']]
+2018/09/04 16:40:38.486 [INFO] alertDialog
+2018/09/04 16:40:40.507 [STEP] Verify User deleted 'Islamabad Marriott Hotel' hotel at row 4
+2018/09/04 16:40:40.519 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[4]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:40.528 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[4]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:42.569 [PASSED] verifyHotelNameDeleted :: [Islamabad Marriott Hotel] != [Islamabad Marriott Hotel]
+2018/09/04 16:40:42.979 [TESTCASE] *** End TestCase: BE007-Hotels-Delete Hotels by icon ***
+2018/09/04 16:40:42.994 [TESTCASE] *** Execute TestCase: BE008-Hotels-Delete Hotels by button ***
+2018/09/04 16:40:43.021 [STEP] User login BE page with valid email and password
+2018/09/04 16:40:43.038 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:40:43.860 [INFO] setText :: [admin@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:40:44.287 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 16:40:44.579 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:40:44.991 [STEP] User select main-menu Hotels -> sub-menu Hotels
+2018/09/04 16:40:45.002 [INFO] click :: [(//ul[contains(@*,'sidebar')])[last()]/li[.//*[contains(text(),'Hotels')]]/a]
+2018/09/04 16:40:48.056 [INFO] click :: [//*[./*[@aria-expanded='true']]//li/a[text()='Hotels']]
+2018/09/04 16:40:52.527 [STEP] User deletes Hotel by Button at row 5
+2018/09/04 16:40:52.537 [INFO] selectCheckbox :: [true] :: [//table[//@*]//tr[5]/td[1]//*[input]]
+2018/09/04 16:40:52.664 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[5]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:52.673 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[5]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:52.724 [INFO] click :: [//a[text()=' Delete Selected']]
+2018/09/04 16:40:52.880 [INFO] alertDialog
+2018/09/04 16:40:54.899 [STEP] Verify User deleted 'Rose Rayhaan Rotana' hotel at row 5
+2018/09/04 16:40:54.912 [INFO] getCellValuesOnTable :: [//table[//@*]//tr[5]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:54.921 [INFO] getAttribute :: [innerText] :: [//table[//@*]//tr[5]/td[count(//tr/th[text()='Name']/preceding-sibling::th)+1]]
+2018/09/04 16:40:56.511 [PASSED] verifyHotelNameDeleted :: [Rose Rayhaan Rotana] != [Rose Rayhaan Rotana]
+2018/09/04 16:40:56.865 [TESTCASE] *** End TestCase: BE008-Hotels-Delete Hotels by button ***
+2018/09/04 16:40:56.879 [TESTCASE] *** Execute TestCase: BE001-Login-Login to page successful ***
+2018/09/04 16:40:56.893 [STEP] User login BE page with valid email and password
+2018/09/04 16:40:56.904 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:40:57.994 [INFO] setText :: [admin@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:40:58.501 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 16:40:58.739 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:40:59.009 [STEP] Verify BE page is displayed correctly
+2018/09/04 16:41:01.869 [PASSED] verifyAttributeElement :: [outerText]:[//div[@class='user']/span] :: [Super Admin Admin] = [Super Admin Admin]
+2018/09/04 16:41:01.935 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-danger btn-block']] :: [QUICK BOOKING] = [QUICK BOOKING]
+2018/09/04 16:41:01.988 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-danger btn-block']] :: [#ee5f5b] = [#ee5f5b]
+2018/09/04 16:41:02.034 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-primary btn-block']] :: [BOOKINGS] = [BOOKINGS]
+2018/09/04 16:41:02.072 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-primary btn-block']] :: [#466df1] = [#466df1]
+2018/09/04 16:41:02.122 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-info btn-block']] :: [  CMS PAGES] = [  CMS PAGES]
+2018/09/04 16:41:02.158 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-info btn-block']] :: [#5bc0de] = [#5bc0de]
+2018/09/04 16:41:02.205 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-success btn-block']] :: [BLOG] = [BLOG]
+2018/09/04 16:41:02.260 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-success btn-block']] :: [#62c462] = [#62c462]
+2018/09/04 16:41:02.310 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-warning btn-block']] :: [SEND NEWSLETTER] = [SEND NEWSLETTER]
+2018/09/04 16:41:02.357 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-warning btn-block']] :: [#fbb450] = [#fbb450]
+2018/09/04 16:41:02.405 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-default btn-block']] :: [BACKUP DATABSE] = [BACKUP DATABSE]
+2018/09/04 16:41:02.452 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-default btn-block']] :: [#ffffff] = [#ffffff]
+2018/09/04 16:41:02.511 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Booking Summary ']] :: [true] = [true]
+2018/09/04 16:41:02.566 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Revenue Chart']] :: [true] = [true]
+2018/09/04 16:41:02.617 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Recent Bookings']] :: [true] = [true]
+2018/09/04 16:41:02.663 [PASSED] verifyAttributeElement :: [outerText]:[//div[@class='pull-left']] :: [VISIT STATISTICS OF SEPTEMBER] = [VISIT STATISTICS OF SEPTEMBER]
+2018/09/04 16:41:02.935 [TESTCASE] *** End TestCase: BE001-Login-Login to page successful ***
+2018/09/04 16:41:02.946 [TESTCASE] *** Execute TestCase: BE002-Login-Login to page unsuccessful ***
+2018/09/04 16:41:02.966 [STEP] User login BE page with invalid format email
+2018/09/04 16:41:02.978 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:41:03.785 [INFO] setText :: [abc] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:41:03.952 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 16:41:04.128 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:41:04.295 [STEP] Verify Error message is displayed
+2018/09/04 16:41:04.996 [PASSED] verifyAttributeElement :: [textContent]:[//div[starts-with(@class,'alert')]/p] :: [The Email field must contain a valid email address.] = [The Email field must contain a valid email address.]
+2018/09/04 16:41:05.013 [STEP] User login BE page with blank email and password
+2018/09/04 16:41:05.030 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 16:41:05.840 [INFO] setText :: [] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:41:05.937 [INFO] setText :: [] :: [//input[@name='password']]
+2018/09/04 16:41:06.036 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:41:06.238 [STEP] Verify Warning message is displayed
+2018/09/04 16:41:06.327 [FAILED] verifyElementPresent :: [//*[contains(text(),'Please fill out this field.']] :: [false] = [true]
+2018/09/04 16:41:07.132 [TESTCASE] *** End TestCase: BE002-Login-Login to page unsuccessful ***
+2018/09/04 16:41:07.147 [TESTCASE] *** Execute TestCase: FE001-Login - Login successful ***
+2018/09/04 16:41:07.163 [STEP] User navigates to Front-end page
+2018/09/04 16:41:07.177 [INFO] navigateURL :: [https://www.phptravels.net]
+2018/09/04 16:41:14.757 [STEP] User select main-menu My Account -> sub-menu  Login
+2018/09/04 16:41:14.768 [INFO] click :: [(//ul[contains(@*,'sidebar')])[last()]/li[.//*[contains(text(),'My Account')]]/a]
+2018/09/04 16:41:15.002 [INFO] click :: [//*[./*[@aria-expanded='true']]//li/a[text()=' Login']]
+2018/09/04 16:41:16.480 [STEP] Verify Login FE page is displayed
+2018/09/04 16:41:16.503 [PASSED] verifyTitle :: [Login] = [Login]
+2018/09/04 16:41:16.523 [PASSED] verifyURL :: [https://www.phptravels.net/login] = [https://www.phptravels.net/login]
+2018/09/04 16:41:16.534 [STEP] User login FE page with valid email and password$
+2018/09/04 16:41:16.546 [INFO] navigateURL :: [https://www.phptravels.net/login]
+2018/09/04 16:41:17.661 [INFO] setText :: [user@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 16:41:17.866 [INFO] setText :: [demouser] :: [//input[@name='password']]
+2018/09/04 16:41:17.998 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 16:41:18.122 [STEP] Verify My Account page is displayed
+2018/09/04 16:41:23.843 [PASSED] verifyAttributeElement :: [textContent]:[//h3[@class='RTL']] :: [Hi, Johny Smith] = [Hi, Johny Smith]
+2018/09/04 16:41:23.906 [PASSED] verifyAttributeElement :: [innerText]:[//span[@class='h4']] :: [4 September 2018] = [4 September 2018]
+2018/09/04 16:41:23.968 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs']/li[./a[contains(.,'Bookings')]]] :: [true] = [true]
+2018/09/04 16:41:24.039 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs']/li[./a[contains(.,'My Profile')]]] :: [true] = [true]
+2018/09/04 16:41:24.097 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs']/li[./a[contains(.,'Wishlist')]]] :: [true] = [true]
+2018/09/04 16:41:24.162 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs']/li[./a[contains(.,'Newsletter')]]] :: [true] = [true]
+2018/09/04 16:41:24.221 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs' or @id='social-sidebar-menu']/li/a/*[@class='bookings-icon']] :: [true] = [true]
+2018/09/04 16:41:24.293 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs' or @id='social-sidebar-menu']/li/a/*[@class='profile-icon']] :: [true] = [true]
+2018/09/04 16:41:24.369 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs' or @id='social-sidebar-menu']/li/a/*[@class='wishlist-icon']] :: [true] = [true]
+2018/09/04 16:41:24.452 [PASSED] verifyElementPresent :: [//ul[@class='nav profile-tabs' or @id='social-sidebar-menu']/li/a/*[@class='newsletter-icon']] :: [true] = [true]
+2018/09/04 16:41:24.497 [PASSED] verifyAttributeElement :: [class]:[//ul[@class='nav profile-tabs']/li[./a[contains(.,'Bookings')]]] :: [active] = [active]
+2018/09/04 16:41:24.618 [TESTCASE] *** End TestCase: FE001-Login - Login successful ***
+2018/09/04 16:41:24.629 [INFO] closeDriver

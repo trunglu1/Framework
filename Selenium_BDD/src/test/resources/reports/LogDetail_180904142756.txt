@@ -1,0 +1,41 @@
+2018/09/04 14:28:03.748 [TESTCASE] *** Execute TestCase: BE001-Login-Login to page successful ***
+2018/09/04 14:28:03.864 [STEP] User login BE page with valid email and password
+2018/09/04 14:28:03.875 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 14:28:08.278 [INFO] setText :: [admin@phptravels.com] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 14:28:08.558 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 14:28:08.759 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 14:28:08.979 [STEP] Verify BE page is displayed correctly
+2018/09/04 14:28:17.051 [PASSED] verifyAttributeElement :: [outerText]:[//div[@class='user']/span] :: [Super Admin Admin] = [Super Admin Admin]
+2018/09/04 14:28:17.097 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-danger btn-block']] :: [QUICK BOOKING] = [QUICK BOOKING]
+2018/09/04 14:28:17.146 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-danger btn-block']] :: [#ee5f5b] = [#ee5f5b]
+2018/09/04 14:28:17.182 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-primary btn-block']] :: [BOOKINGS] = [BOOKINGS]
+2018/09/04 14:28:17.220 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-primary btn-block']] :: [#466df1] = [#466df1]
+2018/09/04 14:28:17.254 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-info btn-block']] :: [  CMS PAGES] = [  CMS PAGES]
+2018/09/04 14:28:17.286 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-info btn-block']] :: [#5bc0de] = [#5bc0de]
+2018/09/04 14:28:17.320 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-success btn-block']] :: [BLOG] = [BLOG]
+2018/09/04 14:28:17.354 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-success btn-block']] :: [#62c462] = [#62c462]
+2018/09/04 14:28:17.443 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-warning btn-block']] :: [SEND NEWSLETTER] = [SEND NEWSLETTER]
+2018/09/04 14:28:17.476 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-warning btn-block']] :: [#fbb450] = [#fbb450]
+2018/09/04 14:28:17.550 [PASSED] verifyAttributeElement :: [outerText]:[//button[@class='btn btn-default btn-block']] :: [BACKUP DATABSE] = [BACKUP DATABSE]
+2018/09/04 14:28:17.585 [PASSED] verifyColorElement :: [background-color]:[//button[@class='btn btn-default btn-block']] :: [#ffffff] = [#ffffff]
+2018/09/04 14:28:17.629 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Booking Summary ']] :: [true] = [true]
+2018/09/04 14:28:17.669 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Revenue Chart']] :: [true] = [true]
+2018/09/04 14:28:17.703 [PASSED] verifyElementPresent :: [//div[@class='panel-heading'][.='Booking Summary '='Recent Bookings']] :: [true] = [true]
+2018/09/04 14:28:17.741 [PASSED] verifyAttributeElement :: [outerText]:[//div[@class='pull-left']] :: [VISIT STATISTICS OF SEPTEMBER] = [VISIT STATISTICS OF SEPTEMBER]
+2018/09/04 14:28:18.009 [TESTCASE] *** Execute TestCase: BE002-Login-Login to page unsuccessful ***
+2018/09/04 14:28:18.036 [STEP] User login BE page with invalid format email
+2018/09/04 14:28:18.045 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 14:28:18.860 [INFO] setText :: [abc] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 14:28:18.990 [INFO] setText :: [demoadmin] :: [//input[@name='password']]
+2018/09/04 14:28:19.137 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 14:28:19.328 [STEP] Verify Error message is displayed
+2018/09/04 14:28:20.003 [PASSED] verifyAttributeElement :: [textContent]:[//div[starts-with(@class,'alert')]/p] :: [The Email field must contain a valid email address.] = [The Email field must contain a valid email address.]
+2018/09/04 14:28:20.017 [STEP] User login BE page with blank email and password
+2018/09/04 14:28:20.029 [INFO] navigateURL :: [https://www.phptravels.net/admin]
+2018/09/04 14:28:21.031 [INFO] setText :: [] :: [//input[@placeholder='Email'][not(@id)]]
+2018/09/04 14:28:21.152 [INFO] setText :: [] :: [//input[@name='password']]
+2018/09/04 14:28:21.271 [INFO] click :: [//button[@type='submit'][contains(@class,'btn-block l')]]
+2018/09/04 14:28:21.485 [STEP] Verify Warning message is displayed
+2018/09/04 14:28:21.617 [FAILED] verifyElementPresent :: [//*[contains(text(),'Please fill out this field.']] :: [false] = [true]
+2018/09/04 14:28:22.384 [TESTCASE] *** End TestCase: BE002-Login-Login to page unsuccessful ***
+2018/09/04 14:28:22.397 [INFO] closeDriver
