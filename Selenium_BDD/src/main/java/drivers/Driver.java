@@ -9,12 +9,13 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import constants.Environemnts;
+import constants.Environments;
 import helpers.FileHelper;
 import utilities.Utility;
 
 public class Driver {
-    static WebDriver driver;
+    static WebDriver driver = null;
+    public static String googleSheetName;
 
     public static void setDriver(WebDriver driverTest) {
         if (driver == null) driver = driverTest;
@@ -31,27 +32,32 @@ public class Driver {
         WebDriver driverTest;
         switch (browser.toLowerCase()) { // check our browser
             case "firefox": {
-                System.setProperty("webdriver.firefox.marionette", Environemnts.DRIVER_PATH + "geckodriver.exe");
+                googleSheetName = "UI-Report-Firefox";
+                System.setProperty("webdriver.firefox.marionette", Environments.DRIVER_PATH + "geckodriver.exe");
                 driverTest = new FirefoxDriver();
                 break;
             }
             case "edge": {
-                System.setProperty("webdriver.edge.driver", Environemnts.DRIVER_PATH + "MicrosoftWebDriver.exe");
+                googleSheetName = "UI-Report-Edge";
+                System.setProperty("webdriver.edge.driver", Environments.DRIVER_PATH + "MicrosoftWebDriver.exe");
                 driverTest = new EdgeDriver();
                 break;
             }
             case "ie": {
-                System.setProperty("webdriver.ie.driver", Environemnts.DRIVER_PATH + "IEDriverServer.exe");
+                googleSheetName = "UI-Report-IE";
+                System.setProperty("webdriver.ie.driver", Environments.DRIVER_PATH + "IEDriverServer.exe");
                 driverTest = new InternetExplorerDriver();
                 break;
             }
             case "safari": {
+                googleSheetName = "UI-Report-Safari";
                 driverTest = new SafariDriver();
                 break;
             }
-            // if our browser is not listed, throw an error
+            // if our browser is not listed
             default: {
-                System.setProperty("webdriver.chrome.driver", Environemnts.DRIVER_PATH + "chromedriver.exe");
+                googleSheetName = "UI-Report-Chrome";
+                System.setProperty("webdriver.chrome.driver", Environments.DRIVER_PATH + "chromedriver.exe");
                 driverTest = new ChromeDriver();
             }
         }

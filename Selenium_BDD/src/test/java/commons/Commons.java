@@ -1,7 +1,7 @@
 package commons;
 
 import java.util.List;
-import constants.Environemnts;
+import constants.Environments;
 import constants.Controls;
 import keywords.WebUI;
 
@@ -48,7 +48,7 @@ public class Commons {
     public static void uploadGallery(String rowIndex, String imageUpload) {
         CustomWebUI.clickCellOnTable(Controls.table, null, "Gallery", rowIndex);
         WebUI.click(btnAddPhotos, null);
-        WebUI.upLoadFile(lblDropFiles, null, Environemnts.DATA_PATH + imageUpload);
+        WebUI.upLoadFile(lblDropFiles, null, Environments.DATA_PATH + imageUpload);
     }
 
     public static void searchRecordsOnTable(String text, String field) {
@@ -63,11 +63,11 @@ public class Commons {
         int sliderWidth = WebUI.getWidth(sldPriceRange, null);
         int posi = 0;
         if(from != null){
-            posi = (int)(sliderWidth * Integer.valueOf(from) / 100);
+            posi = Integer.valueOf(sliderWidth * Integer.valueOf(from) / 100);
             WebUI.dragAndDrop(sldRound, "1", sldPriceRange, null, posi, 2);
         }
         if(to != null){
-            posi = (int)(sliderWidth * Integer.valueOf(to) / 100);
+            posi = Integer.valueOf(sliderWidth * Integer.valueOf(to) / 100);
             WebUI.dragAndDrop(sldRound, "2", sldPriceRange, null, posi, 2);
         }
     }

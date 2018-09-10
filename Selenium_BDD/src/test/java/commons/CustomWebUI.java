@@ -6,7 +6,6 @@ import constants.Controls;
 import keywords.WebUI;
 import utilities.Enums;
 import utilities.Utility;
-import utilities.Variables;
 
 public class CustomWebUI {
     public static int countRows(String strTableXpath, String dynamicValue) {

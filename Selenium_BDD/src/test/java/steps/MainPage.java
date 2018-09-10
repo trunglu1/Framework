@@ -7,13 +7,12 @@ import constants.GolobalVariables;
 import helpers.FileHelper;
 import keywords.WebUI;
 import utilities.Utility;
-import utilities.Variables;
 
 public class MainPage {
 
     @Given("^User uses test data: CSV files \"(.*)\", delimiter \"(.*)\", at row \"(.*)\"$")
     public void useTestData(String csvFile, String delimiter, String rowIndex) {
-        Variables.testData = FileHelper.getTestDataCSV(csvFile, delimiter, Integer.valueOf(rowIndex));
+        Utility.testData = FileHelper.getTestDataCSV(csvFile, delimiter, Integer.valueOf(rowIndex));
     }
 
     @Given("^User navigates to \"(.*)\" page$")
@@ -53,8 +52,8 @@ public class MainPage {
 
     @When("^User set Price Range to filter$")
     public void setPriceRange() {
-        String from = Variables.testData.get("priceFrom");
-        String to = Variables.testData.get("priceTo");
+        String from = Utility.testData.get("priceFrom");
+        String to = Utility.testData.get("priceTo");
         Utility.logInfo("STEP", "User set Price Range (" + from + " , " + to + ") to filter", 1);
         Commons.setPriceRange(from, to);
     }

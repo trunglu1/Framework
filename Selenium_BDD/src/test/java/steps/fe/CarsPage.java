@@ -6,7 +6,6 @@ import commons.Commons;
 import constants.Controls;
 import keywords.WebUI;
 import utilities.Utility;
-import utilities.Variables;
 
 public class CarsPage {
     static String btnAirportPickup = "//button[.=' Airport Pickup']";
@@ -14,7 +13,7 @@ public class CarsPage {
     @When("^User filter search Cars")
     public void filerSearch(){
         Utility.logInfo("STEP", "User filter search Cars", 1);
-        Commons.filerSearch(Variables.testData.get("star"), null, null, Variables.testData.get("carType"), Variables.testData.get("airportPickup") );
+        Commons.filerSearch(Utility.testData.get("star"), null, null, Utility.testData.get("carType"), Utility.testData.get("airportPickup") );
     }
 
     @Then("^Verify green Airport Pickup button for each Cars$")

@@ -1,6 +1,6 @@
 package constants;
 
-public class Environemnts {
+public class Environments {
     public final static String PROJECT_PATH = System.getProperty("user.dir");
     public final static String DRIVER_PATH = PROJECT_PATH + "\\src\\main\\resources\\drivers\\";
     public final static String CONFIG_FILE = PROJECT_PATH + "\\src\\main\\resources\\configuration\\config.xml";

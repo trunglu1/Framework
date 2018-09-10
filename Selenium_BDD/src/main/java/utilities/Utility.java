@@ -10,6 +10,8 @@ import static org.junit.Assert.assertEquals;
 import helpers.FileHelper;
 
 public class Utility {
+    public static Map<String,String> testData;
+
     final static int logSetting = Integer.parseInt(FileHelper.getXmlNodeValue("//Configuration/LogMode/text()",0)); // 1:info; 0:debug
 
     public static String getUnique(String formatDate) {
@@ -37,6 +39,7 @@ public class Utility {
         try {
             Thread.sleep(seconds * 1000);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

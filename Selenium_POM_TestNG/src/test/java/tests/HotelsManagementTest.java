@@ -25,7 +25,7 @@ public class HotelsManagementTest {
         WebUI.closeDriver();
     }
 
-    @Test(priority = 0, description = "BE006-Hotels-Upload gallery")
+    @Test(priority = 0, description = "BE006-Hotels - Upload gallery")
     public void BE006_Hotels() {
           //set variables
         String rowIndex = String.valueOf(Utility.getRandomInt(1,9));
@@ -48,7 +48,7 @@ public class HotelsManagementTest {
         HotelsManagementPage.verifyImageNumberUploaded(rowIndex, imageNumberBefore + 1);
     }
 
-    @Test(priority = 0, description = "BE007-Hotels-Delete Hotels by icon")
+    @Test(priority = 0, description = "BE007-Hotels - Delete Hotels by icon")
     public void BE007_Hotels() {
         //set variables
         String rowIndex = String.valueOf(Utility.getRandomInt(1, 9));
@@ -66,7 +66,7 @@ public class HotelsManagementTest {
         HotelsManagementPage.verifyHotelNameDeleted(rowIndex, hotelNameDelete);
     }
 
-    @Test(priority = 0, description = "BE008-Hotels-Delete Hotels by Delete Selected button")
+    @Test(priority = 0, description = "BE008-Hotels - Delete Hotels by Delete Selected button")
     public void BE008_Hotels() {
         //set variables
         String rowIndex = String.valueOf(Utility.getRandomInt(1, 9));

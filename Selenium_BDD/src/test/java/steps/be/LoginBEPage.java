@@ -3,10 +3,11 @@ package steps.be;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import commons.Commons;
+import google.GoogleSheets;
 import keywords.WebUI;
 import constants.GolobalVariables;
 import utilities.Utility;
-import utilities.Variables;
+import static runner.CustomHook.scenarioName;
 
 public class LoginBEPage {
     final static String lblErrorMessage = "//div[starts-with(@class,'alert')]/p";
@@ -27,18 +28,19 @@ public class LoginBEPage {
     @Given("^User login BE page with invalid format email$")
     public void loginInvalidFormatEmail() {
         Utility.logInfo("STEP", "User login BE page with invalid format email", 1);
-        Commons.login(GolobalVariables.urlBE, Variables.testData.get("email"), GolobalVariables.passwordBE);
+        Commons.login(GolobalVariables.urlBE, Utility.testData.get("email"), GolobalVariables.passwordBE);
     }
 
     @Then("^Verify Error message is displayed$")
     public void verifyErrorMessage() {
         Utility.logInfo("STEP", "Verify Error message is displayed", 1);
-        WebUI.verifyAttribute(lblErrorMessage, null,"textContent", Variables.testData.get("errorMessage"));
+        WebUI.verifyAttribute(lblErrorMessage, null,"textContent", Utility.testData.get("errorMessage"));
     }
 
     @Then("^Verify Warning message is displayed$")
     public void verifyWarningMessage() {
         Utility.logInfo("STEP", "Verify Warning message is displayed", 1);
+        GoogleSheets.updateTestCaseIssue(scenarioName, "#123");
         WebUI.verifyElementPresent(lblWaringMessage, null);
     }
 }

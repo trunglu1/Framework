@@ -19,5 +19,4 @@ public class GolobalVariables {
     public final static String urlCars = urlFE + "/cars";
     public final static String urlBlog = urlFE + "/blog";
     public final static String urlVisa = urlFE + "/ivisa";
-    public static Map<String,String> testData;
 }

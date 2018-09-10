@@ -24,11 +24,11 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import constants.Environemnts;
+import constants.Environments;
 import utilities.Utility;
 
 public class FileHelper {
-    public final static String LOG_FILE = Environemnts.REPORTS_PATH + "LogDetail_" + Utility.getUnique("yyMMddHHmmss") + ".txt";
+    public final static String LOG_FILE = Environments.REPORTS_PATH + "LogDetail_" + Utility.getUnique("yyMMddHHmmss") + ".txt";
 
     public static void writeTextFile(String strFileLocation, String strTextContent){
         try {
@@ -82,7 +82,7 @@ public class FileHelper {
         List<String> list = new ArrayList();
 
         // Optimize the input XML file location to the correct syntax
-        String xmlFilePath = Environemnts.CONFIG_FILE;
+        String xmlFilePath = Environments.CONFIG_FILE;
 
         // Initiate returnedValue is null
         String returnedValue = null;
@@ -128,7 +128,7 @@ public class FileHelper {
                 throw new Exception("Row 0 is used as header name, row index must start from 1");
             } else {
                 // -define .csv file in app
-                String fileNameDefined = Environemnts.DATA_PATH  + strCSVName;
+                String fileNameDefined = Environments.DATA_PATH  + strCSVName;
 
                 //put data to map
                 String[] arrayHeader = getTextFile(fileNameDefined, 0).split(delimiter);

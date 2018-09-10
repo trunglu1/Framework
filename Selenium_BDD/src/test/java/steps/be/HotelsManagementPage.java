@@ -8,28 +8,27 @@ import commons.CustomWebUI;
 import constants.Controls;
 import utilities.Enums;
 import utilities.Utility;
-import utilities.Variables;
 
 public class HotelsManagementPage {
 
     @When("^User deletes Hotel by Button$")
     public void deleteHotelByButton() {
-        String rowIndex = Variables.testData.get("rowIndex");
+        String rowIndex = Utility.testData.get("rowIndex");
         Utility.logInfo("STEP", "User deletes Hotel by Button at row " + rowIndex, 1);
-        Variables.testData.put("hotelName", Commons.deleteRowByButton(rowIndex, "Name"));
+        Utility.testData.put("hotelName", Commons.deleteRowByButton(rowIndex, "Name"));
     }
 
     @When("^User deletes Hotel by Icon$")
     public void deleteHotelByIcon() {
-        String rowIndex = Variables.testData.get("rowIndex");
+        String rowIndex = Utility.testData.get("rowIndex");
         Utility.logInfo("STEP", "User deletes Hotel by Icon at row " + rowIndex, 1);
-        Variables.testData.put("hotelName", Commons.deleteRowByIcon(rowIndex, "Name"));
+        Utility.testData.put("hotelName", Commons.deleteRowByIcon(rowIndex, "Name"));
     }
 
     @Then("^Verify User deleted a Hotel$")
     public void verifyHotelNameDeleted() {
-        String hotelName = Variables.testData.get("hotelName");
-        String rowIndex = Variables.testData.get("rowIndex");
+        String hotelName = Utility.testData.get("hotelName");
+        String rowIndex = Utility.testData.get("rowIndex");
         Utility.logInfo("STEP", "Verify User deleted '" + hotelName + "' hotel at row " + rowIndex, 1);
         List<String> listName = CustomWebUI.getCellValuesOnTable(Controls.table, null, "Name", rowIndex);
         Utility.verifyValues("verifyHotelNameDeleted", listName.get(0), hotelName, Enums.OPERATOR.notEqual);
@@ -37,17 +36,17 @@ public class HotelsManagementPage {
 
     @Then("^Verify Image Number is uploaded$")
     public void verifyImageNumberUploaded() {
-        Utility.logInfo("STEP", "User deletes Hotel by Button at row " + Variables.testData.get("rowIndex"), 1);
-        int currentNumber = CustomWebUI.getImageNumberUpload(Variables.testData.get("rowIndex"));
-        int expectedImageNumber = Integer.valueOf(Variables.testData.get("imageNumber")) + 1;
+        Utility.logInfo("STEP", "User deletes Hotel by Button at row " + Utility.testData.get("rowIndex"), 1);
+        int currentNumber = CustomWebUI.getImageNumberUpload(Utility.testData.get("rowIndex"));
+        int expectedImageNumber = Integer.valueOf(Utility.testData.get("imageNumber")) + 1;
         Utility.verifyValues("verifyImageNumberUploaded", String.valueOf(currentNumber), String.valueOf(expectedImageNumber), Enums.OPERATOR.equal);
     }
 
     @When("^User upload a image to Hotel$")
     public void uploadGallery() {
-        Utility.logInfo("STEP", "User upload a image to Hotel at row " + Variables.testData.get("rowIndex"), 1);
-        int currentNumber = CustomWebUI.getImageNumberUpload(Variables.testData.get("rowIndex"));
-        Variables.testData.put("imageNumber", String.valueOf(currentNumber));
-        Commons.uploadGallery(Variables.testData.get("rowIndex"), Variables.testData.get("imageUpload"));
+        Utility.logInfo("STEP", "User upload a image to Hotel at row " + Utility.testData.get("rowIndex"), 1);
+        int currentNumber = CustomWebUI.getImageNumberUpload(Utility.testData.get("rowIndex"));
+        Utility.testData.put("imageNumber", String.valueOf(currentNumber));
+        Commons.uploadGallery(Utility.testData.get("rowIndex"), Utility.testData.get("imageUpload"));
     }
 }

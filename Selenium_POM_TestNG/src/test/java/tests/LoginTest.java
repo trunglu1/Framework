@@ -46,7 +46,7 @@ public class LoginTest {
         MyAccountPage.verifyMyAccountPage(GolobalVariabes.userName);
     }
 
-    @Test(priority = 0, description = "BE001-Login-Login to page successful")
+    @Test(priority = 0, description = "BE001-Login - Login to page successful")
     public void BE001_LoginBE() {
         //Define test data
 //        Map<String, String> data = FileHelper.getTestDataCSV("login\\BE001.csv", ",", 1);
@@ -58,7 +58,7 @@ public class LoginTest {
         MainBEPage.verifyMainBEPage(GolobalVariabes.userBEName);
     }
 
-    @Test(priority = 0, description = "BE002-Login-Login to page unsuccessful")
+    @Test(priority = 0, description = "BE002-Login - Login to page unsuccessful")
     public void BE002_LoginBE(Method method) {
         //Define test data
         Map<String, String> data = FileHelper.getTestDataRow("testData.xlsx", "login", 1);
