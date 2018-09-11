@@ -1,6 +1,7 @@
 package helpers;
 
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
@@ -24,11 +25,14 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
-import constants.Environments;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import constants.Environments;
 import utilities.Utility;
 
 public class FileHelper {
@@ -220,5 +224,27 @@ public class FileHelper {
             e.printStackTrace();
         }
         return dictTestDataRow;
+    }
+
+    public static String getJSONNode(String strJSONName, String jsonNode, String delimiter) {
+        // Initiate returnValue to contain returned value
+        String returnValue = null;
+        String[] arrayKey = jsonNode.split(delimiter);
+        int levelIndex = arrayKey.length;
+        try{
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(new FileReader(strJSONName));
+            JSONObject jsonObject =  (JSONObject) obj;
+            for(int i=0; i < levelIndex; i++){
+                if (i == levelIndex - 1) returnValue = String.valueOf(jsonObject.get(arrayKey[i]));
+                else {
+                    jsonObject = (JSONObject) jsonObject.get(arrayKey[i]);
+                    System.out.println(jsonObject.toJSONString());
+                }
+            }
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        return returnValue;
     }
 }

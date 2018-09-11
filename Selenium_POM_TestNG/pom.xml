@@ -95,5 +95,15 @@
             <artifactId>google-api-services-sheets</artifactId>
             <version>v4-rev539-1.25.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>		
     </dependencies>
 </project>
