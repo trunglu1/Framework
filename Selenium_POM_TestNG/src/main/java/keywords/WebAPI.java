@@ -1,10 +1,6 @@
 package keywords;
 
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
@@ -18,7 +14,7 @@ import java.io.IOException;
 import helpers.FileHelper;
 
 public class WebAPI {
-    public static void main(String... args) throws IOException, ClientProtocolException, ParseException {
+    public static void main(String... args) throws IOException {
 //        String name = "API" + Utility.getUnique("HHmmss");
 //        String tokenKey = ";";
 //        String authorizationManager = "";
@@ -38,12 +34,13 @@ public class WebAPI {
 //        Utility.logInfo("API", "Status Code: " +  statusCode, 1);
 
         String url = "https://www.googleapis.com/oauth2/v4/token";
-        String jsonFile = "D:\\Training\\test\\Java-BDD-Automation\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json";
-        String client_id = FileHelper.getJSONNode(jsonFile,"installed>client_id", ">");
-        String client_secret = FileHelper.getJSONNode(jsonFile,"installed>client_secret", ">");
-        String requestData = String.format("client_id=%s&client_secret=%s&refresh_token=${refresh_token}&grant_type=refresh_token", client_id, client_secret) ;
-        HttpUriRequest request = new HttpPost(url);
-        request.addHeader("Content-Type","application/x-www-form-urlencoded");
+        String jsonFile = "D:\\Self-Study\\Framework\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json";
+        String token_uri = FileHelper.getJSONNode(jsonFile,"installed>token_uri", ">");
+        System.out.println(token_uri);
+//        String client_secret = FileHelper.getJSONNode(jsonFile,"installed>client_secret", ">");
+//        String requestData = String.format("client_id=%s&client_secret=%s&refresh_token=${refresh_token}&grant_type=refresh_token", client_id, client_secret) ;
+//        HttpUriRequest request = new HttpPost(url);
+//        request.addHeader("Content-Type","application/x-www-form-urlencoded");
 
 
 //        String childObject = FileHelper.getJSONNode("D:\\Training\\test\\Java-BDD-Automation\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json", "installed>redirect_uris", ">");

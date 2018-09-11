@@ -1,9 +1,6 @@
 package helpers;
 
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -11,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,11 +23,10 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import constants.Environments;
@@ -222,6 +219,29 @@ public class FileHelper {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
+        }
+        return dictTestDataRow;
+    }
+
+    public static Map<String,String> getTestDataJSON(String strJSONName) {
+        // Initiate dictionary to contain returned values
+        Map<String,String> dictTestDataRow = new HashMap<String, String>();
+        String contentJSON = strJSONName;
+        try {
+            if (strJSONName.endsWith(".json")) {
+                File file = new File(Environments.DATA_PATH  + strJSONName);
+                contentJSON = FileUtils.readFileToString(file, "utf-8");
+            }
+            JSONObject jsonObject = new JSONObject(contentJSON);
+            Iterator<String> keysItr = jsonObject.keys();
+            while (keysItr.hasNext()) {
+                String key = keysItr.next();
+                dictTestDataRow.put(key, String.valueOf(jsonObject.get(key)));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
         }
         return dictTestDataRow;
     }
@@ -231,19 +251,22 @@ public class FileHelper {
         String returnValue = null;
         String[] arrayKey = jsonNode.split(delimiter);
         int levelIndex = arrayKey.length;
-        try{
-            JSONParser parser = new JSONParser();
-            Object obj = parser.parse(new FileReader(strJSONName));
-            JSONObject jsonObject =  (JSONObject) obj;
+        String contentJSON = strJSONName;
+        try {
+            if (strJSONName.endsWith(".json")) {
+                File file = new File(strJSONName);
+                contentJSON = FileUtils.readFileToString(file, "utf-8");
+            }
+            JSONObject jsonObject = new JSONObject(contentJSON);
             for(int i=0; i < levelIndex; i++){
-                if (i == levelIndex - 1) returnValue = String.valueOf(jsonObject.get(arrayKey[i]));
+                if (i == levelIndex - 1) returnValue = jsonObject.getString(arrayKey[i]);
                 else {
                     jsonObject = (JSONObject) jsonObject.get(arrayKey[i]);
-                    System.out.println(jsonObject.toJSONString());
                 }
             }
-        } catch (IOException | ParseException e) {
+        } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
         return returnValue;
     }
