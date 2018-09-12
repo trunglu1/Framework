@@ -249,15 +249,15 @@ public class FileHelper {
     public static String getJSONNode(String strJSONName, String jsonNode, String delimiter) {
         // Initiate returnValue to contain returned value
         String returnValue = null;
-        String[] arrayKey = jsonNode.split(delimiter);
-        int levelIndex = arrayKey.length;
-        String contentJSON = strJSONName;
         try {
+            String[] arrayKey = jsonNode.split(delimiter);
+            int levelIndex = arrayKey.length;
+            String contentJSON = strJSONName;
             if (strJSONName.endsWith(".json")) {
                 File file = new File(strJSONName);
                 contentJSON = FileUtils.readFileToString(file, "utf-8");
             }
-            JSONObject jsonObject = new JSONObject(contentJSON);
+            JSONObject jsonObject = new JSONObject(contentJSON.replaceAll("\n", ""));
             for(int i=0; i < levelIndex; i++){
                 if (i == levelIndex - 1) returnValue = jsonObject.getString(arrayKey[i]);
                 else {
