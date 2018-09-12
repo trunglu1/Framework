@@ -1,6 +1,7 @@
 package keywords;
 
 
+import constants.Environments;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -9,16 +10,36 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.EntityUtils;
 import utilities.Utility;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Base64;
 
 import helpers.FileHelper;
 
 public class WebAPI {
+    public static HttpResponse post(String url, String contentType, String authorization, String body) {
+        try {
+            HttpPost request = new HttpPost(url);
+            if(contentType.toLowerCase() == "json"){
+                if(authorization != null) request.addHeader("Authorization","bearer" + authorization);
+                request.addHeader("Content-Type","application/json");
+            } else if (contentType == "x-www-form-urlencoded") {
+                if(authorization != null) request.addHeader("Authorization", "Basic " + Base64.getEncoder().encodeToString(authorization.getBytes()) + ":");
+                request.addHeader("Content-Type","application/x-www-form-urlencoded");
+            }
+            if(body != null) {
+                StringEntity params = new StringEntity(body);
+                request.setEntity(params);
+            }
+            HttpResponse httpResponse = HttpClientBuilder.create().build().execute( request );
+            return httpResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public static void main(String... args) throws IOException {
         String name = "API" + Utility.getUnique("HHmmss");
         String tokenKey = ";";
@@ -39,7 +60,7 @@ public class WebAPI {
 //        Utility.logInfo("API", "Status Code: " +  statusCode, 1);
 
         String url = "https://www.googleapis.com/oauth2/v4/token";
-        String jsonFile = "D:\\Self-Study\\Framework\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json";
+        String jsonFile = Environments.RESOURCES_PATH + "credentials.json";
         String client_id = FileHelper.getJSONNode(jsonFile,"installed>client_id", ">");
         System.out.println(client_id);
         String client_secret = FileHelper.getJSONNode(jsonFile,"installed>client_secret", ">");
@@ -49,19 +70,24 @@ public class WebAPI {
         String requestData = String.format("client_id=%s&client_secret=%s&refresh_token=%s&grant_type=refresh_token", client_id, client_secret,refresh_token) ;
 //        String requestData = String.format("{\"client_id\":\"%s\",\"client_secret\":\"%s\",\"refresh_token\":\"%s\",\"grant_type\":\"refresh_token\"}", client_id, client_secret,refresh_token) ;
         Utility.logInfo("API", "requestData: " +  requestData, 1);
-        StringEntity params = new StringEntity(requestData);
-        HttpPost post = new HttpPost(url);
-        post.setHeader("Content-Type","application/x-www-form-urlencoded");
-        post.setEntity(params);
-        HttpResponse httpResponse = HttpClientBuilder.create().build().execute( post );
+//        StringEntity params = new StringEntity(requestData);
+//        HttpPost post = new HttpPost(url);
+//        post.setHeader("Content-Type","application/x-www-form-urlencoded");
+//        post.setEntity(params);
+//        HttpResponse httpResponse = HttpClientBuilder.create().build().execute( post );
+
+        HttpResponse httpResponse = post(url,"x-www-form-urlencoded", null, requestData);
+
         int statusCode = httpResponse.getStatusLine().getStatusCode();
         Utility.logInfo("API", "Status Code: " +  statusCode, 1);
-        BufferedReader rd = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+//        BufferedReader rd = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+        String abc = EntityUtils.toString(httpResponse.getEntity());
 
-        String line = "";
-        while ((line = rd.readLine()) != null) {
-            System.out.println(line);
-        }
+        System.out.println(abc);
+//        String line = "";
+//        while ((line = rd.readLine()) != null) {
+//            System.out.println(line);
+//        }
 
 //        String childObject = FileHelper.getJSONNode("D:\\Training\\test\\Java-BDD-Automation\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json", "installed>redirect_uris", ">");
 //        System.out.println(childObject);
