@@ -175,7 +175,7 @@ public class GoogleSheets {
 //    public static void main(String... args) throws IOException, GeneralSecurityException {
 //        googleSheetInfo.put("sheetName", "UI-Report-Chrome");
 //        googleSheetInfo.put("sheetId", "0");
-//        insertColumnTestStatus();
+////        insertColumnTestStatus();
 //        updateTestCaseStatus("FE002-Tours - Verify Tours Filter", "2018/09/13 11:11:11", "00:00:15.234", "skipped");
 //    }
 }

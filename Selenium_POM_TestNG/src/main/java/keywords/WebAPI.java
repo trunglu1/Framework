@@ -1,6 +1,9 @@
 package keywords;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Base64;
 import org.testng.Assert;
 import org.apache.http.HttpResponse;
@@ -31,12 +34,26 @@ public class WebAPI {
         }
     }
 
+    public static HttpResponse sendRequest(Enums.METHOD_API method_api, String url, String contentType, String authorization) {
+        switch(method_api) {
+            case PUT:
+                return put(url, contentType, authorization, null);
+            case DELETE:
+                return delete(url, contentType, authorization);
+            case POST:
+                return post(url, contentType, authorization, null);
+            default:
+                return get(url, contentType, authorization);
+        }
+    }
+
     static HttpResponse delete(String url, String contentType, String authorization) {
         try {
             HttpDelete request = new HttpDelete(url);
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
                 request.addHeader("Content-Type","application/json");
+                request.setHeader("Accept", "application/json");
             } else if (contentType == "x-www-form-urlencoded") {
                 if(authorization != null) request.addHeader("Authorization", "Basic " + Base64.getEncoder().encodeToString(authorization.getBytes()) + ":");
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
@@ -56,6 +73,7 @@ public class WebAPI {
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
                 request.addHeader("Content-Type","application/json");
+                request.setHeader("Accept", "application/json");
             } else if (contentType == "x-www-form-urlencoded") {
                 if(authorization != null) request.addHeader("Authorization", "Basic " + Base64.getEncoder().encodeToString(authorization.getBytes()) + ":");
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
@@ -79,6 +97,7 @@ public class WebAPI {
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
                 request.addHeader("Content-Type","application/json");
+                request.setHeader("Accept", "application/json");
             } else if (contentType == "x-www-form-urlencoded") {
                 if(authorization != null) request.addHeader("Authorization", "Basic " + Base64.getEncoder().encodeToString(authorization.getBytes()) + ":");
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
@@ -117,9 +136,9 @@ public class WebAPI {
 
     public static String getResponseNode(HttpResponse httpResponse, String jsonNode, String delimiter) {
         try {
-            String containJSon  = EntityUtils.toString(httpResponse.getEntity());
-            Utility.logInfo("API", "Contain: " +  containJSon, 1);
-            return FileHelper.getJSONNode(containJSon, jsonNode, delimiter);
+            String contentJSon  = EntityUtils.toString(httpResponse.getEntity());
+            Utility.logInfo("API", "getResponseNode: " +  contentJSon, 1);
+            return FileHelper.getJSONNode(contentJSon, jsonNode, delimiter);
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -139,13 +158,15 @@ public class WebAPI {
     }
 
     public static JSONObject getResponseJson(HttpResponse httpResponse) {
-        try {
-            String containJSon = EntityUtils.toString(httpResponse.getEntity());
-            System.out.println(containJSon);
-            String containJSon1 = containJSon.replaceAll("\n", "");
-            JSONObject jsonObject = FileHelper.convertToJSONObject(containJSon);
-            System.out.println(containJSon1);
-            System.out.println(jsonObject.toString());
+        try{
+            BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+            String line = null;
+            String jsonContent = "";
+            while ((line = reader.readLine()) != null) {
+                jsonContent = jsonContent + line.trim();
+            }
+            System.out.println(jsonContent);
+            JSONObject jsonObject = FileHelper.convertToJSONObject(jsonContent);
             return jsonObject;
         } catch (IOException e) {
             e.printStackTrace();
@@ -175,47 +196,31 @@ public class WebAPI {
         //verify Response Json
         JSONObject currentJson = getResponseJson(httpResponse);
         JSONObject expectedJson = FileHelper.convertToJSONObject(expectedResponseJson);
-        Assert.assertEquals(currentJson, expectedJson);
+        Assert.assertEquals(currentJson.toString(), expectedJson.toString());
     }
 
     public static void main(String... args) throws IOException {
         String accessToken = getAccessToken();
 
-        String jsonFile = Environments.RESOURCES_PATH + "credentials.json";
-        String spreadsheetId = FileHelper.getJSONNode(jsonFile,"installed>spreadsheet_id", ">");
-
-//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G:G?valueInputOption=RAW";
-//        String body = "{\"range\": \"UI-Report-Chrome!G:G\",\"values\": [[\"kkk\"]],\"majorDimension\": \"ROWS\"}";
-//        HttpResponse httpResponse = put(url,"json", accessToken, body);
-
-
-//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!A1:D1";
-//        HttpResponse httpResponse = get(url,"json", accessToken);
-
-//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G1:clear";
-//        HttpResponse httpResponse = post(url,"json", accessToken, "{}");
-
-//
-//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G1:G10:append?valueInputOption=USER_ENTERED";
-//        String body = "{\"range\": \"UI-Report-Chrome!G1:G10\",\"majorDimension\": \"COLUMNS\",\"values\": [[\"3/15/2018\"]]}";
-//        HttpResponse httpResponse = post(url,"json", accessToken, body);
-
-        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4:batchUpdate";
-        String body = "{\"requests\": [{\"insertDimension\": { \"range\": {\"sheetId\": 0,\"dimension\": \"COLUMNSAAAA\",\"startIndex\": 5,\"endIndex\": 6},\"inheritFromBefore\": false}},],}";
+        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G1:G10:append?valueInputOption=USER_ENTERED";
+        String body = "{\"range\": \"UI-Report-Chrome!G1:G10\",\"majorDimension\": \"COLUMNS\",\"values\": [[\"3/15/2018\"]]}";
         HttpResponse httpResponse = post(url,"json", accessToken, body);
+
+//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4:batchUpdate";
+//        String body = "{\"requests\": [{\"insertDimension\": { \"range\": {\"sheetId\": 0,\"dimension\": \"COLUMNSAAAA\",\"startIndex\": 5,\"endIndex\": 6},\"inheritFromBefore\": false}},],}";
+//        HttpResponse httpResponse = post(url,"json", accessToken, body);
 
 //        verifyResponseContent(httpResponse, "400", Environments.DATA_PATH + "testData.json");
 
         int statusCode = httpResponse.getStatusLine().getStatusCode();
         Utility.logInfo("API", "Status Code: " +  statusCode, 1);
         String abc = EntityUtils.toString(httpResponse.getEntity());
-//        String abc = httpResponse.getEntity().getContent().toString();
         System.out.println(abc);
 //        System.out.println(getResponseJson(httpResponse).toString());
-        JSONObject expectedJson1 = getResponseJson(httpResponse);
+//        JSONObject expectedJson1 = getResponseJson(httpResponse);
 //        System.out.println(FileHelper.convertToJSONObject(Environments.DATA_PATH + "testData.json").toString());
 
-
+//        verifyResponseContent(httpResponse,"400", Environments.DATA_PATH + "testData.json");
 //        String line = "";
 //        while ((line = rd.readLine()) != null) {
 //            System.out.println(line);
