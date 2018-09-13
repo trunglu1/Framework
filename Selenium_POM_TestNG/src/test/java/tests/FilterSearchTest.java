@@ -13,11 +13,17 @@ import pages.fe.ToursPage;
 import drivers.Driver;
 import keywords.WebUI;
 import utilities.Utility;
+import google.GoogleSheets;
+import constants.Environments;
 
 public class FilterSearchTest {
     @BeforeSuite
     public void startTestSuite(){
         if(Driver.getDriver() == null) Driver.setDriver(Driver.setSeleniumDrivers());
+        if (Environments.insertNewResult == "true" && Environments.reportGoogleSheet == "true") {
+            GoogleSheets.insertColumnTestStatus();
+            Environments.insertNewResult = "false";
+        }
     }
 
     @AfterSuite

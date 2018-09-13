@@ -14,6 +14,15 @@ package google;
 // limitations under the License.
 
 // [START sheets_quickstart]
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -26,24 +35,19 @@ import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.AppendValuesResponse;
-import com.google.api.services.sheets.v4.model.UpdateValuesResponse;
-import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.api.services.sheets.v4.model.*;
+import constants.Environments;
+import helpers.FileHelper;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.Arrays;
-import java.util.List;
 import static utilities.Utility.getUnique;
-import static drivers.Driver.googleSheetName;
 
 public class GoogleSheets {
+    public static Map<String,String> googleSheetInfo;
     private static final String APPLICATION_NAME = "Google Sheets API Java";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
-    private static final String SPREADSHEET_ID = "1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4";
+    static String SPREADSHEET_ID = FileHelper.getJSONNode(Environments.RESOURCES_PATH + "credentials.json",
+            "installed>spreadsheet_id", ">");
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
@@ -108,7 +112,7 @@ public class GoogleSheets {
     //Update to google sheet: https://docs.google.com/spreadsheets/d/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/edit#gid=0
     public static void updateTestCaseStatus(String testCaseName, String startDate, String duration, String status){
         try {
-            String range = googleSheetName + "!A:A";
+            String range = googleSheetInfo.get("sheetName") + "!A:A";
             ValueRange response = getSheetsService().spreadsheets().values()
                     .get(SPREADSHEET_ID, range)
                     .execute();
@@ -116,11 +120,11 @@ public class GoogleSheets {
             int findRowIndex = response.getValues().indexOf(testCase);
             if(findRowIndex <= 0) {
                 findRowIndex = response.getValues().size() + 1;
-                setCellValue(googleSheetName, "A", findRowIndex, testCaseName);
+                setCellValue(googleSheetInfo.get("sheetName"), "A", findRowIndex, testCaseName);
             } else findRowIndex += 1;
-            setCellValue(googleSheetName, "C", findRowIndex, startDate);
-            setCellValue(googleSheetName, "D", findRowIndex, duration);
-            setCellValue(googleSheetName, "F", findRowIndex, status);
+            setCellValue(googleSheetInfo.get("sheetName"), "C", findRowIndex, startDate);
+            setCellValue(googleSheetInfo.get("sheetName"), "D", findRowIndex, duration);
+            setCellValue(googleSheetInfo.get("sheetName"), "F", findRowIndex, status);
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
         }
@@ -128,7 +132,7 @@ public class GoogleSheets {
 
     public static void updateTestCaseIssue(String testCaseName, String descriptionIssue){
         try {
-            String range = googleSheetName + "!A:A";
+            String range = googleSheetInfo.get("sheetName") + "!A:A";
             ValueRange response = getSheetsService().spreadsheets().values()
                     .get(SPREADSHEET_ID, range)
                     .execute();
@@ -136,9 +140,9 @@ public class GoogleSheets {
             int findRowIndex = response.getValues().indexOf(testCase);
             if (findRowIndex <= 0) {
                 findRowIndex = response.getValues().size() + 1;
-                setCellValue(googleSheetName, "A", findRowIndex, testCaseName);
+                setCellValue(googleSheetInfo.get("sheetName"), "A", findRowIndex, testCaseName);
             } else findRowIndex += 1;
-            setCellValue(googleSheetName, "E", findRowIndex, descriptionIssue);
+            setCellValue(googleSheetInfo.get("sheetName"), "E", findRowIndex, descriptionIssue);
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
         }
@@ -146,21 +150,33 @@ public class GoogleSheets {
 
     public static void insertColumnTestStatus(){
         try {
-            String range = "UI-Report-Chrome!E1:E";//googleSheetName + "!E1:E";
+            BatchUpdateSpreadsheetResponse response;
+            BatchUpdateSpreadsheetRequest batchRequests;// = new BatchUpdateSpreadsheetRequest();
+            List<Request> requests = new ArrayList<Request>();
+
+            InsertDimensionRequest insertDimensionRequest = new InsertDimensionRequest();
+            DimensionRange dimRange = new DimensionRange();
+            dimRange.setStartIndex(5);
+            dimRange.setEndIndex(6);
+            dimRange.setSheetId(Integer.valueOf(googleSheetInfo.get("sheetId")));
+            dimRange.setDimension("COLUMNS");
+
+            insertDimensionRequest.setRange(dimRange);
+            insertDimensionRequest.setInheritFromBefore(false);
+            requests.add( new Request().setInsertDimension(insertDimensionRequest));
+            batchRequests = new BatchUpdateSpreadsheetRequest();
+            batchRequests.setRequests( requests );
+            response = getSheetsService().spreadsheets().batchUpdate(SPREADSHEET_ID, batchRequests).execute();
+            System.out.println(response.toPrettyString());
+
             String startDate = getUnique("yyyy/MM/dd HH:mm:ss");
-            ValueRange body = new ValueRange().setValues(Arrays.asList(Arrays.asList(startDate)));
-            AppendValuesResponse appendResult = getSheetsService().spreadsheets().values()
-                    .append(SPREADSHEET_ID, range, body)
-                    .setValueInputOption("USER_ENTERED")
-                    .setInsertDataOption("INSERT_ROWS")
-                    .setIncludeValuesInResponse(true)
-                    .execute();
+            setCellValue(googleSheetInfo.get("sheetName"), "F", 1, startDate);
         } catch (IOException | GeneralSecurityException e) {
             e.printStackTrace();
         }
     }
-//    public static void main(String... args) throws IOException, GeneralSecurityException {
-//        insertColumnTestStatus();
-//    }
+    public static void main(String... args) throws IOException, GeneralSecurityException {
+        insertColumnTestStatus();
+    }
 }
 // [END sheets_quickstart]

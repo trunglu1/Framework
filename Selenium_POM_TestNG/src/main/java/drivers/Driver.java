@@ -12,10 +12,10 @@ import org.openqa.selenium.safari.SafariDriver;
 import constants.Environments;
 import helpers.FileHelper;
 import utilities.Utility;
+import static google.GoogleSheets.googleSheetInfo;
 
 public class Driver {
     static WebDriver driver = null;
-    public static String googleSheetName;
 //    private static String browserName = (System.getProperty("browser") != null)? System.getProperty("browser"): "chrome";//Get browser value from cmd
 
     public static void setDriver(WebDriver driverTest) {
@@ -36,31 +36,36 @@ public class Driver {
             //Initiate a new webdriver instance base on browserName
             switch (browserName.toLowerCase()) { // check our browser
                 case "firefox": {
-                    googleSheetName = "UI-Report-Firefox";
+                    googleSheetInfo.put("sheetName", "UI-Report-Firefox");
+                    googleSheetInfo.put("sheetID", "768971742");
                     System.setProperty("webdriver.gecko.driver", Environments.DRIVER_PATH + "\\geckodriver.exe");
                     driverTest = new FirefoxDriver();
                     break;
                 }
                 case "edge": {
-                    googleSheetName = "UI-Report-Edge";
+                    googleSheetInfo.put("sheetName", "UI-Report-Edge");
+                    googleSheetInfo.put("sheetID", "2012018076");
                     System.setProperty("webdriver.edge.driver", Environments.DRIVER_PATH + "\\MicrosoftWebDriver.exe");
                     driverTest = new EdgeDriver();
                     break;
                 }
                 case "ie": {
-                    googleSheetName = "UI-Report-IE";
+                    googleSheetInfo.put("sheetName", "UI-Report-IE");
+                    googleSheetInfo.put("sheetID", "1426172874");
                     System.setProperty("webdriver.ie.driver", Environments.DRIVER_PATH + "\\IEDriverServer.exe");
                     driverTest = new InternetExplorerDriver();
                     break;
                 }
                 case "safari": {
-                    googleSheetName = "UI-Report-Safari";
+                    googleSheetInfo.put("sheetName", "UI-Report-Safari");
+                    googleSheetInfo.put("sheetID", "380662572");
                     driverTest = new SafariDriver();
                     break;
                 }
                 // if our browser is not listed
                 default: {
-                    googleSheetName = "UI-Report-Chrome";
+                    googleSheetInfo.put("sheetName", "UI-Report-Chrome");
+                    googleSheetInfo.put("sheetID", "0");
                     System.setProperty("webdriver.chrome.driver", Environments.DRIVER_PATH + "\\chromedriver.exe");
                     driverTest = new ChromeDriver();
                 }

@@ -2,6 +2,8 @@ package tests;
 
 import java.lang.reflect.Method;
 import java.util.Map;
+
+import constants.Environments;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -20,6 +22,10 @@ public class LoginTest {
     @BeforeSuite
     public void startTestSuite(){
         if(Driver.getDriver() == null) Driver.setDriver(Driver.setSeleniumDrivers());
+        if (Environments.insertNewResult == "true" && Environments.reportGoogleSheet == "true") {
+            GoogleSheets.insertColumnTestStatus();
+            Environments.insertNewResult = "false";
+        }
     }
 
     @AfterSuite

@@ -1,10 +1,11 @@
 package tests;
 
-import drivers.Driver;
-import keywords.WebUI;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import drivers.Driver;
+import google.GoogleSheets;
+import keywords.WebUI;
 
 import constants.Environments;
 import constants.GolobalVariabes;
@@ -14,10 +15,13 @@ import pages.be.MainBEPage;
 import utilities.Utility;
 
 public class HotelsManagementTest {
-
     @BeforeSuite
     public void startTestSuite(){
         if(Driver.getDriver() == null) Driver.setDriver(Driver.setSeleniumDrivers());
+        if (Environments.insertNewResult == "true" && Environments.reportGoogleSheet == "true") {
+            GoogleSheets.insertColumnTestStatus();
+            Environments.insertNewResult = "false";
+        }
     }
 
     @AfterSuite
