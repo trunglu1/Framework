@@ -20,9 +20,9 @@ public class FilterSearchTest {
     @BeforeSuite
     public void startTestSuite(){
         if(Driver.getDriver() == null) Driver.setDriver(Driver.setSeleniumDrivers());
-        if (Environments.insertNewResult == "true" && Environments.reportGoogleSheet == "true") {
+        if (Environments.INSERT_NEW_RESULT && Environments.REPORT_GOOGLE_SHEET) {
             GoogleSheets.insertColumnTestStatus();
-            Environments.insertNewResult = "false";
+            Environments.INSERT_NEW_RESULT = false;
         }
     }
 

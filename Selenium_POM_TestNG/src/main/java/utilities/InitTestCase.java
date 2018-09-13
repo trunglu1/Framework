@@ -64,7 +64,7 @@ public class InitTestCase extends TestListenerAdapter{
         WebUI.deleteAllCookies();
         Utility.logInfo("TESTCASE","*** End TestCase: " + itr.getMethod().getDescription() + " ***", 1);
 
-        if(Environments.reportGoogleSheet == "true") {
+        if(Environments.REPORT_GOOGLE_SHEET) {
             //Update to google sheet: https://docs.google.com/spreadsheets/d/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/edit#gid=0
             long millis = System.currentTimeMillis() - startTime;
 

@@ -18,10 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -42,7 +39,7 @@ import helpers.FileHelper;
 import static utilities.Utility.getUnique;
 
 public class GoogleSheets {
-    public static Map<String,String> googleSheetInfo;
+    public static Map<String,String> googleSheetInfo = new HashMap<String, String>();
     private static final String APPLICATION_NAME = "Google Sheets API Java";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
@@ -175,8 +172,11 @@ public class GoogleSheets {
             e.printStackTrace();
         }
     }
-    public static void main(String... args) throws IOException, GeneralSecurityException {
-        insertColumnTestStatus();
-    }
+//    public static void main(String... args) throws IOException, GeneralSecurityException {
+//        googleSheetInfo.put("sheetName", "UI-Report-Chrome");
+//        googleSheetInfo.put("sheetId", "0");
+//        insertColumnTestStatus();
+//        updateTestCaseStatus("FE002-Tours - Verify Tours Filter", "2018/09/13 11:11:11", "00:00:15.234", "skipped");
+//    }
 }
 // [END sheets_quickstart]

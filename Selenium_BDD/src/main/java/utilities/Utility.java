@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import helpers.FileHelper;
 
 public class Utility {
-    public static Map<String,String> testData;
+    public static Map<String,String> testData = new HashMap<String, String>();
 
     final static int logSetting = Integer.parseInt(FileHelper.getXmlNodeValue("//Configuration/LogMode/text()",0)); // 1:info; 0:debug
 

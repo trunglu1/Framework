@@ -2,17 +2,15 @@ package keywords;
 
 import java.io.*;
 import java.util.Base64;
-
+import org.testng.Assert;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 import utilities.Enums;
 import utilities.Utility;
 import constants.Environments;
@@ -20,7 +18,39 @@ import helpers.FileHelper;
 
 public class WebAPI {
 
-    public static HttpResponse post(String url, String contentType, String authorization, String body) {
+    public static HttpResponse sendRequest(Enums.METHOD_API method_api, String url, String contentType, String authorization, String body) {
+        switch(method_api) {
+            case PUT:
+                return put(url, contentType, authorization, body);
+            case DELETE:
+                return delete(url, contentType, authorization);
+            case POST:
+                return post(url, contentType, authorization, body);
+            default:
+                return get(url, contentType, authorization);
+        }
+    }
+
+    static HttpResponse delete(String url, String contentType, String authorization) {
+        try {
+            HttpDelete request = new HttpDelete(url);
+            if(contentType.toLowerCase() == "json"){
+                if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
+                request.addHeader("Content-Type","application/json");
+            } else if (contentType == "x-www-form-urlencoded") {
+                if(authorization != null) request.addHeader("Authorization", "Basic " + Base64.getEncoder().encodeToString(authorization.getBytes()) + ":");
+                request.addHeader("Content-Type","application/x-www-form-urlencoded");
+            }
+            HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+            request.releaseConnection();
+            return httpResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    static HttpResponse post(String url, String contentType, String authorization, String body) {
         try {
             HttpPost request = new HttpPost(url);
             if(contentType.toLowerCase() == "json"){
@@ -35,7 +65,7 @@ public class WebAPI {
                 request.setEntity(params);
             }
             HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
-//            request.releaseConnection();
+            request.releaseConnection();
             return httpResponse;
         } catch (IOException e) {
             e.printStackTrace();
@@ -43,7 +73,7 @@ public class WebAPI {
         }
     }
 
-    public static HttpResponse put(String url, String contentType, String authorization, String body) {
+    static HttpResponse put(String url, String contentType, String authorization, String body) {
         try {
             HttpPut request = new HttpPut(url);
             if(contentType.toLowerCase() == "json"){
@@ -66,7 +96,7 @@ public class WebAPI {
         }
     }
 
-    public static HttpResponse get(String url, String contentType, String authorization) {
+    static HttpResponse get(String url, String contentType, String authorization) {
         try {
             HttpGet request = new HttpGet(url);
             if(contentType.toLowerCase() == "json"){
@@ -108,12 +138,45 @@ public class WebAPI {
         return getResponseNode(httpResponse, "access_token", ">");
     }
 
+    public static JSONObject getResponseJson(HttpResponse httpResponse) {
+        try {
+            String containJSon = EntityUtils.toString(httpResponse.getEntity());
+            System.out.println(containJSon);
+            String containJSon1 = containJSon.replaceAll("\n", "");
+            JSONObject jsonObject = FileHelper.convertToJSONObject(containJSon);
+            System.out.println(containJSon1);
+            System.out.println(jsonObject.toString());
+            return jsonObject;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void verifyResponseNode(HttpResponse httpResponse, String jsonNode, String delimiter, String expectedValue, Enums.OPERATOR expectedOperator) {
         String currentValue = getResponseNode(httpResponse, jsonNode, delimiter);
         Utility.verifyValues("verifyResponseNode :: ", currentValue, expectedValue, expectedOperator);
     }
 
+    public static void verifyErrorMessage(HttpResponse httpResponse, String expectedStatusCode, String expectedMessage, Enums.OPERATOR expectedOperator) {
+        //verify Status Code
+        String statusCode = String.valueOf(httpResponse.getStatusLine().getStatusCode());
+        Utility.verifyValues("verifyErrorMessage :: statusCode", statusCode, expectedStatusCode, Enums.OPERATOR.equal);
 
+        //verify Error message
+        verifyResponseNode(httpResponse, "error>message", ">", expectedMessage, expectedOperator);
+    }
+
+    public static void verifyResponseContent(HttpResponse httpResponse, String expectedStatusCode, String expectedResponseJson) {
+        //verify Status Code
+        String statusCode = String.valueOf(httpResponse.getStatusLine().getStatusCode());
+        Utility.verifyValues("verifyResponseContent :: statusCode", statusCode, expectedStatusCode, Enums.OPERATOR.equal);
+
+        //verify Response Json
+        JSONObject currentJson = getResponseJson(httpResponse);
+        JSONObject expectedJson = FileHelper.convertToJSONObject(expectedResponseJson);
+        Assert.assertEquals(currentJson, expectedJson);
+    }
 
     public static void main(String... args) throws IOException {
         String accessToken = getAccessToken();
@@ -138,14 +201,21 @@ public class WebAPI {
 //        HttpResponse httpResponse = post(url,"json", accessToken, body);
 
         String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4:batchUpdate";
-        String body = "{\"requests\": [{\"insertDimension\": { \"range\": {\"sheetId\": 0,\"dimension\": \"COLUMNS\",\"startIndex\": 5,\"endIndex\": 6},\"inheritFromBefore\": false}},],}";
+        String body = "{\"requests\": [{\"insertDimension\": { \"range\": {\"sheetId\": 0,\"dimension\": \"COLUMNSAAAA\",\"startIndex\": 5,\"endIndex\": 6},\"inheritFromBefore\": false}},],}";
         HttpResponse httpResponse = post(url,"json", accessToken, body);
+
+//        verifyResponseContent(httpResponse, "400", Environments.DATA_PATH + "testData.json");
 
         int statusCode = httpResponse.getStatusLine().getStatusCode();
         Utility.logInfo("API", "Status Code: " +  statusCode, 1);
         String abc = EntityUtils.toString(httpResponse.getEntity());
-
+//        String abc = httpResponse.getEntity().getContent().toString();
         System.out.println(abc);
+//        System.out.println(getResponseJson(httpResponse).toString());
+        JSONObject expectedJson1 = getResponseJson(httpResponse);
+//        System.out.println(FileHelper.convertToJSONObject(Environments.DATA_PATH + "testData.json").toString());
+
+
 //        String line = "";
 //        while ((line = rd.readLine()) != null) {
 //            System.out.println(line);

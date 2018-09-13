@@ -270,4 +270,19 @@ public class FileHelper {
         }
         return returnValue;
     }
+
+    public static JSONObject convertToJSONObject(String strJSONName) {
+        try {
+            String contentJSON = strJSONName;
+            if (strJSONName.endsWith(".json")) {
+                File file = new File(strJSONName);
+                contentJSON = FileUtils.readFileToString(file, "utf-8");
+            }
+            JSONObject jsonObject = new JSONObject(contentJSON.replaceAll("\n", ""));
+            return jsonObject;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
