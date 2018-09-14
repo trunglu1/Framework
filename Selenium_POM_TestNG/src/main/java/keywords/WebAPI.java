@@ -1,14 +1,13 @@
 package keywords;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Base64;
-import org.testng.Assert;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -21,34 +20,9 @@ import helpers.FileHelper;
 
 public class WebAPI {
 
-    public static HttpResponse sendRequest(Enums.METHOD_API method_api, String url, String contentType, String authorization, String body) {
-        switch(method_api) {
-            case PUT:
-                return put(url, contentType, authorization, body);
-            case DELETE:
-                return delete(url, contentType, authorization);
-            case POST:
-                return post(url, contentType, authorization, body);
-            default:
-                return get(url, contentType, authorization);
-        }
-    }
-
-    public static HttpResponse sendRequest(Enums.METHOD_API method_api, String url, String contentType, String authorization) {
-        switch(method_api) {
-            case PUT:
-                return put(url, contentType, authorization, null);
-            case DELETE:
-                return delete(url, contentType, authorization);
-            case POST:
-                return post(url, contentType, authorization, null);
-            default:
-                return get(url, contentType, authorization);
-        }
-    }
-
-    static HttpResponse delete(String url, String contentType, String authorization) {
+    public static HttpResponse delete(String url, String contentType, String authorization) {
         try {
+            Utility.logInfo("WebAPI", "Request [DELETE]: " + url, 1);
             HttpDelete request = new HttpDelete(url);
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
@@ -59,6 +33,7 @@ public class WebAPI {
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
             }
             HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+            Utility.logInfo("WebAPI", "Response [DELETE]: \n" + convertResponseToString(httpResponse), 1);
             request.releaseConnection();
             return httpResponse;
         } catch (IOException e) {
@@ -67,8 +42,9 @@ public class WebAPI {
         }
     }
 
-    static HttpResponse post(String url, String contentType, String authorization, String body) {
+    public static HttpResponse post(String url, String contentType, String authorization, String body) {
         try {
+            Utility.logInfo("WebAPI", "Request [POST]: " + url, 1);
             HttpPost request = new HttpPost(url);
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
@@ -79,10 +55,12 @@ public class WebAPI {
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
             }
             if(body != null) {
+                Utility.logInfo("WebAPI", "Body [POST]: " + body, 1);
                 StringEntity params = new StringEntity(body);
                 request.setEntity(params);
             }
             HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+            Utility.logInfo("WebAPI", "Response [POST]: \n" + convertResponseToString(httpResponse), 1);
             request.releaseConnection();
             return httpResponse;
         } catch (IOException e) {
@@ -91,8 +69,9 @@ public class WebAPI {
         }
     }
 
-    static HttpResponse put(String url, String contentType, String authorization, String body) {
+    public static HttpResponse put(String url, String contentType, String authorization, String body) {
         try {
+            Utility.logInfo("WebAPI", "Request [PUT]: " + url, 1);
             HttpPut request = new HttpPut(url);
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
@@ -103,10 +82,12 @@ public class WebAPI {
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
             }
             if(body != null) {
+                Utility.logInfo("WebAPI", "Body [PUT]: " + body, 1);
                 StringEntity params = new StringEntity(body);
                 request.setEntity(params);
             }
             HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+            Utility.logInfo("WebAPI", "Response [PUT]: \n" + convertResponseToString(httpResponse), 1);
             request.releaseConnection();
             return httpResponse;
         } catch (IOException e) {
@@ -115,8 +96,9 @@ public class WebAPI {
         }
     }
 
-    static HttpResponse get(String url, String contentType, String authorization) {
+    public static HttpResponse get(String url, String contentType, String authorization) {
         try {
+            Utility.logInfo("WebAPI", "Request [GET]: " + url, 1);
             HttpGet request = new HttpGet(url);
             if(contentType.toLowerCase() == "json"){
                 if(authorization != null) request.addHeader("Authorization","Bearer " + authorization);
@@ -126,6 +108,7 @@ public class WebAPI {
                 request.addHeader("Content-Type","application/x-www-form-urlencoded");
             }
             HttpResponse httpResponse = HttpClientBuilder.create().build().execute(request);
+            Utility.logInfo("WebAPI", "Response [GET]: \n" + EntityUtils.toString(httpResponse.getEntity()), 1);
             request.releaseConnection();
             return httpResponse;
         } catch (IOException e) {
@@ -134,39 +117,42 @@ public class WebAPI {
         }
     }
 
-    public static String getResponseNode(HttpResponse httpResponse, String jsonNode, String delimiter) {
+    public static String convertResponseToString(HttpResponse httpResponse) {
+        String jsonContent = "";
         try {
-            String contentJSon  = EntityUtils.toString(httpResponse.getEntity());
-            Utility.logInfo("API", "getResponseNode: " +  contentJSon, 1);
-            return FileHelper.getJSONNode(contentJSon, jsonNode, delimiter);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+            String line;
+            //get content
+            while ((line = reader.readLine()) != null) {
+                System.out.println("ZZZ: " + line);
+                jsonContent = jsonContent + line + "\n";
+            }
+            return jsonContent;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public static String getAccessToken() {
-        String url = "https://www.googleapis.com/oauth2/v4/token";
-        String jsonFile = Environments.RESOURCES_PATH + "credentials.json";
-        String client_id = FileHelper.getJSONNode(jsonFile,"installed>client_id", ">");
-        String client_secret = FileHelper.getJSONNode(jsonFile,"installed>client_secret", ">");
-        String refresh_token = "1/P1lKpb4AGKSI7jkPlgjQj8KBgUmlmk5ki6ibk9wnU0g";
-        String requestData = String.format("client_id=%s&client_secret=%s&refresh_token=%s&grant_type=refresh_token", client_id, client_secret, refresh_token) ;
-        // post request
-        HttpResponse httpResponse = post(url,"x-www-form-urlencoded", null, requestData);
-        return getResponseNode(httpResponse, "access_token", ">");
+    public static String getResponseNode(HttpResponse httpResponse, String jsonNode, String delimiter) {
+        String jsonContent = convertResponseToString(httpResponse);
+        Utility.logInfo("API", "getResponseNode: " + jsonContent, 1);
+        return FileHelper.getJSONNode(jsonContent, jsonNode, delimiter);
     }
 
-    public static JSONObject getResponseJson(HttpResponse httpResponse) {
-        try{
-            BufferedReader reader = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
-            String line = null;
-            String jsonContent = "";
-            while ((line = reader.readLine()) != null) {
-                jsonContent = jsonContent + line.trim();
+    public static JSONObject convertResponseToJSONObject(HttpResponse httpResponse) {
+        String jsonContent = convertResponseToString(httpResponse);
+        return convertStringToJSONObject(jsonContent);
+    }
+
+    public static JSONObject convertStringToJSONObject(String strJSONName) {
+        try {
+            String contentJSON = strJSONName;
+            if (strJSONName.endsWith(".json")) {
+                File file = new File(strJSONName);
+                contentJSON = FileUtils.readFileToString(file, "utf-8");
             }
-            System.out.println(jsonContent);
-            JSONObject jsonObject = FileHelper.convertToJSONObject(jsonContent);
+            JSONObject jsonObject = new JSONObject(contentJSON);
             return jsonObject;
         } catch (IOException e) {
             e.printStackTrace();
@@ -194,17 +180,16 @@ public class WebAPI {
         Utility.verifyValues("verifyResponseContent :: statusCode", statusCode, expectedStatusCode, Enums.OPERATOR.equal);
 
         //verify Response Json
-        JSONObject currentJson = getResponseJson(httpResponse);
-        JSONObject expectedJson = FileHelper.convertToJSONObject(expectedResponseJson);
-        Assert.assertEquals(currentJson.toString(), expectedJson.toString());
+        String currentJson = convertResponseToString(httpResponse);
+        Utility.verifyValues("verifyResponseContent", currentJson, expectedResponseJson, Enums.OPERATOR.equal);
     }
 
-    public static void main(String... args) throws IOException {
-        String accessToken = getAccessToken();
+//    public static void main(String... args) throws IOException {
+//        String accessToken = getAccessToken();
 
-        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G1:G10:append?valueInputOption=USER_ENTERED";
-        String body = "{\"range\": \"UI-Report-Chrome!G1:G10\",\"majorDimension\": \"COLUMNS\",\"values\": [[\"3/15/2018\"]]}";
-        HttpResponse httpResponse = post(url,"json", accessToken, body);
+//        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Chrome!G1:G10:append?valueInputOption=USER_ENTERED";
+//        String body = "{\"range\": \"UI-Report-Chrome!G1:G10\",\"majorDimension\": \"COLUMNS\",\"values\": [[\"3/15/2018\"]]}";
+//        HttpResponse httpResponse = post(url,"json", accessToken, body);
 
 //        String url = "https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4:batchUpdate";
 //        String body = "{\"requests\": [{\"insertDimension\": { \"range\": {\"sheetId\": 0,\"dimension\": \"COLUMNSAAAA\",\"startIndex\": 5,\"endIndex\": 6},\"inheritFromBefore\": false}},],}";
@@ -212,10 +197,10 @@ public class WebAPI {
 
 //        verifyResponseContent(httpResponse, "400", Environments.DATA_PATH + "testData.json");
 
-        int statusCode = httpResponse.getStatusLine().getStatusCode();
-        Utility.logInfo("API", "Status Code: " +  statusCode, 1);
-        String abc = EntityUtils.toString(httpResponse.getEntity());
-        System.out.println(abc);
+//        int statusCode = httpResponse.getStatusLine().getStatusCode();
+//        Utility.logInfo("API", "Status Code: " +  statusCode, 1);
+//        String abc = EntityUtils.toString(httpResponse.getEntity());
+//        System.out.println(abc);
 //        System.out.println(getResponseJson(httpResponse).toString());
 //        JSONObject expectedJson1 = getResponseJson(httpResponse);
 //        System.out.println(FileHelper.convertToJSONObject(Environments.DATA_PATH + "testData.json").toString());
@@ -228,5 +213,5 @@ public class WebAPI {
 
 //        String childObject = FileHelper.getJSONNode("D:\\Training\\test\\Java-BDD-Automation\\Selenium_POM_TestNG\\src\\main\\resources\\credentials.json", "installed>redirect_uris", ">");
 //        System.out.println(childObject);
-    }
+//    }
 }

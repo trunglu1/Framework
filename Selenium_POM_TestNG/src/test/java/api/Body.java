@@ -1,8 +1,8 @@
 package api;
 
 public class Body {
-    public static String setCellValue(String sheetName, String columnName, String rowIndex, String setValue) {
-        return String.format("{\"range\": \"%s!%s%s\",\"values\": [[\"%s\"]],\"majorDimension\": \"ROWS\"}",
-                sheetName, columnName, rowIndex, setValue);
+    public static String setCellValue(String sheetName, String range, String valueRange, String dimension) {
+        return String.format("{\"range\": \"%s!%s\",\"values\": [[%s]],\"majorDimension\": \"%s\"}",
+                sheetName, range, valueRange, dimension.toUpperCase());
     }
 }
