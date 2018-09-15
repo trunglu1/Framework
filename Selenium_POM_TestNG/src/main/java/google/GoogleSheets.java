@@ -43,7 +43,7 @@ public class GoogleSheets {
     private static final String APPLICATION_NAME = "Google Sheets API Java";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
-    static String SPREADSHEET_ID = FileHelper.getJSONNode(Environments.RESOURCES_PATH + "credentials.json",
+    static String SPREADSHEET_ID = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,
             "installed.spreadsheet_id");
     /**
      * Global instance of the scopes required by this quickstart.

@@ -1,0 +1,102 @@
+2018/09/15 22:26:39.501 [TESTCASE] *** Execute TestCase: API001-SetValue- Set value range on google sheet ***
+2018/09/15 22:26:39.517 [STEP] Get accessToken key
+2018/09/15 22:26:39.532 [WebAPI] Request [POST]: https://www.googleapis.com/oauth2/v4/token
+2018/09/15 22:26:39.548 [WebAPI] Body [POST]: client_id=1019390285906-r56176ko38o39lvpr2s7fr5b9kqtk6aj.apps.googleusercontent.com&client_secret=nVFoufy5cznL-h4XnnhhZgE4&refresh_token=1/P1lKpb4AGKSI7jkPlgjQj8KBgUmlmk5ki6ibk9wnU0g&grant_type=refresh_token
+2018/09/15 22:26:40.226 [WebAPI] Response [POST]: 
+{
+  "access_token": "ya29.GlwZBp87N-SEhTlgtfDC39ZgvP9f0dunoyQJxJIv7MHGnezipxdhkJqQDmd_2Qfyqtooq3I3GVs_BYpavH77DWZo9So-lWW6HYEvlbehehTE9bU1gLpzfD_6MNSPYg",
+  "expires_in": 3600,
+  "scope": "https://www.googleapis.com/auth/spreadsheets",
+  "token_type": "Bearer"
+}
+2018/09/15 22:26:40.242 [STEP] Set value range Row :A2:C2
+2018/09/15 22:26:40.242 [WebAPI] Request [PUT]: https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Safari!A2:C2?valueInputOption=RAW
+2018/09/15 22:26:40.258 [WebAPI] Body [PUT]: {"range": "UI-Report-Safari!A2:C2","values": [["message","Invalid","status"]],"majorDimension": "ROWS"}
+2018/09/15 22:26:44.131 [WebAPI] Response [PUT]: 
+{
+  "spreadsheetId": "1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4",
+  "updatedRange": "'UI-Report-Safari'!A2:C2",
+  "updatedRows": 1,
+  "updatedColumns": 3,
+  "updatedCells": 3
+}
+
+2018/09/15 22:26:44.135 [STEP] Verify value range Row updated to google sheet successful
+2018/09/15 22:26:44.135 [WebAPI] Request [GET]: https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Safari!A2:C2
+2018/09/15 22:26:45.259 [WebAPI] Response [GET]: 
+{
+  "range": "'UI-Report-Safari'!A2:C2",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "message",
+      "Invalid",
+      "status"
+    ]
+  ]
+}
+
+2018/09/15 22:26:45.275 [PASSED] verifyResponseNode :: [[["message","Invalid","status"]]] = [[["message","Invalid","status"]]]
+2018/09/15 22:26:45.275 [STEP] Clear range value
+2018/09/15 22:26:45.291 [WebAPI] Request [POST]: https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Safari!A2:C2:clear
+2018/09/15 22:26:45.291 [WebAPI] Body [POST]: {}
+2018/09/15 22:26:46.188 [WebAPI] Response [POST]: 
+{
+  "spreadsheetId": "1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4",
+  "clearedRange": "'UI-Report-Safari'!A2:C2"
+}
+
+2018/09/15 22:26:46.198 [TESTCASE] *** End TestCase: API001-SetValue- Set value range on google sheet ***
+2018/09/15 22:26:49.947 [TESTCASE] *** Execute TestCase: API002-SetValue- Set invalid value range on google sheet ***
+2018/09/15 22:26:49.947 [STEP] Get accessToken key
+2018/09/15 22:26:49.963 [WebAPI] Request [POST]: https://www.googleapis.com/oauth2/v4/token
+2018/09/15 22:26:49.963 [WebAPI] Body [POST]: client_id=1019390285906-r56176ko38o39lvpr2s7fr5b9kqtk6aj.apps.googleusercontent.com&client_secret=nVFoufy5cznL-h4XnnhhZgE4&refresh_token=1/P1lKpb4AGKSI7jkPlgjQj8KBgUmlmk5ki6ibk9wnU0g&grant_type=refresh_token
+2018/09/15 22:26:50.346 [WebAPI] Response [POST]: 
+{
+  "access_token": "ya29.GlwZBhrVB4qhi7szXj3SuR-8is0taipO7uuQFq_kptiTJ2VR2PRbu47WIbNwmAtkZkb6s34uApPnd2WSh80JKH2Ihi_XuHPZ6wOs6U6ciCXM5l2qFAPni3sF0MRZOw",
+  "expires_in": 3600,
+  "scope": "https://www.googleapis.com/auth/spreadsheets",
+  "token_type": "Bearer"
+}
+2018/09/15 22:26:50.346 [STEP] Set value range Row :A2:C2
+2018/09/15 22:26:50.361 [WebAPI] Request [PUT]: https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Invalid!A2:C2?valueInputOption=RAW
+2018/09/15 22:26:50.361 [WebAPI] Body [PUT]: {"range": "UI-Report-Invalid!A2:C2","values": [[1234,6789,567.89]],"majorDimension": "ROWS"}
+2018/09/15 22:26:51.218 [WebAPI] Response [PUT]: 
+{
+  "error": {
+    "code": 400,
+    "message": "Unable to parse range: UI-Report-Invalid!A2:C2",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+
+2018/09/15 22:26:51.222 [STEP] Verify StatusCode and Sheet error Message
+2018/09/15 22:26:51.222 [PASSED] verifyErrorMessage :: statusCode :: [400] = [400]
+2018/09/15 22:26:51.238 [PASSED] verifyResponseNode :: [Unable to parse range: UI-Report-Invalid!A2:C2] = [Unable to parse range: UI-Report-Invalid!A2:C2]
+2018/09/15 22:26:51.253 [STEP] Set value range Row :A2:C2
+2018/09/15 22:26:51.253 [WebAPI] Request [PUT]: https://sheets.googleapis.com/v4/spreadsheets/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/values/UI-Report-Safari!A2:C2?valueInputOption=RAW
+2018/09/15 22:26:51.269 [WebAPI] Body [PUT]: {"range": "UI-Report-Safari!A2:C2","values": [[1234,6789,567.89]],"majorDimension": "INVALID_ROWS"}
+2018/09/15 22:26:52.054 [WebAPI] Response [PUT]: 
+{
+  "error": {
+    "code": 400,
+    "message": "Invalid value at 'data.major_dimension' (TYPE_ENUM), \"INVALID_ROWS\"",
+    "status": "INVALID_ARGUMENT",
+    "details": [
+      {
+        "@type": "type.googleapis.com/google.rpc.BadRequest",
+        "fieldViolations": [
+          {
+            "field": "data.major_dimension",
+            "description": "Invalid value at 'data.major_dimension' (TYPE_ENUM), \"INVALID_ROWS\""
+          }
+        ]
+      }
+    ]
+  }
+}
+
+2018/09/15 22:26:52.069 [STEP] Verify StatusCode and Sheet error Message
+2018/09/15 22:26:52.069 [PASSED] verifyErrorMessage :: statusCode :: [400] = [400]
+2018/09/15 22:26:52.085 [PASSED] verifyResponseNode :: [Invalid value at 'data.major_dimension' (TYPE_ENUM), "INVALID_ROWS"] = [Invalid value at 'data.major_dimension' (TYPE_ENUM), "INVALID_ROWS"]
+2018/09/15 22:26:52.085 [TESTCASE] *** End TestCase: API002-SetValue- Set invalid value range on google sheet ***

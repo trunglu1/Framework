@@ -27,47 +27,51 @@ public class Driver {
 
     public static WebDriver setSeleniumDrivers() {
         WebDriver driverTest = null;
+
         try {
             String browserName = Environments.BROWSER_TEST.toLowerCase();
             int waitTime = Integer.parseInt(FileHelper.getXmlNodeValue("//Configuration/LoadTimeOut/text()",0));
-
+            String sheetName= null;
+            String sheetId = null;
             //Initiate a new webdriver instance base on browserName
             switch (browserName) { // check our browser
                 case "firefox": {
-                    GoogleSheets.googleSheetInfo.put("sheetName", "UI-Report-Firefox");
-                    GoogleSheets.googleSheetInfo.put("sheetId", "768971742");
+                    sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_firefox");
+                    sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_firefox");
                     System.setProperty("webdriver.gecko.driver", Environments.DRIVER_PATH + "\\geckodriver.exe");
                     driverTest = new FirefoxDriver();
                     break;
                 }
                 case "edge": {
-                    GoogleSheets.googleSheetInfo.put("sheetName", "UI-Report-Edge");
-                    GoogleSheets.googleSheetInfo.put("sheetId", "2012018076");
+                    sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_edge");
+                    sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_edge");
                     System.setProperty("webdriver.edge.driver", Environments.DRIVER_PATH + "\\MicrosoftWebDriver.exe");
                     driverTest = new EdgeDriver();
                     break;
                 }
                 case "ie": {
-                    GoogleSheets.googleSheetInfo.put("sheetName", "UI-Report-IE");
-                    GoogleSheets.googleSheetInfo.put("sheetId", "1426172874");
+                    sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_ie");
+                    sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_ie");
                     System.setProperty("webdriver.ie.driver", Environments.DRIVER_PATH + "\\IEDriverServer.exe");
                     driverTest = new InternetExplorerDriver();
                     break;
                 }
                 case "safari": {
-                    GoogleSheets.googleSheetInfo.put("sheetName", "UI-Report-Safari");
-                    GoogleSheets.googleSheetInfo.put("sheetId", "380662572");
+                    sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_safari");
+                    sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_safari");
                     driverTest = new SafariDriver();
                     break;
                 }
                 // if our browser is not listed
                 default: {
-                    GoogleSheets.googleSheetInfo.put("sheetName", "UI-Report-Chrome");
-                    GoogleSheets.googleSheetInfo.put("sheetId", "0");
+                    sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_chrome");
+                    sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_chrome");
                     System.setProperty("webdriver.chrome.driver", Environments.DRIVER_PATH + "\\chromedriver.exe");
                     driverTest = new ChromeDriver();
                 }
             }
+            GoogleSheets.googleSheetInfo.put("sheetName", sheetName);
+            GoogleSheets.googleSheetInfo.put("sheetId",sheetId);
             driverTest.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
             driverTest.manage().window().maximize();
         } catch (Exception e) {

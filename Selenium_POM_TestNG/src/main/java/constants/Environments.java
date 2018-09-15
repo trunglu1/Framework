@@ -9,6 +9,7 @@ public class Environments {
     public final static String CONFIG_FILE = RESOURCES_PATH + "configuration\\config.xml";
     public final static String DATA_PATH = PROJECT_PATH + "\\src\\test\\resources\\data files\\";
     public final static String REPORTS_PATH = PROJECT_PATH + "\\src\\test\\resources\\reports\\";
+    public final static String CREDENTIALS_FILE = RESOURCES_PATH  + "credentials.json";
 
     //Get list variables from cmd
     public final static String BROWSER_TEST = (System.getProperty("browser") != null)? System.getProperty("browser"):

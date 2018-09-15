@@ -4,6 +4,7 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import constants.Environments;
 import keywords.WebUI;
+import drivers.Driver;
 import helpers.FileHelper;
 import google.GoogleSheets;
 
@@ -61,7 +62,7 @@ public class InitTestCase extends TestListenerAdapter{
                 testResult = "skipped";
         }
 
-        WebUI.deleteAllCookies();
+        if(Driver.getDriver() != null) WebUI.deleteAllCookies();
         Utility.logInfo("TESTCASE","*** End TestCase: " + itr.getMethod().getDescription() + " ***", 1);
 
         if(Environments.REPORT_GOOGLE_SHEET) {

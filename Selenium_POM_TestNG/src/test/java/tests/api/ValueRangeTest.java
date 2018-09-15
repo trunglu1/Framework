@@ -1,6 +1,7 @@
 package tests.api;
 
-
+import constants.Environments;
+import helpers.FileHelper;
 import org.apache.http.HttpResponse;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -15,8 +16,14 @@ import utilities.Utility;
 public class ValueRangeTest {
     @BeforeSuite
     public void startTestSuite(){
-        GoogleSheets.googleSheetInfo.put("sheetName", "API-Report");
-        GoogleSheets.googleSheetInfo.put("sheetId", "945538131");
+        String sheetName = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetName_api");
+        String sheetId = FileHelper.getJSONNode(Environments.CREDENTIALS_FILE,"installed.sheetId_api");
+        GoogleSheets.googleSheetInfo.put("sheetName", sheetName);
+        GoogleSheets.googleSheetInfo.put("sheetId", sheetId);
+        if (Environments.INSERT_NEW_RESULT && Environments.REPORT_GOOGLE_SHEET) {
+            GoogleSheets.insertColumnTestStatus();
+            Environments.INSERT_NEW_RESULT = false;
+        }
     }
 
 //    @AfterSuite
