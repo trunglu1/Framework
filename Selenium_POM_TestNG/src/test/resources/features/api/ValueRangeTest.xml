@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Value Range Test Suite" verbose="1" preserve-order="true" parallel="none">
+    <listeners>
+        <listener class-name="utilities.InitTestCase" />
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+    <test name="API_Value Range Test" >
+        <classes>
+            <class name="tests.api.ValueRangeTest"/>
+            <methods>
+                <include name="API001_SetValue" />
+                <include name="API002_SetValue" />
+            </methods>
+        </classes>
+    </test>
+</suite>

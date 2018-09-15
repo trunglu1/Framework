@@ -246,21 +246,20 @@ public class FileHelper {
         return dictTestDataRow;
     }
 
-    public static String getJSONNode(String strJSONName, String jsonNode, String delimiter) {
+    public static String getJSONNode(String strJSONName, String jsonNode) {
         // Initiate returnValue to contain returned value
         String returnValue = null;
         try {
-            String[] arrayKey = jsonNode.split(delimiter);
+            String[] arrayKey = jsonNode.split("[.]");
             int levelIndex = arrayKey.length;
             String contentJSON = strJSONName;
             if (strJSONName.endsWith(".json")) {
                 File file = new File(strJSONName);
                 contentJSON = FileUtils.readFileToString(file, "utf-8");
             }
-            System.out.println("getJSONNode===>" + contentJSON);
             JSONObject jsonObject = new JSONObject(contentJSON);
             for(int i=0; i < levelIndex; i++){
-                if (i == levelIndex - 1) returnValue = jsonObject.getString(arrayKey[i]);
+                if (i == levelIndex - 1) returnValue = String.valueOf(jsonObject.get(arrayKey[i]));
                 else {
                     jsonObject = (JSONObject) jsonObject.get(arrayKey[i]);
                 }

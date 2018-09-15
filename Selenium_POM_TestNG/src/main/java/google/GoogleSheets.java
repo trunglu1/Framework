@@ -44,7 +44,7 @@ public class GoogleSheets {
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
     private static final String TOKENS_DIRECTORY_PATH = "tokens";
     static String SPREADSHEET_ID = FileHelper.getJSONNode(Environments.RESOURCES_PATH + "credentials.json",
-            "installed>spreadsheet_id", ">");
+            "installed.spreadsheet_id");
     /**
      * Global instance of the scopes required by this quickstart.
      * If modifying these scopes, delete your previously saved tokens/ folder.
