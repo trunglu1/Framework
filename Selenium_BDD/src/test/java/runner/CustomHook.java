@@ -34,12 +34,14 @@ public class CustomHook {
         WebUI.deleteAllCookies();
         Utility.logInfo("TESTCASE","*** End TestCase: " + scenario.getName() + " ***", 1);
 
-        //Update to google sheet: https://docs.google.com/spreadsheets/d/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/edit#gid=0
-        long millis = System.currentTimeMillis() - startTime;
-
-        // convert duration format ("HH:mm:ss.SSS")
-        String duration = String.format("%02d:%02d:%02d.%03d", millis / 3600000, ((millis/1000) % 3600) / 60, ((millis/1000) % 60), (millis % 1000));
-        GoogleSheets.updateTestCaseStatus(scenario.getName(), startDate, duration, scenario.getStatus());
         Utility.testData.clear();
+        if(Environments.REPORT_GOOGLE_SHEET) {
+            //Update to google sheet: https://docs.google.com/spreadsheets/d/1UwclfT7WzOvtQA7qa5o2KdATal8LIWO1yLkQss6tXj4/edit#gid=0
+            long millis = System.currentTimeMillis() - startTime;
+
+            // convert duration format ("HH:mm:ss.SSS")
+            String duration = String.format("%02d:%02d:%02d.%03d", millis / 3600000, ((millis/1000) % 3600) / 60, ((millis/1000) % 60), (millis % 1000));
+            GoogleSheets.updateTestCaseStatus(scenario.getName(), startDate, duration, scenario.getStatus());
+        }
     }
 }

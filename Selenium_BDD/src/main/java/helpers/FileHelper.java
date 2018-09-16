@@ -1,7 +1,6 @@
 package helpers;
 
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -22,6 +21,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
+import org.apache.commons.io.FileUtils;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import constants.Environments;
@@ -142,4 +143,29 @@ public class FileHelper {
         }
         return dictTestDataRow;
     }
+	
+    public static String getJSONNode(String strJSONName, String jsonNode) {
+        // Initiate returnValue to contain returned value
+        String returnValue = null;
+        try {
+            String[] arrayKey = jsonNode.split("[.]");
+            int levelIndex = arrayKey.length;
+            String contentJSON = strJSONName;
+            if (strJSONName.endsWith(".json")) {
+                File file = new File(strJSONName);
+                contentJSON = FileUtils.readFileToString(file, "utf-8");
+            }
+            JSONObject jsonObject = new JSONObject(contentJSON);
+            for(int i=0; i < levelIndex; i++){
+                if (i == levelIndex - 1) returnValue = String.valueOf(jsonObject.get(arrayKey[i]));
+                else {
+                    jsonObject = (JSONObject) jsonObject.get(arrayKey[i]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return returnValue;
+    }	
 }
