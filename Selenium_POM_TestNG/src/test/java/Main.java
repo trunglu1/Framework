@@ -25,20 +25,24 @@ public class Main {
         JsonElement rootNode = parser.parse(jsonString);
         if (rootNode.isJsonObject()) {
             JsonObject details = rootNode.getAsJsonObject();
-            JsonElement nameNode = details.get("client_id");
-            System.out.println("client_id: " + nameNode.getAsString());
-
-//            JsonElement ageNode = details.get("age");
-//            System.out.println("Age: " + ageNode.getAsInt());
+            JsonObject details_1 = details.getAsJsonObject("installed");
+            JsonElement project_id = details_1.get("project_id");
+            System.out.println("project_id: " + project_id.getAsString());
+            System.out.println("installed: " + details_1.toString());
+//            JsonElement installed = details.get("installed");
+//            System.out.println("installed: " + installed.getAsString());
+//            JsonObject next_installed = installed.getAsJsonObject();
+//            JsonElement ageNode = next_installed.get("project_id");
+//            System.out.println("Age: " + ageNode.getAsString());
 //
 //            JsonElement verifiedNode = details.get("verified");
 //            System.out.println("Verified: " + (verifiedNode.getAsBoolean() ? "Yes":"No"));
-            JsonArray marks = details.getAsJsonArray("redirect_uris");
-
-            for (int i = 0; i < marks.size(); i++) {
-                JsonPrimitive value = marks.get(i).getAsJsonPrimitive();
-                System.out.print(value.getAsString() + " ");
-            }
+//            JsonArray marks = next_installed.getAsJsonArray("redirect_uris");
+//
+//            for (int i = 0; i < marks.size(); i++) {
+//                JsonPrimitive value = marks.get(i).getAsJsonPrimitive();
+//                System.out.print(value.getAsString() + " ");
+//            }
         }
 
         }

@@ -1,0 +1,33 @@
+{
+  "installed": {
+    "client_id": "403830840902-h9jerviucakgure60tj1s6i7id7vo2a6.apps.googleusercontent.com",
+    "project_id": "my-project-1540031964077",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://www.googleapis.com/oauth2/v3/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "pgypiR4TL1pAPdeJ-6DWrptV",
+    "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob","http://localhost"],
+	"refresh_token": "1/0oK7pq98zmn7a9QsYtNgn8uGvHhRJMwa2lqetHssBrE",
+    "spreadsheet_id": "15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0",
+    "sheetName_firefox": "UI-Report-Firefox",
+    "sheetId_firefox": "198180008",
+    "sheetName_ie": "UI-Report-IE",
+    "sheetId_ie": "719236768",
+    "sheetName_edge": "UI-Report-Edge",
+    "sheetId_edge": "2139974866",
+    "sheetName_safari": "UI-Report-Safari",
+    "sheetId_safari": "500099274",
+    "sheetName_chrome": "UI-Report-Chrome",
+    "sheetId_chrome": "2084497391",
+    "sheetName_api": "API-Report",
+    "sheetId_api": "1540097298",
+	"url": "https://docs.google.com/spreadsheets/d/15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0/edit#gid=1136287657"
+  }
+}
+
+url_Server = "https://sheets.googleapis.com/v4/spreadsheets/"
+Access Token:
+ya29.Gls8BviSquaHyxzr6gj-52sCtqARDDurAOOhriDHO8a8qO80VOFHEPwesipab00d7PsyFouLZa5srsbLg5Y24n6z9KtlYgttxjQ2Cx9i7uImcjjcTrLLA4fDY0Sa
+
+Refresh Token:
+1/Aygq8wd-PKZRheukWliokQkPJVNrE6JO45i8j8R4eX8
