@@ -26,8 +26,8 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Bearer ya29.Glw-BnCRBGWvrczguPriMih2rHvJEnr1MoFWpIZ3wFbY6oqUiUJaXDsbmZ5LybiO-QW31Tus92-UHpQD7_CMntWIUyvD5ljN954GniYfWbK4UDxWfZ9bojUVc9jmaw'</initValue>
-      <name>googleAccessToken</name>
+      <initValue>'UI-Report-IE'</initValue>
+      <name>sheetName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>

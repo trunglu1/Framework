@@ -43,14 +43,16 @@ class Tests {
 	 */
 	@AfterTestCase
 	def sampleAfterTestCase(TestCaseContext testCaseContext) {
-		println testCaseContext.getTestCaseId()
-		println testCaseContext.getTestCaseStatus()
+		String testCaseName =  testCaseContext.getTestCaseId().toString().split("/").last()
+		String testCaseStatus =  testCaseContext.getTestCaseStatus()
 		long millis = System.currentTimeMillis() - startTime
 		long seconds = (int)(millis/1000)
 		println(startDate)
 		// convert duration format ("HH:mm:ss.SSS")
 		String duration = String.format("%02d:%02d:%02d.%03d", (int)(millis / 3600000), (int)((seconds % 3600) / 60), seconds % 60, millis % 1000)
 		println(duration)
+		WebUI.callTestCase(findTestCase('Common/GoogleSheet/Update result to GoogleSheet'), [('testCaseName') : testCaseName
+			, ('currentBuild') : '345', ('startTime') : startDate, ('duration') : duration, ('testCaseStatus') : testCaseStatus])
 	}
 
 	/**

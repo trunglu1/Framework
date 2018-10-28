@@ -7,7 +7,7 @@
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_secret": "pgypiR4TL1pAPdeJ-6DWrptV",
     "redirect_uris": ["urn:ietf:wg:oauth:2.0:oob","http://localhost"],
-	"refresh_token": "1/0oK7pq98zmn7a9QsYtNgn8uGvHhRJMwa2lqetHssBrE",
+    "refresh_token": "1/0oK7pq98zmn7a9QsYtNgn8uGvHhRJMwa2lqetHssBrE",
     "spreadsheet_id": "15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0",
     "sheetName_firefox": "UI-Report-Firefox",
     "sheetId_firefox": "198180008",
@@ -21,13 +21,11 @@
     "sheetId_chrome": "2084497391",
     "sheetName_api": "API-Report",
     "sheetId_api": "1540097298",
-	"url": "https://docs.google.com/spreadsheets/d/15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0/edit#gid=1136287657"
+    "url": "https://docs.google.com/spreadsheets/d/15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0/edit#gid=1136287657"
   }
 }
 
 url_Server = "https://sheets.googleapis.com/v4/spreadsheets/"
-Access Token:
-ya29.Gls8BviSquaHyxzr6gj-52sCtqARDDurAOOhriDHO8a8qO80VOFHEPwesipab00d7PsyFouLZa5srsbLg5Y24n6z9KtlYgttxjQ2Cx9i7uImcjjcTrLLA4fDY0Sa
 
-Refresh Token:
-1/Aygq8wd-PKZRheukWliokQkPJVNrE6JO45i8j8R4eX8
+
+client_id=403830840902-h9jerviucakgure60tj1s6i7id7vo2a6.apps.googleusercontent.com&client_secret=pgypiR4TL1pAPdeJ-6DWrptV&refresh_token=1/0oK7pq98zmn7a9QsYtNgn8uGvHhRJMwa2lqetHssBrE&grant_type=refresh_token

@@ -12,6 +12,8 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable as GlobalVariable
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+
 //a = "wqw/wqw/dss/e/rer/yu"
 //b = a.split("/")
 //
@@ -23,7 +25,20 @@ import internal.GlobalVariable as GlobalVariable
 //println(CustomKeywords.'helper.Utilities.getRandomInt'(30, 78))
 //println(CustomKeywords.'helper.Utilities.getNumericInString'('You 23 dad47.21'))
 //println(CustomKeywords.'helper.Utilities.parseString'('text abc bcz', 'ex', 'z'))
+//a = "//div[//@class]/a"
+//b = CustomKeywords.'helper.Utilities.convertXpath'(a, 'hello')
+//WebUI.comment(b)
+//WebUI.openBrowser('https://www.google.com.vn/')
+//
+//WebUI.comment(DriverFactory.getExecutedBrowser().getName())
+_data = CustomKeywords.'helper.Utilities.getDataRow'('Data Files/GoogleSheets', 1)
 
-a = "//div[//@class]/a"
-b = CustomKeywords.'helper.Utilities.convertXpath'(a, 'hello')
+a = 'UI-Report-Chrome'
+
+b = (_data[a])
+WebUI.delay(3)
 WebUI.comment(b)
+
+//WebUI.callTestCase(findTestCase('Common/GoogleSheet/Update result to GoogleSheet'), [('sheetName') : 'UI-Report-Chrome', ('testCaseName') : 'TC3113 Hello How are you'
+//        , ('currentBuild') : '123', ('startTime') : '2018/10/29 09:55:07', ('duration') : '00:00:11.167', ('testCaseStatus') : 'FAILED'])
+

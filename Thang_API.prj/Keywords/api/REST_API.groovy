@@ -81,11 +81,11 @@ public class REST_API {
 		String bobyRequest = String.format("client_id=%s&client_secret=%s&refresh_token=%s&grant_type=refresh_token", client_id, client_secret, refresh_token)
 		WebUI.comment('***bobyRequest: ' + bobyRequest)
 		def response = sendRequest('https://www.googleapis.com/oauth2/v4/token', 'POST', 'x-www-form-urlencoded', bobyRequest)
-//		verifyResponseStatusCode(response, 200)
-//		WebUI.comment('***access_token: ' + httpResponseValue.access_token)
-//		String access_token = httpResponseValue.access_token
-		GlobalVariable.googleAccessToken = "Bearer " + httpResponseValue.access_token
-//		return access_token;
+		//		verifyResponseStatusCode(response, 200)
+		//		WebUI.comment('***access_token: ' + httpResponseValue.access_token)
+		//		String access_token = httpResponseValue.access_token
+		GlobalVariable.sheetName = "Bearer " + httpResponseValue.access_token
+		//		return access_token;
 	}
 
 	/******************************************************

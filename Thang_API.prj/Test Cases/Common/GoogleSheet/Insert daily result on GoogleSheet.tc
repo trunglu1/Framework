@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Insert daily result on GoogleSheet</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>896d26c1-d63e-487c-8d87-91dd9d38852d</testCaseGuid>
+   <variable>
+      <defaultValue>'719236768'</defaultValue>
+      <description></description>
+      <id>8ccea818-eb26-4106-8940-634f508ddec0</id>
+      <masked>false</masked>
+      <name>sheetId</name>
+   </variable>
+</TestCaseEntity>

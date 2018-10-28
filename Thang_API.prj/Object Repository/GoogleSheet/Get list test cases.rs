@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>Set Value Range</name>
+   <name>Get list test cases</name>
    <tag></tag>
-   <elementGuidId>25f4e104-2d3e-4596-b076-f7d9e6408308</elementGuidId>
+   <elementGuidId>d9a78c51-599c-4366-9a39-5d6fde83a711</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
    <httpBody></httpBody>
    <httpBodyContent>{
-  &quot;text&quot;: &quot;{\n \&quot;range\&quot;: \&quot;${sheetName}!${range}\&quot;,\n \&quot;values\&quot;: [[${valueRange}]],\n \&quot;majorDimension\&quot;: \&quot;ROWS\&quot;\n}&quot;,
+  &quot;text&quot;: &quot;{\n \&quot;range\&quot;: \&quot;${sheetName}!${range}\&quot;,\n \&quot;values\&quot;: [[\&quot;${valueRange}\&quot;]],\n \&quot;majorDimension\&quot;: \&quot;ROWS\&quot;\n}&quot;,
   &quot;contentType&quot;: &quot;application/json&quot;,
   &quot;charset&quot;: &quot;UTF-8&quot;
 }</httpBodyContent>
-   <httpBodyType></httpBodyType>
+   <httpBodyType>text</httpBodyType>
    <httpHeaderProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
@@ -28,33 +28,26 @@
       <value>application/json</value>
    </httpHeaderProperties>
    <migratedVersion>5.4.1</migratedVersion>
-   <restRequestMethod>PUT</restRequestMethod>
-   <restUrl>https://sheets.googleapis.com/v4/spreadsheets/15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0/values/${sheetName}!${range}?valueInputOption=RAW</restUrl>
+   <restRequestMethod>GET</restRequestMethod>
+   <restUrl>https://sheets.googleapis.com/v4/spreadsheets/${spreadsheet_id}/values/${sheetName}!A:A</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
    <soapRequestMethod></soapRequestMethod>
    <soapServiceFunction></soapServiceFunction>
    <variables>
-      <defaultValue>'UI-Report-IE'</defaultValue>
+      <defaultValue>'15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0'</defaultValue>
+      <description></description>
+      <id>3eb4726d-9c0b-474f-a712-82f7a9dd6faa</id>
+      <masked>false</masked>
+      <name>spreadsheet_id</name>
+   </variables>
+   <variables>
+      <defaultValue>'UI-Report-Chrome'</defaultValue>
       <description></description>
       <id>fd538a01-48eb-49eb-99ec-23535495095a</id>
       <masked>false</masked>
       <name>sheetName</name>
-   </variables>
-   <variables>
-      <defaultValue>'C3'</defaultValue>
-      <description></description>
-      <id>e3bddae1-eda5-4cac-a231-36ea5892d0a5</id>
-      <masked>false</masked>
-      <name>range</name>
-   </variables>
-   <variables>
-      <defaultValue>'Hello'</defaultValue>
-      <description></description>
-      <id>513ac160-797f-4240-bb9a-cef89d16b365</id>
-      <masked>false</masked>
-      <name>valueRange</name>
    </variables>
    <variables>
       <defaultValue>GlobalVariable.googleAccessToken</defaultValue>
