@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description></description>
-   <name>Get GoogleSheet Access Token</name>
-   <tag></tag>
-   <comment>json_AccessToken.toString()
-GlobalVariable.googleAccessToken</comment>
-   <testCaseGuid>4adba587-e979-48d5-b1fd-daffd75a4bdd</testCaseGuid>
-</TestCaseEntity>

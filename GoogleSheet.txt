@@ -27,5 +27,5 @@
 
 url_Server = "https://sheets.googleapis.com/v4/spreadsheets/"
 
-
+https://www.w3.org/Protocols/rfc2616/rfc2616-sec6.html
 client_id=403830840902-h9jerviucakgure60tj1s6i7id7vo2a6.apps.googleusercontent.com&client_secret=pgypiR4TL1pAPdeJ-6DWrptV&refresh_token=1/0oK7pq98zmn7a9QsYtNgn8uGvHhRJMwa2lqetHssBrE&grant_type=refresh_token
