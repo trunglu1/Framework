@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Login to TripIt system</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>59f3d94f-bab3-434d-8de1-6e76bff71d47</testCaseGuid>
+   <variable>
+      <defaultValue>true</defaultValue>
+      <description></description>
+      <id>118a4e11-95b0-4161-9861-59f535c74e0c</id>
+      <masked>false</masked>
+      <name>p_StartApp</name>
+   </variable>
+   <variable>
+      <defaultValue>'collect.report2018@gmail.com'</defaultValue>
+      <description></description>
+      <id>225359d7-1de4-4c2c-bd9d-45b9ffba3b74</id>
+      <masked>false</masked>
+      <name>p_Email</name>
+   </variable>
+   <variable>
+      <defaultValue>'kms@2018'</defaultValue>
+      <description></description>
+      <id>9750ff0b-1d24-40a9-87b2-46f85974abf7</id>
+      <masked>false</masked>
+      <name>p_Password</name>
+   </variable>
+</TestCaseEntity>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>WTC_LOG-002-Sub-Access to Features</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>464d258f-e869-4850-b2cf-25e26d919065</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>098dae56-841d-4a55-a271-be899836938d</id>
+      <masked>false</masked>
+      <name>p_MenuItems</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f532406c-5ada-41bc-8997-ac1648db0f39</id>
+      <masked>false</masked>
+      <name>p_ExpectedTitle</name>
+   </variable>
+</TestCaseEntity>

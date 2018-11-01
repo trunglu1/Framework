@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>MTC_LOG-001-Login successful</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>19fb1471-9d81-4184-951a-daab16877267</testCaseGuid>
+</TestCaseEntity>

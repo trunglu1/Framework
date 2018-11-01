@@ -1,0 +1,4 @@
+index,number1,number2,expected
+1,24,12,36
+2,2,10,12
+3,-3,12,9
