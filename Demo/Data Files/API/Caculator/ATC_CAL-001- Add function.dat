@@ -6,7 +6,7 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
    <dataFileGUID>98f472fa-b26a-4912-8150-2fc7855ad9af</dataFileGUID>
-   <dataSourceUrl>Data Files/WEB/Main/WTC_LOG-001-Login successful.csv</dataSourceUrl>
+   <dataSourceUrl>Data Files/API/Caculator/ATC_CAL-001- Add function.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>true</isInternalPath>
    <query></query>

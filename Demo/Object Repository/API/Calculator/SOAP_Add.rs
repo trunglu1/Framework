@@ -38,7 +38,7 @@
       <name>p_Number1</name>
    </variables>
    <variables>
-      <defaultValue>'0.2bc'</defaultValue>
+      <defaultValue>'2'</defaultValue>
       <description></description>
       <id>80a4a14f-24ea-4041-b2d3-d2803c8d4d81</id>
       <masked>false</masked>

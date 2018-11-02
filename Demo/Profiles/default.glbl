@@ -21,12 +21,27 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>single/driven</description>
-      <initValue>'driven'</initValue>
+      <initValue>'single'</initValue>
       <name>SuiteType</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
       <initValue>'API-Report'</initValue>
       <name>SheetName</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'androidapp/TripIt-Free-4.0.0-150821002.apk'</initValue>
+      <name>Application</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>ReportGoogleSheet</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>UploadTestStatus</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -6,7 +6,7 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator>COMMA</csvSeperator>
    <dataFileGUID>dbedb5b7-0e1e-4250-82f8-cff9c099bbcd</dataFileGUID>
-   <dataSourceUrl>Data Files/WEB/Main/WTC_LOG-002-Access to Features.csv</dataSourceUrl>
+   <dataSourceUrl>Data Files/API/Caculator/ATC_CAL-002- Add invalid value.csv</dataSourceUrl>
    <driver>CSV</driver>
    <isInternalPath>true</isInternalPath>
    <query></query>

@@ -38,13 +38,13 @@ if(true){
 	else {
 		foundIndex = _listTC.size() + 1
 		'Fill Test Case name'
-		WS.sendRequest(findTestObject('Object Repository/GoogleSheet/Set result value',
+		WS.sendRequest(findTestObject('API/GoogleSheet/PUT_Set result value',
 			['p_Spreadsheet_Id': _data['spreadsheet_id'], 'p_SheetName': GlobalVariable.SheetName
 			,'p_Range': 'A' + foundIndex, 'p_ValueRange': p_TCName, 'p_Authorization': 'Bearer ' + _accessToken]))
 	}
 	rangeValues = String.format('%s","%s","%s","","%s', p_CurrentBuild, p_StartTime, p_Duration, p_TCStatus)
 	'Fill test case status'
-	WS.sendRequest(findTestObject('Object Repository/GoogleSheet/Set result value',
+	WS.sendRequest(findTestObject('API/GoogleSheet/PUT_Set result value',
 		['p_Spreadsheet_Id': _data['spreadsheet_id'], 'p_SheetName': GlobalVariable.SheetName
 		, 'p_Range': 'B' + foundIndex + ':F' + foundIndex, 'p_ValueRange': rangeValues, 'p_Authorization': 'Bearer ' + _accessToken]))
 }

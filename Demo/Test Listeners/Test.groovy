@@ -1,26 +1,14 @@
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
-import com.kms.katalon.core.model.FailureHandling as FailureHandling
-import com.kms.katalon.core.testcase.TestCase as TestCase
-import com.kms.katalon.core.testdata.TestData as TestData
-import com.kms.katalon.core.testobject.TestObject as TestObject
-
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-
-import internal.GlobalVariable as GlobalVariable
-
-import com.kms.katalon.core.annotation.BeforeTestCase
-import com.kms.katalon.core.annotation.BeforeTestSuite
 import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
+import com.kms.katalon.core.annotation.BeforeTestCase
+import com.kms.katalon.core.annotation.BeforeTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import internal.GlobalVariable as GlobalVariable
 
 class Tests {
 	private String startDate = ''
@@ -43,16 +31,16 @@ class Tests {
 	 */
 	@AfterTestCase
 	def sampleAfterTestCase(TestCaseContext testCaseContext) {
-		String testCaseName =  testCaseContext.getTestCaseId().toString().split("/").last()
-		String testCaseStatus =  testCaseContext.getTestCaseStatus()
-		long millis = System.currentTimeMillis() - startTime
-		long seconds = (int)(millis/1000)
-//		println(startDate)
-		// convert duration format ("HH:mm:ss.SSS")
-		String duration = String.format("%02d:%02d:%02d.%03d", (int)(millis / 3600000), (int)((seconds % 3600) / 60), seconds % 60, millis % 1000)
-//		println(duration)
-//		WebUI.callTestCase(findTestCase('Common/API/GoogleSheet/Update result to GoogleSheet'), [('p_TestCaseName') : testCaseName
-//			, ('p_CurrentBuild') : '345', ('p_StartTime') : startDate, ('p_Duration') : duration, ('p_TestCaseStatus') : testCaseStatus])
+		if(GlobalVariable.UploadTestStatus) {
+			String testCaseName =  testCaseContext.getTestCaseId().toString().split("/").last()
+			String testCaseStatus =  testCaseContext.getTestCaseStatus()
+			long millis = System.currentTimeMillis() - startTime
+			long seconds = (int)(millis/1000)
+			// Convert duration format ("HH:mm:ss.SSS")
+			String duration = String.format("%02d:%02d:%02d.%03d", (int)(millis / 3600000), (int)((seconds % 3600) / 60), seconds % 60, millis % 1000)
+			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Update result to GoogleSheet'), [('p_TCName') : testCaseName
+				, ('p_CurrentBuild') : '345', ('p_StartTime') : startDate, ('p_Duration') : duration, ('p_TCStatus') : testCaseStatus])
+		}	
 	}
 
 	/**
@@ -61,7 +49,12 @@ class Tests {
 	 */
 	@BeforeTestSuite
 	def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
-		println testSuiteContext.getTestSuiteId()
+//		println testSuiteContext.getTestSuiteId()
+		if(GlobalVariable.ReportGoogleSheet){
+			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Insert daily result on GoogleSheet'), [:])
+			GlobalVariable.ReportGoogleSheet = false
+			GlobalVariable.UploadTestStatus = true
+		}
 	}
 
 	/**

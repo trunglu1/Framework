@@ -1,0 +1,30 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+TS_API,,,2018-11-02 16:52:33,2018-11-02 16:53:08,34.876s,FAILED
+,,,,,,
+Test Cases/Features/API/Caculator/ATC_CAL-001- Add function,,,2018-11-02 16:52:38,2018-11-02 16:52:49,10.255s,PASSED
+Start listener action : sampleBeforeTestCase,,,2018-11-02 16:52:39,2018-11-02 16:52:39,0.000s,PASSED
+Start setup action : SetUp,,,2018-11-02 16:52:39,2018-11-02 16:52:39,0.351s,PASSED
+Statement - xmlSlurper = new groovy.util.XmlSlurper(),,Loop around to run script,2018-11-02 16:52:39,2018-11-02 16:52:39,0.038s,PASSED
+Statement - add_function = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,,,2018-11-02 16:52:39,2018-11-02 16:52:39,0.001s,PASSED
+"Statement - For ([i = 1, i <= _totalRow, (i++)])",,,2018-11-02 16:52:39,2018-11-02 16:52:45,6.363s,PASSED
+Start listener action : sampleAfterTestCase,,,2018-11-02 16:52:45,2018-11-02 16:52:49,3.457s,PASSED
+,,,,,,
+Test Cases/Features/API/Caculator/ATC_CAL-002- Add invalid value,,,2018-11-02 16:52:49,2018-11-02 16:52:54,5.288s,PASSED
+Start listener action : sampleBeforeTestCase,,,2018-11-02 16:52:49,2018-11-02 16:52:49,0.007s,PASSED
+Start setup action : SetUp,,,2018-11-02 16:52:49,2018-11-02 16:52:49,0.272s,PASSED
+Statement - xmlSlurper = new groovy.util.XmlSlurper(),,Loop around to run script,2018-11-02 16:52:49,2018-11-02 16:52:49,0.009s,PASSED
+Statement - add_function = <not implemented yet for class: org.codehaus.groovy.ast.expr.EmptyExpression>,,,2018-11-02 16:52:49,2018-11-02 16:52:49,0.001s,PASSED
+"Statement - For ([i = 1, i <= _totalRow, (i++)])",,,2018-11-02 16:52:49,2018-11-02 16:52:51,1.760s,PASSED
+Start listener action : sampleAfterTestCase,,,2018-11-02 16:52:51,2018-11-02 16:52:54,3.213s,PASSED
+,,,,,,
+Test Cases/Features/API/Caculator/ATC_CAL-003-Test Case FAILED,,,2018-11-02 16:52:54,2018-11-02 16:53:01,7.302s,FAILED
+Start listener action : sampleBeforeTestCase,,,2018-11-02 16:52:54,2018-11-02 16:52:54,0.000s,PASSED
+delay,,,2018-11-02 16:52:54,2018-11-02 16:52:58,4.013s,PASSED
+"Statement - com.kms.katalon.core.util.KeywordUtil.markFailed(""FAILED test case"")",,,2018-11-02 16:52:58,2018-11-02 16:52:58,0.002s,PASSED
+Start listener action : sampleAfterTestCase,,,2018-11-02 16:52:58,2018-11-02 16:53:01,3.203s,PASSED
+,,,,,,
+Test Cases/Features/API/Caculator/ATC_CAL-004-Test Case ERROR,,,2018-11-02 16:53:01,2018-11-02 16:53:08,6.698s,ERROR
+Start listener action : sampleBeforeTestCase,,,2018-11-02 16:53:01,2018-11-02 16:53:01,0.016s,PASSED
+delay,,,2018-11-02 16:53:01,2018-11-02 16:53:04,3.000s,PASSED
+"Statement - com.kms.katalon.core.util.KeywordUtil.markError(""ERROR test case"")",,,2018-11-02 16:53:04,2018-11-02 16:53:04,0.002s,PASSED
+Start listener action : sampleAfterTestCase,,,2018-11-02 16:53:04,2018-11-02 16:53:08,3.631s,PASSED

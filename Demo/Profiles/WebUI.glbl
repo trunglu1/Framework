@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalVariableEntities>
    <description></description>
-   <name>Android</name>
+   <name>WebUI</name>
    <tag></tag>
    <defaultProfile>false</defaultProfile>
    <GlobalVariableEntity>
@@ -26,7 +26,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Android-Report'</initValue>
+      <initValue>'UI-Report-Chrome'</initValue>
       <name>SheetName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
