@@ -17,11 +17,11 @@
    <GlobalVariableEntity>
       <description></description>
       <initValue>1</initValue>
-      <name>ShotTime</name>
+      <name>ShortTime</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>single/driven</description>
-      <initValue>'single'</initValue>
+      <initValue>'driven'</initValue>
       <name>SuiteType</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -43,5 +43,15 @@
       <description></description>
       <initValue>false</initValue>
       <name>UploadTestStatus</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>IssueInfo</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>''</initValue>
+      <name>CurrentBuild</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

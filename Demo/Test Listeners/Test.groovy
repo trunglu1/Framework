@@ -1,5 +1,5 @@
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.annotation.BeforeTestCase
@@ -18,9 +18,10 @@ class Tests {
 	 * @param testCaseContext related information of the executed test case.
 	 */
 	@BeforeTestCase
-	def sampleBeforeTestCase(TestCaseContext testCaseContext) {
+	def sampleBeforeTestCase(TestCaseContext testCaseContext) {	
 		startDate = CustomKeywords.'pdi.Utilities.getUnique'("yyyy/MM/dd HH:mm:ss")
 		startTime = System.currentTimeMillis()
+		GlobalVariable.IssueInfo = ''
 //		println testCaseContext.getTestCaseId()
 //		println testCaseContext.getTestCaseVariables()
 	}
@@ -32,14 +33,14 @@ class Tests {
 	@AfterTestCase
 	def sampleAfterTestCase(TestCaseContext testCaseContext) {
 		if(GlobalVariable.UploadTestStatus) {
-			String testCaseName =  testCaseContext.getTestCaseId().toString().split("/").last()
-			String testCaseStatus =  testCaseContext.getTestCaseStatus()
-			long millis = System.currentTimeMillis() - startTime
-			long seconds = (int)(millis/1000)
+			String _testCaseName =  testCaseContext.getTestCaseId().toString().split("/").last()
+			String _testCaseStatus =  testCaseContext.getTestCaseStatus().toLowerCase()
+			long _millis = System.currentTimeMillis() - startTime
+			long _seconds = (int)(_millis/1000)
 			// Convert duration format ("HH:mm:ss.SSS")
-			String duration = String.format("%02d:%02d:%02d.%03d", (int)(millis / 3600000), (int)((seconds % 3600) / 60), seconds % 60, millis % 1000)
-			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Update result to GoogleSheet'), [('p_TCName') : testCaseName
-				, ('p_CurrentBuild') : '345', ('p_StartTime') : startDate, ('p_Duration') : duration, ('p_TCStatus') : testCaseStatus])
+			String duration = String.format("%02d:%02d:%02d.%03d", (int)(_millis / 3600000), (int)((_seconds % 3600) / 60), _seconds % 60, _millis % 1000)
+			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Update result to GoogleSheet'), [('p_TCName') : _testCaseName
+				, ('p_CurrentBuild') : GlobalVariable.CurrentBuild, ('p_StartTime') : startDate, ('p_Duration') : duration, ('p_Issue') : GlobalVariable.IssueInfo, ('p_TCStatus') : _testCaseStatus])
 		}	
 	}
 
@@ -50,6 +51,10 @@ class Tests {
 	@BeforeTestSuite
 	def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
 //		println testSuiteContext.getTestSuiteId()
+		if (GlobalVariable.SheetName.contains("UI-Report")){
+			String _browser = DriverFactory.getExecutedBrowser().getName().replace('_DRIVER', '')
+			GlobalVariable.SheetName = "UI-Report-" + _browser
+		}
 		if(GlobalVariable.ReportGoogleSheet){
 			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Insert daily result on GoogleSheet'), [:])
 			GlobalVariable.ReportGoogleSheet = false

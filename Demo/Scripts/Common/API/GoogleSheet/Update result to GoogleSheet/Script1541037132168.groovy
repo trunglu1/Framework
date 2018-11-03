@@ -42,7 +42,8 @@ if(true){
 			['p_Spreadsheet_Id': _data['spreadsheet_id'], 'p_SheetName': GlobalVariable.SheetName
 			,'p_Range': 'A' + foundIndex, 'p_ValueRange': p_TCName, 'p_Authorization': 'Bearer ' + _accessToken]))
 	}
-	rangeValues = String.format('%s","%s","%s","","%s', p_CurrentBuild, p_StartTime, p_Duration, p_TCStatus)
+	
+	rangeValues = String.format('%s","%s","%s","%s","%s', p_CurrentBuild, p_StartTime, p_Duration, p_Issue, p_TCStatus)
 	'Fill test case status'
 	WS.sendRequest(findTestObject('API/GoogleSheet/PUT_Set result value',
 		['p_Spreadsheet_Id': _data['spreadsheet_id'], 'p_SheetName': GlobalVariable.SheetName

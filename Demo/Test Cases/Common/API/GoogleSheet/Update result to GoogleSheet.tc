@@ -34,6 +34,13 @@
       <name>p_Duration</name>
    </variable>
    <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>f2195e83-7321-4d6c-b285-5002ccf5828e</id>
+      <masked>false</masked>
+      <name>p_Issue</name>
+   </variable>
+   <variable>
       <defaultValue>'ERROR'</defaultValue>
       <description></description>
       <id>12b04ccd-4afb-4d02-b444-d32f6364f420</id>
