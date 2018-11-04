@@ -9,6 +9,4 @@ Mobile.tap(findTestObject('MOBILE/Main/img_More Options icon'), GlobalVariable.S
 
 Mobile.tap(findTestObject('MOBILE/Main/btn_Sign Out'), GlobalVariable.ShortTime)
 
-Mobile.tap(findTestObject('MOBILE/Main/btn_Discard'), GlobalVariable.ShortTime, FailureHandling.OPTIONAL)
-
 Mobile.tap(findTestObject('MOBILE/Trip/btn_OK Date'), GlobalVariable.ShortTime)

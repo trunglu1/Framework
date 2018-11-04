@@ -21,7 +21,7 @@ Mobile.tap(findTestObject('MOBILE/Trip/btn_OK Date'), GlobalVariable.ShortTime)
 
 Mobile.tap(findTestObject('MOBILE/Trip/lbl_End Date value'), GlobalVariable.ShortTime)
 
-Mobile.tapAndHold(findTestObject('MOBILE/Trip/btn_2019'), 0, 0)
+//Mobile.tapAndHold(findTestObject('MOBILE/Trip/btn_2019'), 0, 0)
 
 Mobile.tap(findTestObject('MOBILE/Trip/btn_OK Date'), GlobalVariable.ShortTime)
 

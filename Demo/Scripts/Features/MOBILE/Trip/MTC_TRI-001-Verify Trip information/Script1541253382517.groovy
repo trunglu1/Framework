@@ -36,11 +36,11 @@ for(int i = 1; i <= _totalRow; i++){
 	'Verify Trip information'
 	if (true) {
 		Mobile.callTestCase(findTestCase('Features/MOBILE/Trip/MTC_TRI-001-Sub-Verify Trip information')
-			, [('p_Destination') : _testData['destination'] 
-			, ('p_TripName') : _testData['tripName']
-			, ('p_Privacy') : _testData['privacy']
-			, ('p_Purpose') : _testData['purpose']
-			, ('p_Description') : _testData['description']])
+			, [('p_Destination') : _data['destination'] 
+			, ('p_TripName') : _data['tripName']
+			, ('p_Privacy') : _data['privacy']
+			, ('p_Purpose') : _data['purpose']
+			, ('p_Description') : _data['description']])
 	}
 }
 

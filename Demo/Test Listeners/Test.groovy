@@ -39,6 +39,7 @@ class Tests {
 			long _seconds = (int)(_millis/1000)
 			// Convert duration format ("HH:mm:ss.SSS")
 			String duration = String.format("%02d:%02d:%02d.%03d", (int)(_millis / 3600000), (int)((_seconds % 3600) / 60), _seconds % 60, _millis % 1000)
+			//https://docs.google.com/spreadsheets/d/15rw3-1vVkPqDKTik69Y5-6tUXQMyLhBZL1YDMAEnkT0/edit#gid=1136287657
 			WS.callTestCase(findTestCase('Common/API/GoogleSheet/Update result to GoogleSheet'), [('p_TCName') : _testCaseName
 				, ('p_CurrentBuild') : GlobalVariable.CurrentBuild, ('p_StartTime') : startDate, ('p_Duration') : duration, ('p_Issue') : GlobalVariable.IssueInfo, ('p_TCStatus') : _testCaseStatus])
 		}	

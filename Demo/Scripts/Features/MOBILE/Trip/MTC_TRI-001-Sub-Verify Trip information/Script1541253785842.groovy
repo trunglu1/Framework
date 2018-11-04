@@ -26,11 +26,11 @@ if (true) {
 		, ('p_Description') : p_Description])
 }
 
-'Post condition: Not save trip information'
+'Post condition: Logout without saving trip information'
 if (true){
-	Mobile.tap(findTestObject('MOBILE/Main/img_More Options icon'), GlobalVariable.ShortTime)
-
+	Mobile.tap(findTestObject('MOBILE/Main/img_Home'), GlobalVariable.ShortTime)
+	
 	Mobile.tap(findTestObject('MOBILE/Main/btn_Discard'), GlobalVariable.ShortTime, FailureHandling.OPTIONAL)
 	
-	Mobile.tap(findTestObject('MOBILE/Trip/btn_OK Date'), GlobalVariable.ShortTime)
+	Mobile.callTestCase(findTestCase('Common/MOBILE/Log out system'), [:])
 }
