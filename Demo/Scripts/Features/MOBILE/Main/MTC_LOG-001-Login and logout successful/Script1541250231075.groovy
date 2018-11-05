@@ -2,8 +2,10 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.mobile.keyword.internal.MobileDriverFactory
 
 import internal.GlobalVariable as GlobalVariable
+import io.appium.java_client.MobileDriver
 
 @com.kms.katalon.core.annotation.SetUp
 def SetUp() {
@@ -38,5 +40,5 @@ for(int i = 1; i <= _totalRow; i++){
 
 @com.kms.katalon.core.annotation.TearDown
 def TearDown() {
-	Mobile.closeApplication()
+	CustomKeywords.'pdi.Mobile.ClearMobileEnvironment'()
 }

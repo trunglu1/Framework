@@ -21,7 +21,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description>single/driven</description>
-      <initValue>'driven'</initValue>
+      <initValue>'single'</initValue>
       <name>SuiteType</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

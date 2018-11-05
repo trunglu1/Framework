@@ -32,5 +32,5 @@ if (true){
 	
 	Mobile.tap(findTestObject('MOBILE/Main/btn_Discard'), GlobalVariable.ShortTime, FailureHandling.OPTIONAL)
 	
-	Mobile.callTestCase(findTestCase('Common/MOBILE/Log out system'), [:])
+//	Mobile.callTestCase(findTestCase('Common/MOBILE/Log out system'), [:])
 }

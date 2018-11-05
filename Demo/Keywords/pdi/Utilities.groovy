@@ -11,9 +11,27 @@ import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+/********************************* HEADER PART **********************************
+ *
+ * CUSTOM KEYWORDS NAME		: Utilities.groovy
+ * LAST UPDATED     		: Nov 19, 2018
+ *
+ * CUSTOM KEYWORDS LIST
+ *
+ *	convertXpath(String strXpath, String dynamicValue): Convert dynamic Xpath
+ *	getDataRow(TestData testData, int rowIndex): Get Data Row from Data File
+ *	getUnique(String formatDate): Generate unique string format by system date
+ *	getRandomInt(int min, int max): Get numeric in string
+ *	convertRGBtoHEX(String rgbFormat): Convert rgb to hex code color
+ *	parseString(String mainString, String startSub=null, String endSub=null): Parse sub string in a string
+ *	verifyCountMatchs(String str, String findStr, int expectedNumber): Verify count sub string in a string
+ *	verifyListValues(def listValues1, def listValues2, String operator='='): Verify two list Values
+ *	getSortOrderStatus(String listValues, String dataType='string'): Get Sort Order status
+ */
+
 public class Utilities {
 	/******************************************************
-	 * convert dynamic Xpath
+	 * Convert dynamic Xpath
 	 * @author thangctran
 	 * @param strXpath : The dynamic xpath
 	 * @param dynamicValue: The dynamic value to replace
@@ -54,7 +72,7 @@ public class Utilities {
 	@Keyword
 	def getDataRow(TestData testData, int rowIndex) {
 		def _dataDict = [:]
-//		TestData data = TestDataFactory.findTestData(dataFile)
+		//		TestData data = TestDataFactory.findTestData(dataFile)
 		try{
 			String[] headerNames = testData.getColumnNames()
 			for (header in headerNames) {
@@ -68,7 +86,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * generate unique string by system date
+	 * Generate unique string format by system date
 	 * @author thangctran
 	 * @param formatDate : The date format // "E yyyy.MM.dd 'at' HH:mm:ss a zzz" => Sat 2018.08.11 at 05:09:21 PM UTC
 	 * @return The string Ex: "yyyyMMDD" => 20181025
@@ -80,7 +98,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * get numeric in string
+	 * Get numeric in string
 	 * @author thangctran
 	 * @param min : The min number
 	 * @param max : The max number
@@ -92,7 +110,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * get numeric in string
+	 * Get numeric in string
 	 * @author thangctran
 	 * @param string : The string
 	 * @return The numeric Ex: "You are 24 years old" => 24
@@ -103,7 +121,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * convert rgb to hex code color
+	 * Convert rgb to hex code color
 	 * @author thangctran
 	 * @param rgbFormat : The rgb format (Ex: rgb(255,255,255))
 	 * @return the hex color (Ex: #ffffff)
@@ -117,7 +135,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * parse sub string in a string
+	 * Parse sub string in a string
 	 * @author : thangctran
 	 * @param mainString: the main string
 	 * @param startSub: the start sub-string to find
@@ -142,7 +160,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * verify count sub string in a string
+	 * Verify count sub string in a string
 	 * @author : thangctran
 	 * @param str: the string
 	 * @param findStr: the sub-string to find
@@ -156,7 +174,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * verify two list Values
+	 * Verify two list Values
 	 * @author : thangctran
 	 * @param listValues1: the list values 1
 	 * @param listValues2: the list values 2
@@ -177,7 +195,7 @@ public class Utilities {
 	}
 
 	/******************************************************
-	 * Get Sort Order Status
+	 * Get Sort Order status
 	 * @author : thangctran
 	 * @param listValues: list values: value1,value2,.....,valueN
 	 * @param dataType: string; number; date ('MM.dd.yyyy HH:mm a')
