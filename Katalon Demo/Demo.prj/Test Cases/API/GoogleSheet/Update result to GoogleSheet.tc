@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Update result to GoogleSheet</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>afaf0d4b-fc9b-44f9-8517-05118916fd47</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>d09feea7-244b-4693-ad47-42e4e59da41e</id>
+      <masked>false</masked>
+      <name>p_TCName</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>008eaf52-a2c7-42ad-9469-ba1bd6a569ca</id>
+      <masked>false</masked>
+      <name>p_CurrentBuild</name>
+   </variable>
+   <variable>
+      <defaultValue>'2018/10/29 09:55:07'</defaultValue>
+      <description></description>
+      <id>0114e938-93d8-4b43-98c6-bef949cb7bfe</id>
+      <masked>false</masked>
+      <name>p_StartTime</name>
+   </variable>
+   <variable>
+      <defaultValue>'00:00:11.167'</defaultValue>
+      <description></description>
+      <id>9799d871-7f06-45ca-98b2-78829d4d07d1</id>
+      <masked>false</masked>
+      <name>p_Duration</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>c3dee448-5658-4e78-96b8-26a8592ba3b3</id>
+      <masked>false</masked>
+      <name>p_Issue</name>
+   </variable>
+   <variable>
+      <defaultValue>'ERROR'</defaultValue>
+      <description></description>
+      <id>5445712b-6625-412f-86cf-f850a990214a</id>
+      <masked>false</masked>
+      <name>p_TCStatus</name>
+   </variable>
+</TestCaseEntity>

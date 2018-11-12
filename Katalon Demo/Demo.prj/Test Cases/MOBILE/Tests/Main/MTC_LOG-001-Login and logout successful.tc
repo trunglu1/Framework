@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>MTC_LOG-001-Login and logout successful</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>3fcdf90f-4151-45fa-9ee4-556044d0f530</testCaseGuid>
+</TestCaseEntity>

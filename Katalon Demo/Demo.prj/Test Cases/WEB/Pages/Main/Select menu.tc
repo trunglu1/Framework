@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Select menu</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>75fa4193-0d52-4638-a5b4-5c8b7124413a</testCaseGuid>
+   <variable>
+      <defaultValue>'Maintenance>Products>Product Master'</defaultValue>
+      <description></description>
+      <id>9605a72c-db2d-4c20-85d1-ba5bdd460891</id>
+      <masked>false</masked>
+      <name>p_MenuItems</name>
+   </variable>
+</TestCaseEntity>

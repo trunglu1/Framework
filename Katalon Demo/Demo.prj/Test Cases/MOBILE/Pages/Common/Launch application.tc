@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Launch application</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c1bcae63-6d7f-4ece-b3d4-6916ed802056</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>58891616-0aa4-40a6-9ee0-0e7ecb658ba3</id>
+      <masked>false</masked>
+      <name>p_PathFile</name>
+   </variable>
+</TestCaseEntity>

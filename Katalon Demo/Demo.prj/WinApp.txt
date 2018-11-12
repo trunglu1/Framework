@@ -1,0 +1,11 @@
+https://stackoverflow.com/questions/49559050/issue-in-accessing-jacob-1-18-x86-dll-at-run-time
+Now it is resolved when i added following files :
+
+jacob-1.14.3-x64.ddl and jacob-1.14.3-x84.dll
+
+inside folders :
+
+/Java/jdk/jre/bin and /Java/jdk/jre/lib/ext
+
+//Build to JAR by IntelliJ
+https://stackoverflow.com/questions/1082580/how-to-build-jars-from-intellij-properly

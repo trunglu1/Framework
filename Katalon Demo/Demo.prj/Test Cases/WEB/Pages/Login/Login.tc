@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Login</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>db8dd0e8-071f-4b3f-a8f6-52db07eb6d02</testCaseGuid>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>0d4b42f6-227a-4e95-911f-9efec15f93e3</id>
+      <masked>false</masked>
+      <name>p_URL</name>
+   </variable>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>5fe7c306-a411-4ef0-8be7-1b3fb50f9256</id>
+      <masked>false</masked>
+      <name>p_UserName</name>
+   </variable>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>889c6304-a18c-4239-9faa-db534a6688c3</id>
+      <masked>false</masked>
+      <name>p_Password</name>
+   </variable>
+</TestCaseEntity>

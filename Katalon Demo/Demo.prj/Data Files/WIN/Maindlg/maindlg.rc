@@ -1,0 +1,43 @@
+/*
+WIN32 resources for maindlg.exe
+Copyright (C) 2000  Antti Markus (antti@pld.ttu.ee)
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+
+#include <windows.h>
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG_MAIN DIALOG DISCARDABLE  0, 0, 186, 95
+STYLE DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Converter"
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "Exit",ID_OK,129,7,50,14
+    DEFPUSHBUTTON   "Compute",IDCOMPUTE,129,24,50,14
+    EDITTEXT        IDC_EDITSRC,43,15,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDITRES,43,37,40,14,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "m -> ft",IDC_RADIOM,"Button",BS_AUTORADIOBUTTON,101,49,35,10
+    CONTROL         "ft -> m",IDC_RADIOFT,"Button",BS_AUTORADIOBUTTON,101,62,35,10
+    LTEXT           "Source",IDC_STATIC,17,18,24,8
+    LTEXT           "Result",IDC_STATIC,17,40,21,8
+END
+
+

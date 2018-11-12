@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Add Trip</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>502d04c9-a83a-49b9-aecb-41818a9a2adc</testCaseGuid>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>bf8729b2-0cd1-4ec2-8ccf-398d37421115</id>
+      <masked>false</masked>
+      <name>p_Destination</name>
+   </variable>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>09a8a45d-9f2f-4d2e-b3e6-561b4717f586</id>
+      <masked>false</masked>
+      <name>p_TripName</name>
+   </variable>
+   <variable>
+      <defaultValue>'check'</defaultValue>
+      <description></description>
+      <id>babcd19c-4ff7-43c1-a6f6-13756824c0d9</id>
+      <masked>false</masked>
+      <name>p_Privacy</name>
+   </variable>
+   <variable>
+      <defaultValue>'uncheck'</defaultValue>
+      <description></description>
+      <id>4b9d805b-6795-43fa-b103-1bd4d06a595e</id>
+      <masked>false</masked>
+      <name>p_Purpose</name>
+   </variable>
+   <variable>
+      <defaultValue>null</defaultValue>
+      <description></description>
+      <id>49253127-c9f6-4385-9f77-767455e485ae</id>
+      <masked>false</masked>
+      <name>p_Description</name>
+   </variable>
+</TestCaseEntity>

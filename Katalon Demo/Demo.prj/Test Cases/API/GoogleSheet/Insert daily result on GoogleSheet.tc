@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>Insert daily result on GoogleSheet</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a42c2950-2c96-430a-b93d-5a7eea1025c9</testCaseGuid>
+</TestCaseEntity>
