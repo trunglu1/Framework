@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@title = '[CLASS:Button; INSTANCE:4]' and @ref_element = 'Object Repository/WIN/Converter/Window']</value>
+         <value>//*[@class = 'Button' and @instance = '4']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,9 +15,16 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>title</name>
+      <name>class</name>
       <type>Main</type>
-      <value>[CLASS:Button; INSTANCE:4]</value>
+      <value>Button</value>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>instance</name>
+      <type>Main</type>
+      <value>4</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>

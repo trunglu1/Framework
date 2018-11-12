@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@title = '1001' and @ref_element = 'Object Repository/WIN/Converter/Window']</value>
+         <value>//*[@id = '1001' and @ref_element = 'Object Repository/WIN/Converter/Window']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,7 +15,7 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>title</name>
+      <name>id</name>
       <type>Main</type>
       <value>1001</value>
    </webElementProperties>

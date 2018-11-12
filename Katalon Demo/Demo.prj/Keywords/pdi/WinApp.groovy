@@ -13,65 +13,73 @@ public class WinApp {
 	//	https://stackoverflow.com/questions/49559050/issue-in-accessing-jacob-1-18-x86-dll-at-run-time
 	//	Copy jacob-1.19-x64.dll to inside folders :/Java/jdk/jre/bin and /Java/jdk/jre/lib/ext
 	private AutoItX winApp = new AutoItX()
-	private String windowTitle = ''
-	private String controlTitle = ''
+	private String windowProperties = ''
+	private String controlProperties = ''
+
+	private String getListPropeties(TestObject to){
+		String _PropertiesValue = "["
+		for (def _Properties in to.getActiveProperties()){
+			_PropertiesValue = _PropertiesValue + _Properties.name.toUpperCase() + ":" + _Properties.value + ";"
+		}
+		return _PropertiesValue.substring(0, _PropertiesValue.size() -1) + "]"
+	}
 
 	private getControl(TestObject to){
-		if(to.getParentObject()!=null) {
-			windowTitle = to.getParentObject().findPropertyValue('title')
-			controlTitle = to.findPropertyValue('title')
+		if(to.getParentObject() != null) {
+			windowProperties = getListPropeties(to.getParentObject())
+			controlProperties = getListPropeties(to)
 		}
 		else {
-			windowTitle = to.findPropertyValue('title')
-			controlTitle =''
+			windowProperties = getListPropeties(to)
+			controlProperties =''
 		}
 	}
 
 	@Keyword
 	def focusWindow(TestObject to) {
 		getControl(to)
-		winApp.winActivate(windowTitle)
-		KeywordLogger.getInstance().logInfo("focusWindow on window [" + windowTitle + "]")
+		winApp.winActivate(windowProperties)
+		KeywordLogger.getInstance().logInfo("focusWindow on window " + windowProperties)
 	}
 
 	@Keyword
 	def click(TestObject to) {
 		getControl(to)
-		if(winApp.controlClick(windowTitle, '', controlTitle)){
-			KeywordLogger.getInstance().logInfo("click on [" + windowTitle + "][" + controlTitle + "]")
+		if(winApp.controlClick(windowProperties, '', controlProperties)){
+			KeywordLogger.getInstance().logInfo("click on " + windowProperties + "-" + controlProperties)
 		}
-		else KeywordUtil.markFailedAndStop("Not found [" + windowTitle + "][" + controlTitle + "]")
+		else KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
 	}
 
 	@Keyword
 	def setText(TestObject to, String text) {
 		getControl(to)
-		if(winApp.ControlSetText(windowTitle, '', controlTitle, text)){
-			KeywordLogger.getInstance().logInfo("Text '" + text + "' is setText on [" + windowTitle + "][" + controlTitle + "]")
+		if(winApp.ControlSetText(windowProperties, '', controlProperties, text)){
+			KeywordLogger.getInstance().logInfo("Text '" + text + "' is setText on " + windowProperties + "-" + controlProperties)
 		}
-		else KeywordUtil.markFailedAndStop("Not found [" + windowTitle + "][" + controlTitle + "]")
+		else KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
 	}
 
 	@Keyword
 	def getText(TestObject to) {
 		getControl(to)
-		return winApp.controlGetText(windowTitle, '', controlTitle)
+		return winApp.controlGetText(windowProperties, '', controlProperties)
 	}
 
 	@Keyword
 	def verifyText(TestObject to, String expectedText) {
 		getControl(to)
-		String currentText = winApp.controlGetText(windowTitle, '', controlTitle)
+		String currentText = winApp.controlGetText(windowProperties, '', controlProperties)
 		WebUI.verifyEqual(currentText, expectedText)
 	}
 
 	@Keyword
 	def uploadFile(String filePath) {
 		winApp.sleep(3000)
-		winApp.winWaitActive("[REGEXPTITLE:.*; CLASS:#32770]")
-		winApp.winActivate("[REGEXPTITLE:.*; CLASS:#32770]")
-		winApp.ControlSetText("[REGEXPTITLE:.*; CLASS:#32770]", "", "Edit1", filePath)
-		winApp.controlClick("[REGEXPTITLE:.*; CLASS:#32770]", "", "Button1")
+		winApp.winWaitActive("[CLASS:#32770]")
+		winApp.winActivate("[CLASS:#32770]")
+		winApp.ControlSetText("[CLASS:#32770]", "", "Edit1", filePath)
+		winApp.controlClick("[CLASS:#32770]", "", "Button1")
 		winApp.sleep(2000)
 	}
 }

@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@title = '[TEXT:]' and @ref_element = 'Object Repository/WIN/Converter/Window']</value>
+         <value>//*[(text() = 'm -> ft' or . = 'm -> ft') and @ref_element = 'Object Repository/WIN/Converter/Window']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,9 +15,9 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>title</name>
+      <name>text</name>
       <type>Main</type>
-      <value>[TEXT:m -> ft]</value>
+      <value>m -> ft</value>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
