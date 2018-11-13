@@ -24,52 +24,49 @@ public class WinApp {
 		return _PropertiesValue.substring(0, _PropertiesValue.size() -1) + "]"
 	}
 
-	private getControl(TestObject to){
+	private Boolean getControl(TestObject to){
 		if(to.getParentObject() != null) {
 			windowProperties = getListPropeties(to.getParentObject())
 			controlProperties = getListPropeties(to)
+			return winApp.controlCommandIsVisible(windowProperties, "", controlProperties)
 		}
 		else {
 			windowProperties = getListPropeties(to)
 			controlProperties =''
+			return winApp.winExists(windowProperties);
 		}
 	}
 
 	@Keyword
-	def focusWindow(TestObject to) {
-		getControl(to)
-		winApp.winActivate(windowProperties)
-		KeywordLogger.getInstance().logInfo("focusWindow on window " + windowProperties)
+	def winActivate(TestObject to) {
+		if (getControl(to)) winApp.winActivate(windowProperties)
+		else KeywordUtil.markFailedAndStop("Not found " + windowProperties)
 	}
 
 	@Keyword
-	def click(TestObject to) {
-		getControl(to)
-		if(winApp.controlClick(windowProperties, '', controlProperties)){
-			KeywordLogger.getInstance().logInfo("click on " + windowProperties + "-" + controlProperties)
-		}
+	def controlClick(TestObject to) {
+		if (getControl(to)) winApp.controlClick(windowProperties, '', controlProperties)
 		else KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
 	}
 
 	@Keyword
-	def setText(TestObject to, String text) {
-		getControl(to)
-		if(winApp.ControlSetText(windowProperties, '', controlProperties, text)){
-			KeywordLogger.getInstance().logInfo("Text '" + text + "' is setText on " + windowProperties + "-" + controlProperties)
-		}
+	def controlSetText(TestObject to, String text) {
+		if (getControl(to)) winApp.ControlSetText(windowProperties, '', controlProperties, text)
 		else KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
 	}
 
 	@Keyword
-	def getText(TestObject to) {
-		getControl(to)
-		return winApp.controlGetText(windowProperties, '', controlProperties)
+	def controlGetText(TestObject to) {
+		if (getControl(to)) return winApp.controlGetText(windowProperties, '', controlProperties)
+		else {
+			KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
+			return null
+		}			
 	}
 
 	@Keyword
 	def verifyText(TestObject to, String expectedText) {
-		getControl(to)
-		String currentText = winApp.controlGetText(windowProperties, '', controlProperties)
+		String currentText = controlGetText(to)
 		WebUI.verifyEqual(currentText, expectedText)
 	}
 

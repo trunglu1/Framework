@@ -11,30 +11,30 @@ if(true){
 	_appPath = PathUtil.relativeToAbsolutePath(_PathFile, RunConfiguration.getProjectDir())
 	
 	Runtime.getRuntime().exec(_appPath)
-	CustomKeywords.'pdi.WinApp.focusWindow'(findTestObject('WIN/Converter/Window'))
+	CustomKeywords.'pdi.WinApp.winActivate'(findTestObject('WIN/Converter/Window'))
 }
 
 'Verify that convert FT to M'
 if(true){
-	CustomKeywords.'pdi.WinApp.setText'(findTestObject('WIN/Converter/txt_Source'), '50')
+	CustomKeywords.'pdi.WinApp.controlSetText'(findTestObject('WIN/Converter/txt_Source'), '50')
 	WebUI.delay(GlobalVariable.ShortTime)
-	CustomKeywords.'pdi.WinApp.click'(findTestObject('WIN/Converter/rad_FT to M'))
+	CustomKeywords.'pdi.WinApp.controlClick'(findTestObject('WIN/Converter/rad_FT to M'))
 	WebUI.delay(GlobalVariable.ShortTime)
-	CustomKeywords.'pdi.WinApp.click'(findTestObject('WIN/Converter/btn_Compute'))
+	CustomKeywords.'pdi.WinApp.controlClick'(findTestObject('WIN/Converter/btn_Compute'))
 	WebUI.delay(GlobalVariable.ShortTime)
 	CustomKeywords.'pdi.WinApp.verifyText'(findTestObject('WIN/Converter/txt_Result'), '15.240000')
 }
 
 'Verify that convert M to FT'
 if(true){
-	CustomKeywords.'pdi.WinApp.setText'(findTestObject('WIN/Converter/txt_Source'), '25')
+	CustomKeywords.'pdi.WinApp.controlSetText'(findTestObject('WIN/Converter/txt_Source'), '25')
 	WebUI.delay(GlobalVariable.ShortTime)
-	CustomKeywords.'pdi.WinApp.click'(findTestObject('WIN/Converter/rad_M to FT'))
+	CustomKeywords.'pdi.WinApp.controlClick'(findTestObject('WIN/Converter/rad_M to FT'))
 	WebUI.delay(GlobalVariable.ShortTime)
-	CustomKeywords.'pdi.WinApp.click'(findTestObject('WIN/Converter/btn_Compute'))
+	CustomKeywords.'pdi.WinApp.controlClick'(findTestObject('WIN/Converter/btn_Compute'))
 	WebUI.delay(GlobalVariable.ShortTime)
 	CustomKeywords.'pdi.WinApp.verifyText'(findTestObject('WIN/Converter/txt_Result'), '82.020997')
 }
 
 'Close application'
-CustomKeywords.'pdi.WinApp.click'(findTestObject('WIN/Converter/btn_Exit'))
+CustomKeywords.'pdi.WinApp.controlClick'(findTestObject('WIN/Converter/btn_Exit'))
