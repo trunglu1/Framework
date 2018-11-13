@@ -9,3 +9,6 @@ inside folders :
 
 //Build to JAR by IntelliJ
 https://stackoverflow.com/questions/1082580/how-to-build-jars-from-intellij-properly
+
+https://jar-download.com/javaDoc/de.openkeyword/autoit/0.1.17/index-all.html
+https://www.javatips.net/api/JAutoItX-master/src/cn/com/jautoitx/AutoItX.java

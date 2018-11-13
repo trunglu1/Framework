@@ -19,24 +19,24 @@ if(true){
 
 'Verify that convert FT to M'
 if(true){
-	WinUI.controlsetText(findTestObject('WIN/Converter/txt_Source'), "50")
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.controlSetText(findTestObject('WIN/Converter/txt_Source'), "50")
+	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/rad_FT to M'))
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/btn_Compute'))
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.delay(GlobalVariable.ShortTime)
 	currentResult = WinUI.controlGetText(findTestObject('WIN/Converter/txt_Result'))
 	WebUI.verifyEqual(currentResult, '15.240000')
 }
 
 'Verify that convert M to FT'
 if(true){
-	WinUI.controlsetText(findTestObject('WIN/Converter/txt_Source'), "25")
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.controlSetText(findTestObject('WIN/Converter/txt_Source'), "25")
+	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/rad_M to FT'))
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/btn_Compute'))
-	WebUI.delay(GlobalVariable.ShortTime)
+	WinUI.delay(GlobalVariable.ShortTime)
 	currentResult = WinUI.controlGetText(findTestObject('WIN/Converter/txt_Result'))
 	WebUI.verifyEqual(currentResult, '82.020997')
 }

@@ -61,13 +61,18 @@ public class WinApp {
 		else {
 			KeywordUtil.markFailedAndStop("Not found " + windowProperties + "-" + controlProperties)
 			return null
-		}			
+		}
 	}
 
 	@Keyword
 	def verifyText(TestObject to, String expectedText) {
 		String currentText = controlGetText(to)
 		WebUI.verifyEqual(currentText, expectedText)
+	}
+
+	@Keyword
+	def sendKeys(String expectedText) {
+		winApp.send(expectedText)
 	}
 
 	@Keyword
