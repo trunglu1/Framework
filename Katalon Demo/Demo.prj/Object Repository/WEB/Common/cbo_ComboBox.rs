@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>By_Id</name>
+   <name>cbo_ComboBox</name>
    <tag></tag>
-   <elementGuidId>6a6c8215-9dc9-461c-b4e8-75f03cfb21c3</elementGuidId>
+   <elementGuidId>c80db10f-57e6-4896-95d3-5b7c7c096fc5</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@id = '${id}']</value>
+         <value>//td[normalize-space(text())='${label}']/following::td[1]/select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -15,8 +15,8 @@
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>id</name>
+      <name>xpath</name>
       <type>Main</type>
-      <value>${id}</value>
+      <value>//td[normalize-space(text())='${label}']/following::td[1]/select</value>
    </webElementProperties>
 </WebElementEntity>

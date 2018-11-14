@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>cbo_DateTime</name>
+   <tag></tag>
+   <elementGuidId>1162a766-7d22-4df3-a671-dc3d0e6e6031</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//td[normalize-space(text())='${label}']/following::td[1]/select[${index}]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//td[normalize-space(text())='${label}']/following::td[1]/select[${index}]</value>
+   </webElementProperties>
+</WebElementEntity>

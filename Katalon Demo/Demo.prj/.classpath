@@ -88,9 +88,9 @@
 	<classpathentry kind="lib" path="D:/Soft/Katalon/Katalon_Studio_Windows_64-5.8.6/plugins/wsdl4j_1.6.2.jar"/>
 	<classpathentry kind="lib" path="D:/Soft/Katalon/Katalon_Studio_Windows_64-5.8.6/plugins/com.google.oauth-client.google-oauth-client_1.22.0.jar"/>
 	<classpathentry kind="lib" path="D:/Soft/Katalon/Katalon_Studio_Windows_64-5.8.6/plugins/com.google.http-client.google-http-client_1.22.0.jar"/>
-	<classpathentry kind="lib" path="D:/Self-Study/Katalon Demo/Demo.prj/Drivers/AutoItX4Java.jar"/>
-	<classpathentry kind="lib" path="D:/Self-Study/Katalon Demo/Demo.prj/Drivers/jacob.jar"/>
-	<classpathentry kind="lib" path="D:/Self-Study/Katalon Demo/Demo.prj/Drivers/ThangTest.jar"/>
+	<classpathentry kind="lib" path="D:/Self-Study/Framework/Katalon Demo/Demo.prj/Drivers/AutoItX4Java.jar"/>
+	<classpathentry kind="lib" path="D:/Self-Study/Framework/Katalon Demo/Demo.prj/Drivers/jacob.jar"/>
+	<classpathentry kind="lib" path="D:/Self-Study/Framework/Katalon Demo/Demo.prj/Drivers/kms.WinApp.jar"/>
 	<classpathentry exported="true" kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

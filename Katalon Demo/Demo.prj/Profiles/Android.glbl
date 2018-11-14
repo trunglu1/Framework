@@ -30,8 +30,8 @@
       <name>SheetName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
-      <description></description>
-      <initValue>'androidapp/TripIt-Free-4.0.0-150821002.apk'</initValue>
+      <description>androidapp/TripIt-Free-4.0.0-150821002.apk</description>
+      <initValue>'kobiton-store:v22044'</initValue>
       <name>Application</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

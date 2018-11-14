@@ -46,5 +46,5 @@ for(int i = 1; i <= _totalRow; i++){
 
 @com.kms.katalon.core.annotation.TearDown
 def TearDown() {
-	CustomKeywords.'pdi.Mobile.ClearMobileEnvironment'()
+	CustomKeywords.'pdi.Mobile.clearMobileEnvironment'()
 }

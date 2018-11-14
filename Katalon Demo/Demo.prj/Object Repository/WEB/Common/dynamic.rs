@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>dynamic</name>
+   <tag></tag>
+   <elementGuidId>fa99a011-edab-49c4-8cbd-0473425093a6</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//td[normalize-space(text())='${label}']/following::td[1]/*</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//td[normalize-space(text())='${label}']/following::td[1]/*</value>
+   </webElementProperties>
+</WebElementEntity>

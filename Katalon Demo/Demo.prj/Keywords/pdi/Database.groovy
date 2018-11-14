@@ -34,7 +34,7 @@ public class Database {
 	private String db_ServerName 	= ".\\SQLEXPRESS"
 	private String db_Port			= '1433'
 	private String db_Name			= 'TSQL2012'
-	private String db_Username		= 'demo'
+	private String db_Username		= 'test'
 	private String db_Password		= 'Kms@2018'
 
 	/******************************************************
