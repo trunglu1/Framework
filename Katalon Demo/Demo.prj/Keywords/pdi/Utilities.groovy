@@ -14,7 +14,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 /********************************* HEADER PART **********************************
  *
  * CUSTOM KEYWORDS NAME		: Utilities.groovy
- * LAST UPDATED     		: Nov 19, 2018
+ * LAST UPDATED     			: Nov 19, 2018
  *
  * CUSTOM KEYWORDS LIST
  *
@@ -22,7 +22,6 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
  *	getDataRow(TestData testData, int rowIndex): Get Data Row from Data File
  *	getUnique(String formatDate): Generate unique string format by system date
  *	getRandomInt(int min, int max): Get numeric in string
- *	convertRGBtoHEX(String rgbFormat): Convert rgb to hex code color
  *	parseString(String mainString, String startSub=null, String endSub=null): Parse sub string in a string
  *	verifyCountMatchs(String str, String findStr, int expectedNumber): Verify count sub string in a string
  *	verifyListValues(def listValues1, def listValues2, String operator='='): Verify two list Values
@@ -147,20 +146,6 @@ public class Utilities {
 	@Keyword
 	def getNumericInString(String string) {
 		return Integer.parseInt(string.replaceAll("[^0-9]", ""));
-	}
-
-	/******************************************************
-	 * Convert rgb to hex code color
-	 * @author thangctran
-	 * @param rgbFormat : The rgb format (Ex: rgb(255,255,255))
-	 * @return the hex color (Ex: #ffffff)
-	 */
-	@Keyword
-	def convertRGBtoHEX(String rgbFormat) {
-		def arrRGB = rgbFormat.replace("(", ",").replace(")", "").split(",");
-		Color c = new Color(Integer.valueOf(arrRGB[1].trim()),Integer.valueOf(arrRGB[2].trim()),Integer.valueOf(arrRGB[3].trim()));
-		String hexFormat = '#' + Integer.toHexString( c.getRGB() & 0x00ffffff );
-		return hexFormat.toLowerCase();
 	}
 
 	/******************************************************

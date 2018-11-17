@@ -1,7 +1,7 @@
 package pdi
 
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
+import java.awt.Color
 import org.openqa.selenium.By
 import org.openqa.selenium.JavascriptExecutor
 import org.openqa.selenium.WebDriver
@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement
 import org.openqa.selenium.interactions.Actions
 
 import com.kms.katalon.core.annotation.Keyword
+import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.driver.DriverFactory
@@ -16,9 +17,59 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import internal.GlobalVariable
 
+/********************************* HEADER PART **********************************
+ *
+ * CUSTOM KEYWORDS NAME		: Elements.groovy
+ * LAST UPDATED     			: Nov 19, 2018
+ *
+ * CUSTOM KEYWORDS LIST
+ *
+ * *********** General ***********
+ *	generateTestObject(String xpath): Generate dynamic object by XPath
+ *	convertToWebElement(TestObject to): convert TestObject to WebElement
+ *	convertRGBtoHEX(String rgbFormat): Convert rgb to hex code color
+ *	verifyElementColor(TestObject to, String attributeValue, String expectedColor): Verify Element color
+ *	clickSelenium(TestObject to, String clickType='click'): Click on element by Selenium
+ *	clickMousePosition(TestObject to, int x=10, int y=10, String clickType='click'): Click Mouse Position
+ *	clickJS(TestObject to, String clickType='click'): Click element by java script
+ * getAttributeByJS(TestObject to, String fullPathNode): Get attribute by java script
+ * verifyAttributeByJS(TestObject to, String fullPathNode, String expectedValue): Verify attribute by java script
+ *	*********** Date Time ***********
+ *	setDate(String strName, String strDay, String strMonth, String strYear): Set Date element value
+ *	getDate(String strName): Get Date element value
+ *	verifyDateValue(String strName, String expectedDay, String expectedMonth, String expectedYear): Verify Date element value
+ *	setTime(String strName, String strHour, String strMinute): Set Time element value
+ *	getTime(String strName): Get Date element value
+ *	verifyTimeValue(String strName, String expectedHour, String expectedMinute): Verify Date element value
+ *	*********** List ***********
+ *	getListAttributeValues(TestObject objList, String attributeName): Get list attribute values on list
+ *	findItemIndexOnListByAttribute(TestObject objList, String attributeName, String attributeValue): Find item index on list by attribute
+ *	selectListItemByIndex(TestObject objList, int index): Select list item by index
+ *	selectListItemByText(TestObject objList, String text): Select list item by text
+ *	countItemsOnList(TestObject objList): Count item on List
+ *	getAttributeItemIndexOnList(TestObject objList, String attributeName, int index): Get attribute item at index on List
+ *	*********** Table ***********
+ *	countColumns(TestObject objTable): Count columns number
+ *	countRows(TestObject objTable): Count rows number
+ *	setCheckboxOnCell(TestObject objTable, int row, int column, boolean status=true): Select checkbox on cell
+ *	verifyCheckboxStatusOnCell(TestObject objTable, int row, int column, boolean expectedStatus=true):  Verify checkbox status on cell
+ *	selectOptionByLabelOnCell(TestObject objTable, int row, int column, String text): Select item by label on cell
+ *	selectOptionByIndexOnCell(TestObject objTable, int row, int column, String rangeIndex): Select item by range index on cell
+ *	clickOnCell(TestObject objTable, int row, int column): Click on cell
+ *	getTextContentOnCell(TestObject objTable, int row, int column): Get text value on cell
+ *	verifyTextContentOnColumn(TestObject objTable, int column, String expectedText, boolean existing): Verify text value on column
+ *	verifyTextContentOnTable(TestObject objTable, String expectedText, boolean existing): Verify text value on table
+ *	getAttributeValueOnCell(TestObject objTable, int row, int column, String attributeName): Get attribute value on cell
+ *	verifyAttributeValueOnCell(TestObject objTable, int row, int column, String attributeName, String expectedValue): Verify attribute value on cell
+ *	getListAttributeValuesAtColumn(TestObject objTable, int column, String attributeName): Get list Attribute values at column
+ */
+
 public class WebElements {
+
+	////////////////////////// General /////////////////////////
+
 	/******************************************************
-	 * generate dynamic object by XPath
+	 * Generate dynamic object by XPath
 	 * @author: thangctran
 	 * @param xpath : string of xpath to find element
 	 * @return The Dynamic object
@@ -39,6 +90,33 @@ public class WebElements {
 	private WebElement convertToWebElement(TestObject to){
 		WebDriver driver = DriverFactory.getWebDriver()
 		return driver.findElement(By.xpath(to.findPropertyValue('xpath')))
+	}
+
+	/******************************************************
+	 * Convert rgb to hex code color
+	 * @author thangctran
+	 * @param rgbFormat : The rgb format (Ex: rgb(255,255,255))
+	 * @return the hex color (Ex: #ffffff)
+	 */
+	private convertRGBtoHEX(String rgbFormat) {
+		def arrRGB = rgbFormat.replace("(", ",").replace(")", "").split(",");
+		Color c = new Color(Integer.valueOf(arrRGB[1].trim()),Integer.valueOf(arrRGB[2].trim()),Integer.valueOf(arrRGB[3].trim()));
+		String hexFormat = '#' + Integer.toHexString( c.getRGB() & 0x00ffffff );
+		return hexFormat.toLowerCase();
+	}
+
+	/******************************************************
+	 * Verify Element color
+	 * Author: thangctran
+	 * @param to : The object to do
+	 * @param attributeValue : the attribute of element: color; border-left-color; background-color
+	 * @param expectedColor : the expected color (Ex: #ffffff)
+	 * @return None
+	 */
+	@Keyword
+	def verifyElementColor(TestObject to, String attributeValue, String expectedColor){
+		String currentColor = convertRGBtoHEX(WebUI.getCSSValue(to, attributeValue))
+		WebUI.verifyEqual(currentColor, expectedColor)
 	}
 
 	/******************************************************
@@ -67,7 +145,7 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * click Mouse Position
+	 * Click Mouse Position
 	 * @author: thangctran
 	 * @param to: The object to do
 	 * @param x: The x position on object
@@ -121,6 +199,34 @@ public class WebElements {
 		}
 	}
 
+	/******************************************************
+	 * Get attribute by java script
+	 * @author: thangctran
+	 * @param to: The object to do
+	 * @param fullPathNode: The full path node to get value (options[arguments[1].selectedIndex].text)
+	 * @return The attribute value
+	 */
+	@Keyword
+	def getAttributeByJS(TestObject to, String fullPathNode){
+		WebElement webElement = WebUI.findWebElement(to)
+		String _textJS = String.format("return (arguments[0]).%s;", fullPathNode)
+		return ((JavascriptExecutor) DriverFactory.getWebDriver()).executeScript(_textJS, webElement).toString().trim()
+	}
+	
+	/******************************************************
+	 * Verify attribute by java script
+	 * @author: thangctran
+	 * @param to: The object to do
+	 * @param fullPathNode: The full path node to get value (options[arguments[1].selectedIndex].text)
+	 * @param expectedValue: The expected value
+	 * @return The attribute value
+	 */
+	@Keyword
+	def verifyAttributeByJS(TestObject to, String fullPathNode, String expectedValue){
+		String currentValue = getAttributeByJS(to, fullPathNode)
+		WebUI.verifyEqual(currentValue, expectedValue)
+	}
+	
 	////////////////////////// Date Time /////////////////////////
 
 	/******************************************************
@@ -204,41 +310,41 @@ public class WebElements {
 	 * @return None
 	 */
 	@Keyword
-	def verifyTimeeValue(String strName, String expectedHour, String expectedMinute){
+	def verifyTimeValue(String strName, String expectedHour, String expectedMinute){
 		String _expectedTime = expectedHour + ":" + expectedMinute
 		WebUI.verifyEqual(getTime(strName), _expectedTime)
 	}
 
 	////////////////////////// List /////////////////////////
 	/******************************************************
-	 * get list attribute values on list
+	 * Get list attribute values on list
 	 * @author : thangctran
-	 * @param obj: The Test object
+	 * @param objList: The Test object
 	 * @param attributeName: The attribute name to get
 	 * @return The list attribute value
 	 */
 	@Keyword
-	def getListAttributeValues(TestObject obj, String attributeName){
+	def getListAttributeValues(TestObject objList, String attributeName){
 		def listValues = []
-		for (WebElement elementItem: WebUI.findWebElements(obj, GlobalVariable.MediumTime)) {
+		for (WebElement elementItem: WebUI.findWebElements(objList, GlobalVariable.MediumTime)) {
 			listValues.add(elementItem.getAttribute(attributeName).trim())
 		}
 		return listValues
 	}
 
 	/******************************************************
-	 * get list attribute values on list
+	 * Find item index on list by attribute
 	 * @author : thangctran
-	 * @param obj: The Test object
+	 * @param objList: The Test object
 	 * @param attributeName: The attribute name to find
 	 * @param attributeValue: The attribute value to find
 	 * @return The list attribute value
 	 */
 	@Keyword
-	def findItemIndexOnListByAttribute(TestObject obj, String attributeName, String attributeValue){
+	def findItemIndexOnListByAttribute(TestObject objList, String attributeName, String attributeValue){
 		int _findIndex = 0
 		int _Count = 0
-		for (WebElement elementItem: WebUI.findWebElements(obj, GlobalVariable.MediumTime)) {
+		for (WebElement elementItem: WebUI.findWebElements(objList, GlobalVariable.MediumTime)) {
 			_Count++
 			if (elementItem.getAttribute(attributeName).trim() == attributeValue){
 				_findIndex = _Count
@@ -249,46 +355,59 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * select list item by index
+	 * Select list item by index
 	 * @author : thangctran
-	 * @param obj: The List Test object
+	 * @param objList: The List Test object
 	 * @param index: The index to select
 	 * @return None
 	 */
 	@Keyword
-	def selectListItemByIndex(TestObject obj, int index){
-		String newXpath = "(" + obj.findPropertyValue("xpath") + ")[" + index + "]"
+	def selectListItemByIndex(TestObject objList, int index){
+		String newXpath = "(" + objList.findPropertyValue("xpath") + ")[" + index + "]"
 		WebUI.click(generateTestObject(newXpath))
 	}
 
 	/******************************************************
-	 * count item on List
+	 * Select list item by text
 	 * @author : thangctran
-	 * @param obj: The List Test object
-	 * @return The total number of items
+	 * @param objList: The List Test object
+	 * @param text: The text of item to select
+	 * @return None
 	 */
 	@Keyword
-	def countItemsOnList(TestObject obj){
-		WebUI.findWebElements(obj, GlobalVariable.MediumTime).size()
+	def selectListItemByText(TestObject objList, String text){
+		String newXpath = objList.findPropertyValue("xpath") + "[normalize-space(.)='" + text + "']"
+		WebUI.click(generateTestObject(newXpath))
 	}
 
 	/******************************************************
-	 * get attribute item at index on List
+	 * Count item on List
 	 * @author : thangctran
-	 * @param obj: The List Test object
+	 * @param objList: The List Test object
+	 * @return The total number of items
+	 */
+	@Keyword
+	def countItemsOnList(TestObject objList){
+		WebUI.findWebElements(objList, GlobalVariable.MediumTime).size()
+	}
+
+	/******************************************************
+	 * Get attribute item at index on List
+	 * @author : thangctran
+	 * @param objList: The List Test object
 	 * @param attributeName: The attribute name to get
 	 * @param index: The index to select
 	 * @return None
 	 */
 	@Keyword
-	def getAttributeItemIndexOnList(TestObject obj, String attributeName, int index){
-		String newXpath = "(" + obj.findPropertyValue("xpath") + ")[" + index + "]"
+	def getAttributeItemIndexOnList(TestObject objList, String attributeName, int index){
+		String newXpath = "(" + objList.findPropertyValue("xpath") + ")[" + index + "]"
 		return WebUI.getAttribute(generateTestObject(newXpath), attributeName).trim()
 	}
 
 	////////////////////////// Table //////////////////////////
 	/******************************************************
-	 * Count columns
+	 * Count columns number
 	 * @author : thangctran
 	 * @param objTable: The Table object
 	 * @return The total number of columns
@@ -300,7 +419,7 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * Count rows
+	 * Count rows number
 	 * @author : thangctran
 	 * @param objTable: The Table object
 	 * @return The total number of rows
@@ -312,27 +431,43 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * select checkbox on cell
+	 * Select checkbox on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
-	 * @param status: The status : check/uncheck
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
+	 * @param status: The status : true(check)/ false(uncheck)
 	 * @return None
 	 */
 	@Keyword
-	def setCheckboxOnCell(TestObject objTable, int row, int column, String status='check'){
+	def setCheckboxOnCell(TestObject objTable, int row, int column, boolean status=true){
 		String newXpath = objTable.findPropertyValue("xpath") + "/tbody/tr[" + row + "]/td[" + column + "]/input[@type='checkbox']"
-		if (status.toLowerCase() == 'check') WebUI.check(generateTestObject(newXpath))
+		if (status) WebUI.check(generateTestObject(newXpath))
 		else WebUI.uncheck(generateTestObject(newXpath))
 	}
 
 	/******************************************************
-	 * set text on cell
+	 * Verify checkbox status on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
+	 * @param expectedStatus: The expected status : true(check)/ false(uncheck)
+	 * @return None
+	 */
+	@Keyword
+	def verifyCheckboxStatusOnCell(TestObject objTable, int row, int column, boolean expectedStatus=true){
+		String newXpath = objTable.findPropertyValue("xpath") + "/tbody/tr[" + row + "]/td[" + column + "]/input[@type='checkbox']"
+		boolean currentStatus = WebUI.verifyElementChecked(generateTestObject(newXpath), GlobalVariable.MediumTime, FailureHandling.OPTIONAL)
+		WebUI.verifyEqual(currentStatus, expectedStatus)
+	}
+
+	/******************************************************
+	 * Set text on cell
+	 * @author : thangctran
+	 * @param objTable: The Table object
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
 	 * @param text: The text to set on cell
 	 * @return None
 	 */
@@ -343,11 +478,11 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * select item by label on cell
+	 * Select item by label on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
 	 * @param text: The text item to select on cell
 	 * @return None
 	 */
@@ -358,12 +493,12 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * select item by range index on cell
+	 * Select item by range index on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
-	 * @param rangeIndex: The range index to select on cell; Ex: 2; 2,3; 2-5
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
+	 * @param rangeIndex: The range index to select on cell; Ex: 2; 2,3(select items 2 and 3); 2-5 (select items from 2 to 5)
 	 * @return None
 	 */
 	@Keyword
@@ -373,11 +508,11 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * click on cell
+	 * Click on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
 	 * @return The attribute value
 	 */
 	@Keyword
@@ -387,11 +522,11 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * get text value on cell
+	 * Get text value on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
 	 * @return The text value of cell
 	 */
 	@Keyword
@@ -401,10 +536,10 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * verify text value on column
+	 * Verify text value on column
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
+	 * @param column: The column index on Table
 	 * @param expectedText: The text on cell
 	 * @param existing: true(exist) /false (not exist)
 	 * @return None
@@ -417,7 +552,7 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * verify text value on table
+	 * Verify text value on table
 	 * @author : thangctran
 	 * @param objTable: The Table object
 	 * @param expectedText: The text on cell
@@ -426,17 +561,17 @@ public class WebElements {
 	 */
 	@Keyword
 	def verifyTextContentOnTable(TestObject objTable, String expectedText, boolean existing){
-		String newXpath = "(" + objTable.findPropertyValue("xpath") + "/tbody/tr/td[normalize-space(text())='" + expectedText + "'])[1]"
+		String newXpath = objTable.findPropertyValue("xpath") + "/tbody/tr/td[normalize-space(text())='" + expectedText + "']"
 		if (existing) WebUI.verifyElementPresent(generateTestObject(newXpath), GlobalVariable.MediumTime)
 		else WebUI.verifyElementNotPresent(generateTestObject(newXpath), GlobalVariable.MediumTime)
 	}
 
 	/******************************************************
-	 * get attribute value on cell
+	 * Get attribute value on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
-	 * @param row: The row number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Table
 	 * @param attributeName: The attribute name to get
 	 * @return The attribute value
 	 */
@@ -446,12 +581,27 @@ public class WebElements {
 		return WebUI.getAttribute(generateTestObject(newXpath), attributeName).trim()
 	}
 
-
 	/******************************************************
-	 * get list Attribute values on cell
+	 * Verify attribute value on cell
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
+	 * @param row: The row index on Table
+	 * @param column: The column index on Tablee
+	 * @param attributeName: The attribute name to verify
+	 * @param expectedValue: The expected attribute value to verify
+	 * @return None
+	 */
+	@Keyword
+	def verifyAttributeValueOnCell(TestObject objTable, int row, int column, String attributeName, String expectedValue){
+		String currentValue = getAttributeValueOnCell(objTable, row, column, attributeName)
+		WebUI.verifyEqual(currentValue, expectedValue)
+	}
+
+	/******************************************************
+	 * Get list Attribute values at column
+	 * @author : thangctran
+	 * @param objTable: The Table object
+	 * @param column: The column index on Table
 	 * @param attributeName: The attribute name to get
 	 * @return The list Attribute values on cell
 	 */
@@ -462,10 +612,10 @@ public class WebElements {
 	}
 
 	/******************************************************
-	 * get list text content values on cell
+	 * Get list text content values at column
 	 * @author : thangctran
 	 * @param objTable: The Table object
-	 * @param column: The column number on Table
+	 * @param column: The column index on Table
 	 * @return The list text content values
 	 */
 	@Keyword
