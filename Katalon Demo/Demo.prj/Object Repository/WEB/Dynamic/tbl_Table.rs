@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_Textbox</name>
+   <name>tbl_Table</name>
    <tag></tag>
-   <elementGuidId>f83dda9d-6f51-4b80-a424-0d3e437db195</elementGuidId>
+   <elementGuidId>510f1102-bdd4-4720-85c1-a50dbfdf5a15</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//td[normalize-space(text())='${label}']/following::td[1]/input[@type='text']</value>
+         <value>//table[@*='${AttributeValue}']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//td[normalize-space(text())='${label}']/following::td[1]/input[@type='text']</value>
+      <value>//table[@*='${AttributeValue}']</value>
    </webElementProperties>
 </WebElementEntity>

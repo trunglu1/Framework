@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>chk_Checkbox</name>
+   <name>cbo_ComboBox</name>
    <tag></tag>
-   <elementGuidId>700f8fdd-16aa-49c0-bfbf-8a31fc561b7b</elementGuidId>
+   <elementGuidId>c80db10f-57e6-4896-95d3-5b7c7c096fc5</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//td[normalize-space(text())='${label}']/following::td[1]/input[@type='checkbox']</value>
+         <value>//*[normalize-space(text())='${label}']/following::*[1]/select</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//td[normalize-space(text())='${label}']/following::td[1]/input[@type='checkbox']</value>
+      <value>//*[normalize-space(text())='${label}']/following::*[1]/select</value>
    </webElementProperties>
 </WebElementEntity>

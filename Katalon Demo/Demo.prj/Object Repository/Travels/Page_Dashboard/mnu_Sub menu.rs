@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//li/a[text()='Hotels']</value>
+         <value>//button[@data-toggle]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -21,7 +21,7 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//li/a[text()='${SubMenu}']</value>
+      <value>//button[@data-toggle]</value>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>

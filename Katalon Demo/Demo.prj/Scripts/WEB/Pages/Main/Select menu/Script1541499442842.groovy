@@ -7,7 +7,7 @@ import internal.GlobalVariable as GlobalVariable
 _listItems = p_MenuItems.split('>')
 
 'Select the first main item'
-WebUI.click(findTestObject('WEB/Common/dynamic_Id', [('id') : _listItems[0]]))
+WebUI.click(findTestObject('WEB/Dynamic/dynamic_Id', [('id') : _listItems[0]]))
 
 'Mouse over on item'
 for (i=1 ; i<_listItems.size(); i++) {

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>dynamic</name>
+   <name>chk_Checkbox</name>
    <tag></tag>
-   <elementGuidId>fa99a011-edab-49c4-8cbd-0473425093a6</elementGuidId>
+   <elementGuidId>700f8fdd-16aa-49c0-bfbf-8a31fc561b7b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//td[normalize-space(text())='${label}']/following::td[1]/*</value>
+         <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='checkbox']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//td[normalize-space(text())='${label}']/following::td[1]/*</value>
+      <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='checkbox']</value>
    </webElementProperties>
 </WebElementEntity>

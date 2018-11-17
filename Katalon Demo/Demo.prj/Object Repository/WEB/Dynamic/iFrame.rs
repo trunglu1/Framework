@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>cbo_ComboBox</name>
+   <name>iFrame</name>
    <tag></tag>
-   <elementGuidId>c80db10f-57e6-4896-95d3-5b7c7c096fc5</elementGuidId>
+   <elementGuidId>b3bece90-4980-42b5-b61f-b767c9735370</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//td[normalize-space(text())='${label}']/following::td[1]/select</value>
+         <value>//frame[${index}]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//td[normalize-space(text())='${label}']/following::td[1]/select</value>
+      <value>//frame[${index}]</value>
    </webElementProperties>
 </WebElementEntity>
