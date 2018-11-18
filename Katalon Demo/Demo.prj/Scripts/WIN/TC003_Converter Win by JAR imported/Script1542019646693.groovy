@@ -25,8 +25,7 @@ if(true){
 	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/btn_Compute'))
 	WinUI.delay(GlobalVariable.ShortTime)
-	currentResult = WinUI.controlGetText(findTestObject('WIN/Converter/txt_Result'))
-	WebUI.verifyEqual(currentResult, '15.240000')
+	WinUI.verifyControlText(findTestObject('WIN/Converter/txt_Result'), '15.240000')
 }
 
 'Verify that convert M to FT'
@@ -37,8 +36,7 @@ if(true){
 	WinUI.delay(GlobalVariable.ShortTime)
 	WinUI.controlClick(findTestObject('WIN/Converter/btn_Compute'))
 	WinUI.delay(GlobalVariable.ShortTime)
-	currentResult = WinUI.controlGetText(findTestObject('WIN/Converter/txt_Result'))
-	WebUI.verifyEqual(currentResult, '82.020997')
+	WinUI.verifyControlText(findTestObject('WIN/Converter/txt_Result'), '82.020997')
 }
 
 'Close application'

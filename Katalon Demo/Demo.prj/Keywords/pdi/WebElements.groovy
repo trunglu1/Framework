@@ -32,6 +32,7 @@ import internal.GlobalVariable
  *	clickSelenium(TestObject to, String clickType='click'): Click on element by Selenium
  *	clickMousePosition(TestObject to, int x=10, int y=10, String clickType='click'): Click Mouse Position
  *	clickJS(TestObject to, String clickType='click'): Click element by java script
+ * executeJavaScript(TestObject to, String method): Execute java script
  * getAttributeByJS(TestObject to, String fullPathNode): Get attribute by java script
  * verifyAttributeByJS(TestObject to, String fullPathNode, String expectedValue): Verify attribute by java script
  *	*********** Date Time ***********
@@ -62,6 +63,8 @@ import internal.GlobalVariable
  *	getAttributeValueOnCell(TestObject objTable, int row, int column, String attributeName): Get attribute value on cell
  *	verifyAttributeValueOnCell(TestObject objTable, int row, int column, String attributeName, String expectedValue): Verify attribute value on cell
  *	getListAttributeValuesAtColumn(TestObject objTable, int column, String attributeName): Get list Attribute values at column
+ * *********** Menu ***********
+ * selectMenu(String menuNodes, String delimiter): Select menu items
  */
 
 public class WebElements {
@@ -101,21 +104,21 @@ public class WebElements {
 	private convertRGBtoHEX(String rgbFormat) {
 		def arrRGB = rgbFormat.replace("(", ",").replace(")", "").split(",");
 		Color c = new Color(Integer.valueOf(arrRGB[1].trim()),Integer.valueOf(arrRGB[2].trim()),Integer.valueOf(arrRGB[3].trim()));
-		String hexFormat = '#' + Integer.toHexString( c.getRGB() & 0x00ffffff );
-		return hexFormat.toLowerCase();
+		String hexFormat = '#' + Integer.toHexString( c.getRGB() & 0x0000FFFFFFF);
+		return hexFormat.replaceFirst('f', '').toLowerCase();
 	}
 
 	/******************************************************
 	 * Verify Element color
 	 * Author: thangctran
 	 * @param to : The object to do
-	 * @param attributeValue : the attribute of element: color; border-left-color; background-color
+	 * @param attributeName : the attribute name of element: color; border-left-color; background-color
 	 * @param expectedColor : the expected color (Ex: #ffffff)
 	 * @return None
 	 */
 	@Keyword
-	def verifyElementColor(TestObject to, String attributeValue, String expectedColor){
-		String currentColor = convertRGBtoHEX(WebUI.getCSSValue(to, attributeValue))
+	def verifyElementColor(TestObject to, String attributeName, String expectedColor){
+		String currentColor = convertRGBtoHEX(WebUI.getCSSValue(to, attributeName))
 		WebUI.verifyEqual(currentColor, expectedColor)
 	}
 
@@ -200,19 +203,33 @@ public class WebElements {
 	}
 
 	/******************************************************
+	 * Execute java script
+	 * @author: thangctran
+	 * @param to: The object to do
+	 * @param method: The method to execute: click(); scrollIntoView()
+	 * @return None
+	 */
+	@Keyword
+	def executeJavaScript(TestObject to, String method){
+		WebElement webElement = WebUI.findWebElement(to)
+		String _textJS = String.format("arguments[0].%s;", method)
+		((JavascriptExecutor) DriverFactory.getWebDriver()).executeScript(_textJS, webElement)
+	}
+
+	/******************************************************
 	 * Get attribute by java script
 	 * @author: thangctran
 	 * @param to: The object to do
-	 * @param fullPathNode: The full path node to get value (options[arguments[1].selectedIndex].text)
+	 * @param fullPathNode: The full path node to get value (form.classList.value)
 	 * @return The attribute value
 	 */
 	@Keyword
 	def getAttributeByJS(TestObject to, String fullPathNode){
 		WebElement webElement = WebUI.findWebElement(to)
-		String _textJS = String.format("return (arguments[0]).%s;", fullPathNode)
+		String _textJS = String.format("return arguments[0].%s;", fullPathNode)
 		return ((JavascriptExecutor) DriverFactory.getWebDriver()).executeScript(_textJS, webElement).toString().trim()
 	}
-	
+
 	/******************************************************
 	 * Verify attribute by java script
 	 * @author: thangctran
@@ -226,7 +243,7 @@ public class WebElements {
 		String currentValue = getAttributeByJS(to, fullPathNode)
 		WebUI.verifyEqual(currentValue, expectedValue)
 	}
-	
+
 	////////////////////////// Date Time /////////////////////////
 
 	/******************************************************
@@ -622,5 +639,30 @@ public class WebElements {
 	def getListTextContentAtColumn(TestObject objTable, int column){
 		String newXpath = objTable.findPropertyValue("xpath") + "/tbody/tr/td[" + column + "]"
 		return getListAttributeValues(generateTestObject(newXpath), 'textContent')
+	}
+
+	////////////////////////// Menu //////////////////////////
+	/******************************************************
+	 * Select menu items
+	 * @author : thangctran
+	 * @param menuNodes: The menu node to select
+	 * @param delimiter: The delimiter text to slipt menu
+	 * @return None
+	 */
+	@Keyword
+	def selectMenu(String menuNodes, String delimiter='>'){
+		def _listItems = menuNodes.split(delimiter)
+		//Select the first main item
+		WebUI.click(findTestObject('WEB/Dynamic/lnk_Link', [('label') : _listItems[0]]))
+		//Mouse over on item
+		int i
+		for (i=1 ; i<_listItems.size(); i++) {
+			WebUI.waitForElementVisible(findTestObject('WEB/Dynamic/lnk_Link', [('label') : _listItems[i]]), GlobalVariable.MediumTime)
+			WebUI.mouseOver(findTestObject('WEB/Dynamic/lnk_Link', [('label') : _listItems[i]]))
+		}
+		//Select on the latest item
+		WebUI.click(findTestObject('WEB/Dynamic/lnk_Link', [('label') : _listItems[i-1]]))
+
+		WebUI.waitForPageLoad(GlobalVariable.LongTime)
 	}
 }

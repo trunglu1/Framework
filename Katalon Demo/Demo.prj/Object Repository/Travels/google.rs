@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>lnk_Link</name>
+   <name>google</name>
    <tag></tag>
-   <elementGuidId>7b97f323-db71-4cb0-9b30-62f64e8e6155</elementGuidId>
+   <elementGuidId>32bca569-9c42-4fa4-a920-2199faf82d20</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//a[starts-with(normalize-space(.),'${label}')]</value>
+         <value>//div[@class='FPdoLc VlcLAe']/*/input[@name='btnK']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//a[starts-with(normalize-space(.),'${label}')]</value>
+      <value>//div[@class='FPdoLc VlcLAe']/*/input[@name='btnK']</value>
    </webElementProperties>
 </WebElementEntity>

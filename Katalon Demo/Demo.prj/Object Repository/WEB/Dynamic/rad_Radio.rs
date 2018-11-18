@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//td/text()[starts-with(normalize-space(.),'${label}')]/preceding-sibling::input[@type='radio'][1]</value>
+         <value>//*/text()[starts-with(normalize-space(.),'${label}')]/preceding-sibling::input[@type='radio'][1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -24,6 +24,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//td/text()[starts-with(normalize-space(.),'${label}')]/preceding-sibling::input[@type='radio'][1]</value>
+      <value>//*/text()[starts-with(normalize-space(.),'${label}')]/preceding-sibling::input[@type='radio'][1]</value>
    </webElementProperties>
 </WebElementEntity>
