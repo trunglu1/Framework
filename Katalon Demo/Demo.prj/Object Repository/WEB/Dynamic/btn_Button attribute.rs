@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>cbo_ComboBox</name>
+   <name>btn_Button attribute</name>
    <tag></tag>
-   <elementGuidId>c80db10f-57e6-4896-95d3-5b7c7c096fc5</elementGuidId>
+   <elementGuidId>02336899-0ba8-4e9f-83cb-33bffbdef02a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[normalize-space(text())='${label}']/following::select[1]</value>
+         <value>//button[@*='${attributeValue}']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[normalize-space(text())='${label}']/following::select[1]</value>
+      <value>//button[@*='${attributeValue}']</value>
    </webElementProperties>
 </WebElementEntity>

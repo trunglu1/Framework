@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='checkbox']</value>
+         <value>//*[normalize-space(text())='${label}']/following::input[1][@type='checkbox']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='checkbox']</value>
+      <value>//*[normalize-space(text())='${label}']/following::input[1][@type='checkbox']</value>
    </webElementProperties>
 </WebElementEntity>

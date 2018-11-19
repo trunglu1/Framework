@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='text' or @type='number']</value>
+         <value>//*[normalize-space(text())='${label}']/following::input[1][@type='text' or @type='number']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[normalize-space(text())='${label}']/following::*[1]/input[@type='text' or @type='number']</value>
+      <value>//*[normalize-space(text())='${label}']/following::input[1][@type='text' or @type='number']</value>
    </webElementProperties>
 </WebElementEntity>

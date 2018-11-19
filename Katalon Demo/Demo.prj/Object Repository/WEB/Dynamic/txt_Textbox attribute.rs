@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>tbl_Table</name>
+   <name>txt_Textbox attribute</name>
    <tag></tag>
-   <elementGuidId>510f1102-bdd4-4720-85c1-a50dbfdf5a15</elementGuidId>
+   <elementGuidId>c276047a-623e-4660-8321-ca6b1b677c34</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//table[@*='${AttributeValue}']</value>
+         <value>//*[@type='text' or @type='number' or @type='search'][@*='${attributeValue}']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>
@@ -17,6 +17,6 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//table[@*='${AttributeValue}']</value>
+      <value>//*[@type='text' or @type='number' or @type='search'][@*='${attributeValue}']</value>
    </webElementProperties>
 </WebElementEntity>
