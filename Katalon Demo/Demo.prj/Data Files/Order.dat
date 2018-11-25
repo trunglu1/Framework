@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>Order</name>
+   <tag></tag>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>5aff60c1-5e01-4497-93ec-9d47f445d9b6</dataFileGUID>
+   <dataSourceUrl>jdbc:sqlserver://localhost\SQLEXPRESS:1433;databaseName=TSQL2012</dataSourceUrl>
+   <driver>DBData</driver>
+   <isInternalPath>false</isInternalPath>
+   <password>S21zQDIwMTg=</password>
+   <query>select empid,shipaddress,freight from Sales.Orders where custid = 70</query>
+   <secureUserAccount>true</secureUserAccount>
+   <sheetName></sheetName>
+   <user>test</user>
+   <usingGlobalDBSetting>true</usingGlobalDBSetting>
+</DataFileEntity>

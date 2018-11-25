@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[@id = 'login-password']</value>
+         <value>//*[@id = 'login-password' and @ref_element = 'Object Repository/WEB/Login/iframe']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>BASIC</selectorMethod>

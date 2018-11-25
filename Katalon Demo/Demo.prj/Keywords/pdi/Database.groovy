@@ -31,7 +31,7 @@ import java.sql.Driver;
 public class Database {
 	//Declare Database connection properties
 	private static Connection connection = null;
-	private String db_ServerName 	= ".\\SQLEXPRESS"
+	private String db_ServerName 	= "localhost\\SQLEXPRESS"
 	private String db_Port			= '1433'
 	private String db_Name			= 'TSQL2012'
 	private String db_Username		= 'test'
@@ -54,7 +54,7 @@ public class Database {
 		//		Class.forName("com.mysql.jdbc.Driver");
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
 		closeConnection();
-		String conString = String.format("jdbc:sqlserver://%s:%s;databaseName=%s;user=%s;password=%s", db_ServerName, db_Port, db_Name, db_Username, db_Password)
+		String conString = String.format("jdbc:sqlserver:%s:%s;databaseName=%s;user=%s;password=%s", db_ServerName, db_Port, db_Name, db_Username, db_Password)
 		connection = DriverManager.getConnection(conString);
 		return connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	}
