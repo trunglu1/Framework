@@ -1,0 +1,46 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+TS-Dropdown,Firefox 65.0,,2019-02-25 22:10:37,2019-02-25 22:12:02,1m - 25.127s,PASSED
+,,,,,,
+Test Cases/Dropdown AngularJS,Firefox 65.0,,2019-02-25 22:10:37,2019-02-25 22:12:02,1m - 24.924s,PASSED
+"openBrowser(""https://material.angularjs.org/latest/demo/select"")",Firefox 65.0,Open AngularJS page that tagname of dropdown is md-select,2019-02-25 22:10:38,2019-02-25 22:10:46,8.348s,PASSED
+maximizeWindow(),Firefox 65.0,,2019-02-25 22:10:46,2019-02-25 22:10:46,0.022s,PASSED
+"kms.AngularJS.selectAllOption(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), true)",Firefox 65.0,Select All items: Select Header section,2019-02-25 22:10:46,2019-02-25 22:10:52,5.602s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Corn, Onions, Kale, Arugula, Peas, Zucchini"")",Firefox 65.0,,2019-02-25 22:10:52,2019-02-25 22:10:52,0.049s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""2-5"", true)",Firefox 65.0,Select Checkbox items by Index from 2 to 5: Option Groups section,2019-02-25 22:10:52,2019-02-25 22:10:56,4.463s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Ground Beef, Bacon, Mushrooms"")",Firefox 65.0,,2019-02-25 22:10:56,2019-02-25 22:10:56,0.066s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""3,4"", false)",Firefox 65.0,Deselect Checkbox items by Index : 3 and 4: Option Groups section,2019-02-25 22:10:56,2019-02-25 22:11:00,3.863s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Mushrooms"")",Firefox 65.0,,2019-02-25 22:11:00,2019-02-25 22:11:00,0.045s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), 5, false)",Firefox 65.0,Deselect Checkbox item by Index at 5: Option Groups section,2019-02-25 22:11:00,2019-02-25 22:11:04,3.610s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage"")",Firefox 65.0,,2019-02-25 22:11:04,2019-02-25 22:11:04,0.060s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Kale,Peas"", false)",Firefox 65.0,"Deselect Checkbox items by Name: Kale,Peas: Select Header section",2019-02-25 22:11:04,2019-02-25 22:11:08,3.910s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Corn, Onions, Arugula, Zucchini"")",Firefox 65.0,,2019-02-25 22:11:08,2019-02-25 22:11:08,0.044s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_State""), 4)",Firefox 65.0,Select items by Index at 4: Basic Usage/Account Preferences section,2019-02-25 22:11:08,2019-02-25 22:11:11,3.394s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_State""), ""AZ"")",Firefox 65.0,,2019-02-25 22:11:11,2019-02-25 22:11:11,0.055s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_Armor""), ""Plate"")",Firefox 65.0,Select items by Name: Plate: Basic Usage/Battle Preferences section,2019-02-25 22:11:11,2019-02-25 22:11:15,3.380s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_Armor""), ""Plate"")",Firefox 65.0,,2019-02-25 22:11:15,2019-02-25 22:11:15,0.055s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_SelectedItem""), ""Item 2"")",Firefox 65.0,Select items by Name: Item 2: Selected Text section,2019-02-25 22:11:15,2019-02-25 22:11:18,3.422s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_SelectedItem""), ""You have selected: Item 2"")",Firefox 65.0,,2019-02-25 22:11:18,2019-02-25 22:11:18,0.044s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Fred Jones"")",Firefox 65.0,Select items by Name: Fred Jones: Options With Async Search section,2019-02-25 22:11:18,2019-02-25 22:11:21,3.366s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Fred Jones"")",Firefox 65.0,,2019-02-25 22:11:21,2019-02-25 22:11:22,0.049s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_LoadingIndicator""), 2)",Firefox 65.0,Select items by Index at 2: Options With Async Search section,2019-02-25 22:11:22,2019-02-25 22:11:25,3.341s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Shaggy Rodgers"")",Firefox 65.0,,2019-02-25 22:11:25,2019-02-25 22:11:25,0.056s,PASSED
+"kms.AngularJS.selectSubOptionByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Meats"", ""Bacon"", true)",Firefox 65.0,Select Checkbox items by Name: Bacon under Meats: Option Groups section,2019-02-25 22:11:25,2019-02-25 22:11:29,3.615s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Bacon"")",Firefox 65.0,,2019-02-25 22:11:29,2019-02-25 22:11:29,0.051s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Md-Option/cbo_State""), ""AK"", false)",Firefox 65.0,Verify AK item is disabled: Basic Usage/Account Preferences section,2019-02-25 22:11:29,2019-02-25 22:11:31,2.894s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Md-Option/cbo_State""), ""AZ,CO"", true)",Firefox 65.0,"Verify AZ,CO items are enabled: Basic Usage/Account Preferences section",2019-02-25 22:11:31,2019-02-25 22:11:34,2.881s,PASSED
+"kms.AngularJS.selectSubOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Veggies"", ""2,4"", true)",Firefox 65.0,Select Checkbox items by Index: 2 and 4 under Veggies: Option Groups section,2019-02-25 22:11:34,2019-02-25 22:11:38,3.904s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Bacon, Onion, Green Olives"")",Firefox 65.0,,2019-02-25 22:11:38,2019-02-25 22:11:38,0.042s,PASSED
+"navigateToUrl(""https://material.angular.io/components/select/overview"")",Firefox 65.0,Open Other AngularJS page that tagname of dropdown is mat-select,2019-02-25 22:11:38,2019-02-25 22:11:40,2.142s,PASSED
+"click(findTestObject(""Mat-Option/lnk_Examples""))",Firefox 65.0,,2019-02-25 22:11:40,2019-02-25 22:11:41,0.620s,PASSED
+maximizeWindow(),Firefox 65.0,,2019-02-25 22:11:41,2019-02-25 22:11:41,0.008s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Mat-Option/cbo_FavoriteAnimal""), 3)",Firefox 65.0,Select items by Index at 3: Select with form field features section,2019-02-25 22:11:41,2019-02-25 22:11:45,3.506s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_FavoriteAnimal""), ""Cat"")",Firefox 65.0,,2019-02-25 22:11:45,2019-02-25 22:11:45,0.055s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Mat-Option/cbo_DisabledSelect""), ""Option 2 (disabled)"", false)",Firefox 65.0,Verify Option 2 item is disabled: Disabled select section,2019-02-25 22:11:45,2019-02-25 22:11:48,2.899s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Mat-Option/cbo_DisabledSelect""), ""Option 1,Option 3"", true)",Firefox 65.0,,2019-02-25 22:11:48,2019-02-25 22:11:51,2.982s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Mat-Option/cbo_MultipleSelection""), ""Mushroom,Tomato"", true)",Firefox 65.0,Select Checkbox items by Name: Select with multiple selection section,2019-02-25 22:11:51,2019-02-25 22:11:55,3.999s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_MultipleSelection""), ""Mushroom, Tomato"")",Firefox 65.0,,2019-02-25 22:11:55,2019-02-25 22:11:55,0.058s,PASSED
+"kms.AngularJS.selectSubOptionByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Grass"", ""Oddish"", true)",Firefox 65.0,Select items by Name: Oddish under Grass: Select with option groups section,2019-02-25 22:11:55,2019-02-25 22:11:58,3.438s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Oddish"")",Firefox 65.0,,2019-02-25 22:11:58,2019-02-25 22:11:58,0.054s,PASSED
+"kms.AngularJS.selectSubOptionByIndex(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Psychic"", 2, true)",Firefox 65.0,Select items by Index: at 2 under Psychic: Select with option groups section,2019-02-25 22:11:58,2019-02-25 22:12:01,3.436s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Mewtwo"")",Firefox 65.0,,2019-02-25 22:12:01,2019-02-25 22:12:02,0.067s,PASSED
+closeBrowser(),Firefox 65.0,Close Browser,2019-02-25 22:12:02,2019-02-25 22:12:02,0.750s,PASSED

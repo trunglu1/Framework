@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="TS-Dropdown" time="77" tests="1" failures="0" errors="0">
+   <testsuite name="TS-Dropdown" tests="1" failures="0" errors="0" time="77" timestamp="2019-02-25 22:09:18" hostname="thangctran - 1D48SQ2.kms.com.vn" id="Test Suites/TS-Dropdown">
+      <properties>
+         <property name="deviceName" value=""/>
+         <property name="devicePlatform" value=""/>
+         <property name="logFolder" value="C:\\Users\\thangctran\\Katalon Studio\\DropdownAngularJS\\Reports\\TS-Dropdown\\20190225_220914"/>
+         <property name="logFiles" value="C:\\Users\\thangctran\\Katalon Studio\\DropdownAngularJS\\Reports\\TS-Dropdown\\20190225_220914\\execution0.log"/>
+         <property name="attachments" value=""/>
+         <property name="hostName" value="thangctran - 1D48SQ2.kms.com.vn"/>
+         <property name="os" value="Windows 10 64bit"/>
+         <property name="katalonVersion" value="5.10.1.1"/>
+         <property name="browser" value="Chrome 72.0.3626.109"/>
+         <property name="hostAddress" value="192.168.1.2"/>
+         <property name="sessionId" value="bc3ce2fb4a0717dc6b9bb5d5387bd9a9"/>
+         <property name="seleniumVersion" value="3.7.1"/>
+         <property name="proxyInformation" value="ProxyInformation{proxyOption=NO_PROXY, proxyServerType=HTTP, password=, proxyServerAddress=, proxyServerPort=0}"/>
+         <property name="platform" value="Windows 10"/>
+      </properties>
+      <testcase name="Test Cases/Dropdown AngularJS" classname="Test Cases/Dropdown AngularJS" status="PASSED">
+         <system-out><![CDATA[2019-02-25 22:09:18 - [TEST_CASE][PASSED] - Test Cases/Dropdown AngularJS: Test Cases/Dropdown AngularJS
+
+2019-02-25 22:09:18 - [TEST_STEP][PASSED] - openBrowser("https://material.angularjs.org/latest/demo/select"): Browser is opened with url: 'https://material.angularjs.org/latest/demo/select'
+
+2019-02-25 22:09:18 - [MESSAGE][INFO] - Starting 'Chrome' driver
+
+2019-02-25 22:09:18 - [MESSAGE][INFO] - Action delay is set to 0 seconds
+
+2019-02-25 22:09:24 - [MESSAGE][PASSED] - Browser is opened with url: 'https://material.angularjs.org/latest/demo/select'
+
+2019-02-25 22:09:24 - [TEST_STEP][PASSED] - maximizeWindow(): Current window maximized
+
+2019-02-25 22:09:25 - [MESSAGE][PASSED] - Current window maximized
+
+2019-02-25 22:09:25 - [TEST_STEP][PASSED] - kms.AngularJS.selectAllOption(findTestObject("Md-Option/cbo_CheckboxOptionHeader"), true): Dropdown has been selected
+
+2019-02-25 22:09:25 - [MESSAGE][INFO] - Select All Items on Dropdown
+
+2019-02-25 22:09:28 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:28 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionHeader"), "Corn, Onions, Kale, Arugula, Peas, Zucchini"): Items [Corn, Onions, Kale, Arugula, Peas, Zucchini] are selected
+
+2019-02-25 22:09:28 - [MESSAGE][PASSED] - Items [Corn, Onions, Kale, Arugula, Peas, Zucchini] are selected
+
+2019-02-25 22:09:28 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "2-5", true): Dropdown has been selected
+
+2019-02-25 22:09:28 - [MESSAGE][INFO] - Select Items on Dropdown by Index: [2, 3, 4, 5]
+
+2019-02-25 22:09:32 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:32 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Sausage, Ground Beef, Bacon, Mushrooms"): Items [Sausage, Ground Beef, Bacon, Mushrooms] are selected
+
+2019-02-25 22:09:32 - [MESSAGE][PASSED] - Items [Sausage, Ground Beef, Bacon, Mushrooms] are selected
+
+2019-02-25 22:09:32 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "3,4", false): Dropdown has been selected
+
+2019-02-25 22:09:32 - [MESSAGE][INFO] - Deselect Items on Dropdown by Index: [3, 4]
+
+2019-02-25 22:09:36 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:36 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Sausage, Mushrooms"): Items [Sausage, Mushrooms] are selected
+
+2019-02-25 22:09:36 - [MESSAGE][PASSED] - Items [Sausage, Mushrooms] are selected
+
+2019-02-25 22:09:36 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), 5, false): Dropdown has been selected
+
+2019-02-25 22:09:36 - [MESSAGE][INFO] - Deselect Items on Dropdown by Index: [5]
+
+2019-02-25 22:09:39 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:39 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Sausage"): Items [Sausage] are selected
+
+2019-02-25 22:09:39 - [MESSAGE][PASSED] - Items [Sausage] are selected
+
+2019-02-25 22:09:39 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByName(findTestObject("Md-Option/cbo_CheckboxOptionHeader"), "Kale,Peas", false): Dropdown has been selected
+
+2019-02-25 22:09:39 - [MESSAGE][INFO] - Deselect Items on Dropdown by Name: [Kale,Peas]
+
+2019-02-25 22:09:43 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:43 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionHeader"), "Corn, Onions, Arugula, Zucchini"): Items [Corn, Onions, Arugula, Zucchini] are selected
+
+2019-02-25 22:09:43 - [MESSAGE][PASSED] - Items [Corn, Onions, Arugula, Zucchini] are selected
+
+2019-02-25 22:09:43 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Md-Option/cbo_State"), 4): Dropdown has been selected
+
+2019-02-25 22:09:43 - [MESSAGE][INFO] - Select Items on Dropdown by Index: [4]
+
+2019-02-25 22:09:46 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:46 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_State"), "AZ"): Items [AZ] are selected
+
+2019-02-25 22:09:46 - [MESSAGE][PASSED] - Items [AZ] are selected
+
+2019-02-25 22:09:46 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByName(findTestObject("Md-Option/cbo_Armor"), "Plate"): Dropdown has been selected
+
+2019-02-25 22:09:46 - [MESSAGE][INFO] - Select Items on Dropdown by Name: [Plate]
+
+2019-02-25 22:09:49 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:49 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_Armor"), "Plate"): Items [Plate] are selected
+
+2019-02-25 22:09:49 - [MESSAGE][PASSED] - Items [Plate] are selected
+
+2019-02-25 22:09:49 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByName(findTestObject("Md-Option/cbo_SelectedItem"), "Item 2"): Dropdown has been selected
+
+2019-02-25 22:09:49 - [MESSAGE][INFO] - Select Items on Dropdown by Name: [Item 2]
+
+2019-02-25 22:09:53 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:53 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_SelectedItem"), "You have selected: Item 2"): Items [You have selected: Item 2] are selected
+
+2019-02-25 22:09:53 - [MESSAGE][PASSED] - Items [You have selected: Item 2] are selected
+
+2019-02-25 22:09:53 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByName(findTestObject("Md-Option/cbo_LoadingIndicator"), "Fred Jones"): Dropdown has been selected
+
+2019-02-25 22:09:53 - [MESSAGE][INFO] - Select Items on Dropdown by Name: [Fred Jones]
+
+2019-02-25 22:09:56 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:09:56 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_LoadingIndicator"), "Fred Jones"): Items [Fred Jones] are selected
+
+2019-02-25 22:09:56 - [MESSAGE][PASSED] - Items [Fred Jones] are selected
+
+2019-02-25 22:09:56 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Md-Option/cbo_LoadingIndicator"), 2): Dropdown has been selected
+
+2019-02-25 22:09:56 - [MESSAGE][INFO] - Select Items on Dropdown by Index: [2]
+
+2019-02-25 22:10:00 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:00 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_LoadingIndicator"), "Shaggy Rodgers"): Items [Shaggy Rodgers] are selected
+
+2019-02-25 22:10:00 - [MESSAGE][PASSED] - Items [Shaggy Rodgers] are selected
+
+2019-02-25 22:10:00 - [TEST_STEP][PASSED] - kms.AngularJS.selectSubOptionByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Meats", "Bacon", true): Dropdown has been selected
+
+2019-02-25 22:10:00 - [MESSAGE][INFO] - Select Sub Items on Dropdown by Name: [Bacon]
+
+2019-02-25 22:10:03 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:03 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Sausage, Bacon"): Items [Sausage, Bacon] are selected
+
+2019-02-25 22:10:03 - [MESSAGE][PASSED] - Items [Sausage, Bacon] are selected
+
+2019-02-25 22:10:03 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionItemsStatus(findTestObject("Md-Option/cbo_State"), "AK", false): Items [AK] are disabled
+
+2019-02-25 22:10:05 - [MESSAGE][INFO] - Status: true
+
+2019-02-25 22:10:06 - [MESSAGE][PASSED] - Items [AK] are disabled
+
+2019-02-25 22:10:06 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionItemsStatus(findTestObject("Md-Option/cbo_State"), "AZ,CO", true): Items [AZ,CO] are anabled
+
+2019-02-25 22:10:08 - [MESSAGE][INFO] - Status: false
+
+2019-02-25 22:10:08 - [MESSAGE][INFO] - Status: false
+
+2019-02-25 22:10:09 - [MESSAGE][PASSED] - Items [AZ,CO] are anabled
+
+2019-02-25 22:10:09 - [TEST_STEP][PASSED] - kms.AngularJS.selectSubOptionByIndex(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Veggies", "2,4", true): Dropdown has been selected
+
+2019-02-25 22:10:09 - [MESSAGE][INFO] - Select Sub Items on Dropdown by Index: [2, 4]
+
+2019-02-25 22:10:13 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:13 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Md-Option/cbo_CheckboxOptionGroup"), "Sausage, Bacon, Onion, Green Olives"): Items [Sausage, Bacon, Onion, Green Olives] are selected
+
+2019-02-25 22:10:13 - [MESSAGE][PASSED] - Items [Sausage, Bacon, Onion, Green Olives] are selected
+
+2019-02-25 22:10:13 - [TEST_STEP][PASSED] - navigateToUrl("https://material.angular.io/components/select/overview"): Navigate to 'https://material.angular.io/components/select/overview' successfully
+
+2019-02-25 22:10:14 - [MESSAGE][PASSED] - Navigate to 'https://material.angular.io/components/select/overview' successfully
+
+2019-02-25 22:10:14 - [TEST_STEP][PASSED] - click(findTestObject("Mat-Option/lnk_Examples")): Object: 'Object Repository/Mat-Option/lnk_Examples' is clicked on
+
+2019-02-25 22:10:15 - [MESSAGE][PASSED] - Object: 'Object Repository/Mat-Option/lnk_Examples' is clicked on
+
+2019-02-25 22:10:15 - [TEST_STEP][PASSED] - maximizeWindow(): Current window maximized
+
+2019-02-25 22:10:15 - [MESSAGE][PASSED] - Current window maximized
+
+2019-02-25 22:10:15 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByIndex(findTestObject("Mat-Option/cbo_FavoriteAnimal"), 3): Dropdown has been selected
+
+2019-02-25 22:10:15 - [MESSAGE][INFO] - Select Items on Dropdown by Index: [3]
+
+2019-02-25 22:10:18 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:18 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Mat-Option/cbo_FavoriteAnimal"), "Cat"): Items [Cat] are selected
+
+2019-02-25 22:10:18 - [MESSAGE][PASSED] - Items [Cat] are selected
+
+2019-02-25 22:10:18 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionItemsStatus(findTestObject("Mat-Option/cbo_DisabledSelect"), "Option 2 (disabled)", false): Items [Option 2 (disabled)] are disabled
+
+2019-02-25 22:10:20 - [MESSAGE][INFO] - Status: true
+
+2019-02-25 22:10:21 - [MESSAGE][PASSED] - Items [Option 2 (disabled)] are disabled
+
+2019-02-25 22:10:21 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionItemsStatus(findTestObject("Mat-Option/cbo_DisabledSelect"), "Option 1,Option 3", true): Items [Option 1,Option 3] are anabled
+
+2019-02-25 22:10:23 - [MESSAGE][INFO] - Status: false
+
+2019-02-25 22:10:23 - [MESSAGE][INFO] - Status: false
+
+2019-02-25 22:10:24 - [MESSAGE][PASSED] - Items [Option 1,Option 3] are anabled
+
+2019-02-25 22:10:24 - [TEST_STEP][PASSED] - kms.AngularJS.selectOptionByName(findTestObject("Mat-Option/cbo_MultipleSelection"), "Mushroom,Tomato", true): Dropdown has been selected
+
+2019-02-25 22:10:24 - [MESSAGE][INFO] - Select Items on Dropdown by Name: [Mushroom,Tomato]
+
+2019-02-25 22:10:27 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:27 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Mat-Option/cbo_MultipleSelection"), "Mushroom, Tomato"): Items [Mushroom, Tomato] are selected
+
+2019-02-25 22:10:28 - [MESSAGE][PASSED] - Items [Mushroom, Tomato] are selected
+
+2019-02-25 22:10:28 - [TEST_STEP][PASSED] - kms.AngularJS.selectSubOptionByName(findTestObject("Mat-Option/cbo_OptionGroup"), "Grass", "Oddish", true): Dropdown has been selected
+
+2019-02-25 22:10:28 - [MESSAGE][INFO] - Select Sub Items on Dropdown by Name: [Oddish]
+
+2019-02-25 22:10:31 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:31 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Mat-Option/cbo_OptionGroup"), "Oddish"): Items [Oddish] are selected
+
+2019-02-25 22:10:31 - [MESSAGE][PASSED] - Items [Oddish] are selected
+
+2019-02-25 22:10:31 - [TEST_STEP][PASSED] - kms.AngularJS.selectSubOptionByIndex(findTestObject("Mat-Option/cbo_OptionGroup"), "Psychic", 2, true): Dropdown has been selected
+
+2019-02-25 22:10:31 - [MESSAGE][INFO] - Select Sub Items on Dropdown by Index: [2]
+
+2019-02-25 22:10:34 - [MESSAGE][PASSED] - Dropdown has been selected
+
+2019-02-25 22:10:34 - [TEST_STEP][PASSED] - kms.AngularJS.verifyOptionSelectedByName(findTestObject("Mat-Option/cbo_OptionGroup"), "Mewtwo"): Items [Mewtwo] are selected
+
+2019-02-25 22:10:34 - [MESSAGE][PASSED] - Items [Mewtwo] are selected
+
+2019-02-25 22:10:34 - [TEST_STEP][PASSED] - closeBrowser(): Browser is closed
+
+2019-02-25 22:10:35 - [MESSAGE][PASSED] - Browser is closed]]></system-out>
+         <system-err><![CDATA[]]></system-err>
+      </testcase>
+      <system-out><![CDATA[2019-02-25 22:09:18 - [TEST_SUITE][PASSED] - TS-Dropdown: Test Cases/Dropdown AngularJS]]></system-out>
+      <system-err><![CDATA[]]></system-err>
+   </testsuite>
+</testsuites>

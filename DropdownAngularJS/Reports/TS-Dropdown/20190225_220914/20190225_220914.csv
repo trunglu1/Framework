@@ -1,0 +1,46 @@
+Suite/Test/Step Name,Browser,Description,Start time,End time,Duration,Status
+TS-Dropdown,Chrome 72.0.3626.109,,2019-02-25 22:09:18,2019-02-25 22:10:35,1m - 17.226s,PASSED
+,,,,,,
+Test Cases/Dropdown AngularJS,Chrome 72.0.3626.109,,2019-02-25 22:09:18,2019-02-25 22:10:35,1m - 17.027s,PASSED
+"openBrowser(""https://material.angularjs.org/latest/demo/select"")",Chrome 72.0.3626.109,Open AngularJS page that tagname of dropdown is md-select,2019-02-25 22:09:18,2019-02-25 22:09:24,5.316s,PASSED
+maximizeWindow(),Chrome 72.0.3626.109,,2019-02-25 22:09:24,2019-02-25 22:09:25,1.135s,PASSED
+"kms.AngularJS.selectAllOption(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), true)",Chrome 72.0.3626.109,Select All items: Select Header section,2019-02-25 22:09:25,2019-02-25 22:09:28,3.599s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Corn, Onions, Kale, Arugula, Peas, Zucchini"")",Chrome 72.0.3626.109,,2019-02-25 22:09:28,2019-02-25 22:09:28,0.062s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""2-5"", true)",Chrome 72.0.3626.109,Select Checkbox items by Index from 2 to 5: Option Groups section,2019-02-25 22:09:28,2019-02-25 22:09:32,3.754s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Ground Beef, Bacon, Mushrooms"")",Chrome 72.0.3626.109,,2019-02-25 22:09:32,2019-02-25 22:09:32,0.068s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""3,4"", false)",Chrome 72.0.3626.109,Deselect Checkbox items by Index : 3 and 4: Option Groups section,2019-02-25 22:09:32,2019-02-25 22:09:36,3.478s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Mushrooms"")",Chrome 72.0.3626.109,,2019-02-25 22:09:36,2019-02-25 22:09:36,0.077s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), 5, false)",Chrome 72.0.3626.109,Deselect Checkbox item by Index at 5: Option Groups section,2019-02-25 22:09:36,2019-02-25 22:09:39,3.357s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage"")",Chrome 72.0.3626.109,,2019-02-25 22:09:39,2019-02-25 22:09:39,0.066s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Kale,Peas"", false)",Chrome 72.0.3626.109,"Deselect Checkbox items by Name: Kale,Peas: Select Header section",2019-02-25 22:09:39,2019-02-25 22:09:43,3.487s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionHeader""), ""Corn, Onions, Arugula, Zucchini"")",Chrome 72.0.3626.109,,2019-02-25 22:09:43,2019-02-25 22:09:43,0.064s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_State""), 4)",Chrome 72.0.3626.109,Select items by Index at 4: Basic Usage/Account Preferences section,2019-02-25 22:09:43,2019-02-25 22:09:46,3.330s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_State""), ""AZ"")",Chrome 72.0.3626.109,,2019-02-25 22:09:46,2019-02-25 22:09:46,0.072s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_Armor""), ""Plate"")",Chrome 72.0.3626.109,Select items by Name: Plate: Basic Usage/Battle Preferences section,2019-02-25 22:09:46,2019-02-25 22:09:49,3.312s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_Armor""), ""Plate"")",Chrome 72.0.3626.109,,2019-02-25 22:09:49,2019-02-25 22:09:49,0.072s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_SelectedItem""), ""Item 2"")",Chrome 72.0.3626.109,Select items by Name: Item 2: Selected Text section,2019-02-25 22:09:49,2019-02-25 22:09:53,3.383s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_SelectedItem""), ""You have selected: Item 2"")",Chrome 72.0.3626.109,,2019-02-25 22:09:53,2019-02-25 22:09:53,0.074s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Fred Jones"")",Chrome 72.0.3626.109,Select items by Name: Fred Jones: Options With Async Search section,2019-02-25 22:09:53,2019-02-25 22:09:56,3.385s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Fred Jones"")",Chrome 72.0.3626.109,,2019-02-25 22:09:56,2019-02-25 22:09:56,0.072s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Md-Option/cbo_LoadingIndicator""), 2)",Chrome 72.0.3626.109,Select items by Index at 2: Options With Async Search section,2019-02-25 22:09:56,2019-02-25 22:10:00,3.335s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_LoadingIndicator""), ""Shaggy Rodgers"")",Chrome 72.0.3626.109,,2019-02-25 22:10:00,2019-02-25 22:10:00,0.069s,PASSED
+"kms.AngularJS.selectSubOptionByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Meats"", ""Bacon"", true)",Chrome 72.0.3626.109,Select Checkbox items by Name: Bacon under Meats: Option Groups section,2019-02-25 22:10:00,2019-02-25 22:10:03,3.408s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Bacon"")",Chrome 72.0.3626.109,,2019-02-25 22:10:03,2019-02-25 22:10:03,0.071s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Md-Option/cbo_State""), ""AK"", false)",Chrome 72.0.3626.109,Verify AK item is disabled: Basic Usage/Account Preferences section,2019-02-25 22:10:03,2019-02-25 22:10:06,2.901s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Md-Option/cbo_State""), ""AZ,CO"", true)",Chrome 72.0.3626.109,"Verify AZ,CO items are enabled: Basic Usage/Account Preferences section",2019-02-25 22:10:06,2019-02-25 22:10:09,2.860s,PASSED
+"kms.AngularJS.selectSubOptionByIndex(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Veggies"", ""2,4"", true)",Chrome 72.0.3626.109,Select Checkbox items by Index: 2 and 4 under Veggies: Option Groups section,2019-02-25 22:10:09,2019-02-25 22:10:13,3.526s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Md-Option/cbo_CheckboxOptionGroup""), ""Sausage, Bacon, Onion, Green Olives"")",Chrome 72.0.3626.109,,2019-02-25 22:10:13,2019-02-25 22:10:13,0.078s,PASSED
+"navigateToUrl(""https://material.angular.io/components/select/overview"")",Chrome 72.0.3626.109,Open Other AngularJS page that tagname of dropdown is mat-select,2019-02-25 22:10:13,2019-02-25 22:10:14,1.699s,PASSED
+"click(findTestObject(""Mat-Option/lnk_Examples""))",Chrome 72.0.3626.109,,2019-02-25 22:10:14,2019-02-25 22:10:15,0.473s,PASSED
+maximizeWindow(),Chrome 72.0.3626.109,,2019-02-25 22:10:15,2019-02-25 22:10:15,0.006s,PASSED
+"kms.AngularJS.selectOptionByIndex(findTestObject(""Mat-Option/cbo_FavoriteAnimal""), 3)",Chrome 72.0.3626.109,Select items by Index at 3: Select with form field features section,2019-02-25 22:10:15,2019-02-25 22:10:18,3.389s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_FavoriteAnimal""), ""Cat"")",Chrome 72.0.3626.109,,2019-02-25 22:10:18,2019-02-25 22:10:18,0.067s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Mat-Option/cbo_DisabledSelect""), ""Option 2 (disabled)"", false)",Chrome 72.0.3626.109,Verify Option 2 item is disabled: Disabled select section,2019-02-25 22:10:18,2019-02-25 22:10:21,2.838s,PASSED
+"kms.AngularJS.verifyOptionItemsStatus(findTestObject(""Mat-Option/cbo_DisabledSelect""), ""Option 1,Option 3"", true)",Chrome 72.0.3626.109,,2019-02-25 22:10:21,2019-02-25 22:10:24,2.868s,PASSED
+"kms.AngularJS.selectOptionByName(findTestObject(""Mat-Option/cbo_MultipleSelection""), ""Mushroom,Tomato"", true)",Chrome 72.0.3626.109,Select Checkbox items by Name: Select with multiple selection section,2019-02-25 22:10:24,2019-02-25 22:10:27,3.498s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_MultipleSelection""), ""Mushroom, Tomato"")",Chrome 72.0.3626.109,,2019-02-25 22:10:27,2019-02-25 22:10:28,0.071s,PASSED
+"kms.AngularJS.selectSubOptionByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Grass"", ""Oddish"", true)",Chrome 72.0.3626.109,Select items by Name: Oddish under Grass: Select with option groups section,2019-02-25 22:10:28,2019-02-25 22:10:31,3.309s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Oddish"")",Chrome 72.0.3626.109,,2019-02-25 22:10:31,2019-02-25 22:10:31,0.064s,PASSED
+"kms.AngularJS.selectSubOptionByIndex(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Psychic"", 2, true)",Chrome 72.0.3626.109,Select items by Index: at 2 under Psychic: Select with option groups section,2019-02-25 22:10:31,2019-02-25 22:10:34,3.282s,PASSED
+"kms.AngularJS.verifyOptionSelectedByName(findTestObject(""Mat-Option/cbo_OptionGroup""), ""Mewtwo"")",Chrome 72.0.3626.109,,2019-02-25 22:10:34,2019-02-25 22:10:34,0.073s,PASSED
+closeBrowser(),Chrome 72.0.3626.109,Close Browser,2019-02-25 22:10:34,2019-02-25 22:10:35,0.656s,PASSED

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>cbo_CheckboxOptionHeader</name>
+   <tag></tag>
+   <elementGuidId>12b06b43-3cd9-45c3-b9be-a284283dda9f</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//md-select[@ng-model='selectedVegetables']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>BASIC</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//md-select[@ng-model='selectedVegetables']</value>
+   </webElementProperties>
+</WebElementEntity>
