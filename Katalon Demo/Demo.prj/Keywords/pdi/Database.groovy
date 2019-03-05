@@ -7,9 +7,14 @@ import com.kms.katalon.core.annotation.Keyword
 import java.sql.Connection
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import internal.GlobalVariable
-
+import com.kms.katalon.core.testdata.TestData
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import java.sql.PreparedStatement;
 import java.sql.Driver;
+import com.kms.katalon.core.configuration.RunConfiguration
+import org.apache.commons.io.FileUtils
+import org.apache.commons.lang.StringUtils
+import org.apache.commons.lang3.ArrayUtils
 
 /********************************* HEADER PART **********************************
  *
@@ -65,7 +70,7 @@ public class Database {
 	 * @return A reference to returned data collection, an instance of java.sql.ResultSet
 	 */
 	@Keyword
-	def executeQuery(String queryString) {
+	def executeQuery1(String queryString) {
 		Statement stm = initStatement();
 		ResultSet rs = stm.executeQuery(queryString)
 		return rs
@@ -77,7 +82,7 @@ public class Database {
 	 * @return Total row number
 	 */
 	@Keyword
-	def getRowCount(ResultSet rs){
+	def getRowCount1(ResultSet rs){
 		rs.last()
 		int returnRow = rs.getRow()
 		return returnRow
@@ -91,7 +96,7 @@ public class Database {
 	 * @return The string value of the column label at row index
 	 */
 	@Keyword
-	def getCellValue(ResultSet rs, String columnLabel, int rowIndex){
+	def getCellValue1(ResultSet rs, String columnLabel, int rowIndex){
 		//Move the cursor to rowIndex
 		rs.absolute(rowIndex)
 
@@ -108,7 +113,7 @@ public class Database {
 	 */
 	@Keyword
 	def verifyCellValue(ResultSet rs, String columnLabel, int rowIndex, String expectedValue){
-		String currentValue = getCellValue(rs, columnLabel, rowIndex)
+		String currentValue = getCellValue1(rs, columnLabel, rowIndex)
 		WebUI.verifyEqual(currentValue, expectedValue)
 	}
 
@@ -119,7 +124,7 @@ public class Database {
 	 * @return The list string values of the column label
 	 */
 	@Keyword
-	def getListValuesAtColumn(ResultSet rs, String columnLabel){
+	def getListValuesAtColumn1(ResultSet rs, String columnLabel){
 		def _listValues = []
 		while (rs.next()) {
 			_listValues.add(String.valueOf(rs.getObject(columnLabel)))
@@ -134,8 +139,80 @@ public class Database {
 	 * @param expectedValues: The expected values to verify
 	 */
 	@Keyword
-	def verifyCellValue(ResultSet rs, String columnLabel, String expectedValues){
-		def currentValues = getListValuesAtColumn(rs, columnLabel)
+	def verifyCellValue1(ResultSet rs, String columnLabel, String expectedValues){
+		def currentValues = getListValuesAtColumn1(rs, columnLabel)
 		WebUI.verifyEqual(currentValues.toString(), expectedValues.toString())
+	}
+
+	/******************************************************
+	 * Execute a SQL query on database (usually INSERT/UPDATE/DELETE/COUNT/SUM...)
+	 * @param queryString: SQL query string
+	 * @return A reference to returned test data collection
+	 */
+	@Keyword
+	def executeQuery(String queryString){
+		File sourceFile = new File(RunConfiguration.getProjectDir() + "/Data Files/Order.dat")
+		String contentFile = FileUtils.readFileToString(sourceFile, "utf-8")
+		String oldQuery = StringUtils.substringBetween(contentFile, "<query>", "</query>")
+		String newContentFile = contentFile.replace("<query>" + oldQuery + "</query>", "<query>" + queryString + "</query>")
+		FileUtils.writeStringToFile(sourceFile, newContentFile, "utf-8", false)
+		TestData _testData = findTestData('Order')
+		return _testData
+	}
+
+	/******************************************************
+	 * Get the string value at row index of the column label in result set
+	 * @param queryString: SQL query string
+	 * @param column: The label or index for the column specified
+	 * @param rowIndex: The row index
+	 * @return The string value of the cell
+	 */
+	@Keyword
+	def getCellValue(String queryString, def column, int rowIndex){
+		TestData _getResult = executeQuery(queryString)
+		int columnIndex = 0
+		if (column instanceof String) {
+			columnIndex = ArrayUtils.indexOf(_getResult.getColumnNames(), column) + 1
+		} else columnIndex = column
+		return _getResult.getObjectValue(columnIndex, rowIndex).toString()
+	}
+
+	/******************************************************
+	 * Get the map string values at row index
+	 * @param queryString: SQL query string
+	 * @param rowIndex: The row index
+	 * @return The list string values at row index
+	 */
+	@Keyword
+	def getDataRow(String queryString, int rowIndex){
+		TestData _getResult = executeQuery(queryString)
+		def _dataDict = [:]
+		String[] headerNames = _getResult.getColumnNames()
+		for(int i = 0; i < headerNames.size() ; i++){
+			_dataDict[headerNames[i]] = _getResult.getObjectValue(i + 1, rowIndex).toString()
+		}
+		return _dataDict
+	}
+
+
+	/******************************************************
+	 * Get the list string values at the column
+	 * @param queryString: SQL query string
+	 * @param column: The label or index for the column specified
+	 * @return The list string values at the column
+	 */
+	@Keyword
+	def getDataColumn(String queryString, def column){
+		TestData _getResult = executeQuery(queryString)
+		def _listValues = []
+		int columnIndex = 0
+		if (column instanceof String) {
+			columnIndex = ArrayUtils.indexOf(_getResult.getColumnNames(), column) + 1
+		} else columnIndex = column
+		int totalRow = _getResult.getRowNumbers()
+		for(int i = 1; i <= totalRow ; i++) {
+			_listValues.add(_getResult.getObjectValue(columnIndex, i).toString())
+		}
+		return _listValues
 	}
 }

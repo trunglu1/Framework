@@ -98,7 +98,7 @@ public class Utilities {
 	 * @param rowIndex : The row index to get
 	 */
 	@Keyword
-	def getDataRow(TestData testData, int rowIndex) {
+	def static getDataRow(TestData testData, int rowIndex) {
 		def _dataDict = [:]
 		//		TestData data = TestDataFactory.findTestData(dataFile)
 		try{

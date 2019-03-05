@@ -10,7 +10,7 @@
    <driver>DBData</driver>
    <isInternalPath>false</isInternalPath>
    <password>S21zQDIwMTg=</password>
-   <query>select empid,shipaddress,freight from Sales.Orders where custid = 70</query>
+   <query>select empid,shipaddress,freight from Sales.Orders where custid = 71</query>
    <secureUserAccount>true</secureUserAccount>
    <sheetName></sheetName>
    <user>test</user>
