@@ -1,4 +1,4 @@
-package kms
+package com.katalon.plugin.keyword.angularjs
 import org.openqa.selenium.By
 import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
@@ -12,8 +12,7 @@ import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.exception.WebElementNotFoundException
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-class AngularJS {
-
+class DropdownKeywords {
 	/**
 	 * Verify the expected items names on Dropdown
 	 * @param dropdownObject : Dropdown test object (AngularJS)
@@ -36,7 +35,7 @@ class AngularJS {
 	 */
 	@Keyword
 	def verifyOptionItemsStatus(TestObject dropdownObject, String listItemNames, boolean expectedStatus=true) {
-		List<WebElement> webElements = getListItemsOnOption(dropdownObject, listItemNames)
+		List<WebElement> webElements = this.getListItemsOnOption(dropdownObject, listItemNames)
 		boolean checkStatus = true
 
 		//Verify All items status
@@ -46,7 +45,7 @@ class AngularJS {
 		}
 
 		//Close the popup Option
-		webElements.get(0).sendKeys(Keys.chord(Keys.ESCAPE))
+		webElements.last().sendKeys(Keys.chord(Keys.ESCAPE))
 
 		//Wait for the popup disappear
 		Thread.sleep(1000)
@@ -70,12 +69,12 @@ class AngularJS {
 	 * @param optionGroupName : the option group name
 	 * @return the list webElemnts
 	 */
-	private List<WebElement> getListItemsOnOption(TestObject dropdownObject, Object listItems=null, String optionGroupName=null){
+	private getListItemsOnOption(TestObject dropdownObject, Object listItems=null, String optionGroupName=null){
 		try {
 			//Convert TestObject to WebElement
 			WebDriver driver = DriverFactory.getWebDriver()
 			WebElement element = WebUI.findWebElement(dropdownObject)
-			String tagName = element.getAttribute('localName').split('-')[0]
+			String tagName = element.getTagName().replace('-select', '')
 
 			//Open the popup Option
 			element.click()
@@ -130,7 +129,7 @@ class AngularJS {
 	 */
 	private selectDropdown(TestObject dropdownObject, Object range, boolean isSelect=true, String optionGroupName=null) {
 		try {
-			List<WebElement> webElements = getListItemsOnOption(dropdownObject, range, optionGroupName)
+			List<WebElement> webElements = this.getListItemsOnOption(dropdownObject, range, optionGroupName)
 
 			//Does Checkbox item or not
 			String classInfo = webElements.get(0).getAttribute('class')
@@ -147,7 +146,7 @@ class AngularJS {
 			}
 
 			//Close the Popup Option if has checkbox item
-			if(isCheckbox) webElements.get(i - 1).sendKeys(Keys.chord(Keys.ESCAPE))
+			if(isCheckbox) webElements.last().sendKeys(Keys.chord(Keys.ESCAPE))
 
 			// Wait for the Popup disappear
 			Thread.sleep(1500)
@@ -169,7 +168,7 @@ class AngularJS {
 	 */
 	@Keyword
 	def selectOptionByIndex(TestObject dropdownObject, Object range, boolean isSelect=true) {
-		Integer[] indexes = WebUiCommonHelper.indexRangeToArray(String.valueOf(range))
+		int[] indexes = WebUiCommonHelper.indexRangeToArray(String.valueOf(range))
 		KeywordUtil.logInfo(convertStatus(isSelect) + " Items on Dropdown by Index: " + indexes.toString())
 		selectDropdown(dropdownObject, indexes, isSelect)
 	}
@@ -184,7 +183,7 @@ class AngularJS {
 	@Keyword
 	def selectOptionByName(TestObject dropdownObject, String listItemNames, boolean isSelect=true) {
 		KeywordUtil.logInfo(convertStatus(isSelect) + " Items on Dropdown by Name: [" + listItemNames + "]")
-		selectDropdown(dropdownObject, listItemNames, isSelect)
+		this.selectDropdown(dropdownObject, listItemNames, isSelect)
 	}
 
 	/**
@@ -200,9 +199,9 @@ class AngularJS {
 	 */
 	@Keyword
 	def selectSubOptionByIndex(TestObject dropdownObject, String optionGroupName, Object range, boolean isSelect=true) {
-		Integer[] indexes = WebUiCommonHelper.indexRangeToArray(String.valueOf(range))
+		int[] indexes = WebUiCommonHelper.indexRangeToArray(String.valueOf(range))
 		KeywordUtil.logInfo(convertStatus(isSelect) + " Sub Items on Dropdown by Index: " + indexes.toString())
-		selectDropdown(dropdownObject, indexes, isSelect, optionGroupName)
+		this.selectDropdown(dropdownObject, indexes, isSelect, optionGroupName)
 	}
 
 	/**
@@ -216,7 +215,7 @@ class AngularJS {
 	@Keyword
 	def selectSubOptionByName(TestObject dropdownObject, String optionGroupName, String listItemNames, boolean isSelect=true) {
 		KeywordUtil.logInfo(convertStatus(isSelect) + " Sub Items on Dropdown by Name: [" + listItemNames + "]")
-		selectDropdown(dropdownObject, listItemNames, isSelect, optionGroupName)
+		this.selectDropdown(dropdownObject, listItemNames, isSelect, optionGroupName)
 	}
 
 	/**
@@ -227,6 +226,6 @@ class AngularJS {
 	@Keyword
 	def selectAllOption(TestObject dropdownObject, boolean isSelect=true) {
 		KeywordUtil.logInfo(convertStatus(isSelect) + " All Items on Dropdown")
-		selectDropdown(dropdownObject, null, isSelect)
+		this.selectDropdown(dropdownObject, null, isSelect)
 	}
 }
