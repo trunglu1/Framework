@@ -3,6 +3,6 @@
    <description></description>
    <name>DTC-001-Query Sales Order</name>
    <tag></tag>
-   <comment></comment>
+   <comment>a[&quot;freight&quot;]</comment>
    <testCaseGuid>38dc5452-d282-4091-a79f-5004b806d779</testCaseGuid>
 </TestCaseEntity>

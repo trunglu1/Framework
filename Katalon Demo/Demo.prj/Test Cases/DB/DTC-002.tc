@@ -3,6 +3,7 @@
    <description></description>
    <name>DTC-002</name>
    <tag></tag>
-   <comment></comment>
+   <comment>a.toString()
+b.toString()</comment>
    <testCaseGuid>3ca5dca9-9611-40b2-9f2a-d78bfab7d97f</testCaseGuid>
 </TestCaseEntity>

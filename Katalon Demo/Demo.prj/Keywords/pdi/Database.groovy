@@ -15,6 +15,8 @@ import com.kms.katalon.core.configuration.RunConfiguration
 import org.apache.commons.io.FileUtils
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang3.ArrayUtils
+import com.kms.katalon.core.db.DatabaseConnection
+import com.kms.katalon.core.db.DatabaseSettings
 
 /********************************* HEADER PART **********************************
  *
@@ -143,7 +145,19 @@ public class Database {
 		def currentValues = getListValuesAtColumn1(rs, columnLabel)
 		WebUI.verifyEqual(currentValues.toString(), expectedValues.toString())
 	}
+	
+	/////////////////////////////// DADTABASE///////////////////////////////////////////
 
+		/**
+		 * set read only status on Database
+		 * @param status: true (Read Only); false (not Read Only)
+		 */
+	@Keyword
+	def setReadOnlyDB(boolean status=false) {
+		DatabaseConnection dbConnection = new DatabaseSettings(RunConfiguration.getProjectDir()).getDatabaseConnection()
+		dbConnection.getConnection().setReadOnly(status)
+	}
+		
 	/******************************************************
 	 * Execute a SQL query on database (usually INSERT/UPDATE/DELETE/COUNT/SUM...)
 	 * @param queryString: SQL query string
@@ -151,6 +165,7 @@ public class Database {
 	 */
 	@Keyword
 	def executeQuery(String queryString){
+		setReadOnlyDB(false)
 		File sourceFile = new File(RunConfiguration.getProjectDir() + "/Data Files/Order.dat")
 		String contentFile = FileUtils.readFileToString(sourceFile, "utf-8")
 		String oldQuery = StringUtils.substringBetween(contentFile, "<query>", "</query>")
